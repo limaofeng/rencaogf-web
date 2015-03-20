@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>绿色喜墅-案例详细</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0"/>
+    <meta name="keywords" content="关键词，tapas"/>
+    <meta name="description" content="摘要，tapas"/>
+    <script src="../js/jquery-1.8.3.min.js"></script>
+    <script type="text/javascript" src="../js/jquery.SuperSlide.2.1.1.js"></script>
+    <link href="../css/css.css" type="text/css" rel="stylesheet">
+    <link href="../css/keyframes.css" type="text/css" rel="stylesheet">
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $(".prev,.next").hover(function(){
+                $(this).stop(true,false).fadeTo("show",0.9);
+            },function(){
+                $(this).stop(true,false).fadeTo("show",0.4);
+            });
+            $(".banner-box").slide({
+                titCell:".hd ul",
+                mainCell:".bd ul",
+                effect:"fold",
+                interTime:3500,
+                delayTime:500,
+                autoPlay:true,
+                autoPage:true,
+                trigger:"click"
+            });
+            $(".btn_top").click(function(){
+                $("html,body").animate({scrollTop:'0'},400);
+                return false;
+            });
+            $(".coll_detail_pic").hover(function(){
+                $(this).find(".bg_big").show();
+            },function(){
+                $(this).find(".bg_big").hide();
+            });
+            $(".bg_big").click(function(){
+                $(".pic_big").show();
+                $(".bg").height($(window).height());
+            });
+            $(".icon-close").click(function(){
+                $(".pic_big").hide();
+            });
+            $(".bg").click(function(){
+                $(".pic_big").hide();
+            })
+        });
+    </script>
+</head>
+<body>
+    <div class="header">
+        <div class="ie_maiDiv">
+            <h1 class="logo" title="logo"> </h1>
+            <ul class="nav">
+                <li class="">
+                    <a href="index.html">
+                        网站首页
+                    </a>
+                </li>
+                <li class="">
+                    <a href="about.html">
+                        关于我们
+                    </a>
+                </li>
+                <li class="">
+                    <a href="design.html">
+                        设计团队
+                    </a>
+                </li>
+
+                <li class="">
+                    <a class="active" href="collection.html">
+                        案例展示
+                    </a>
+                </li>
+                <li class="">
+                    <a href="news.html">
+                        行业知识
+                    </a>
+                </li>
+                <li class="">
+                    <a href="contact.html">
+                        联系我们
+                    </a>
+                </li>
+            </ul>
+            <div class="clear"> </div>
+        </div>
+    </div>
+    <!-- 滚图开始 -->
+    <div class="banner-box">
+        <div class="bd">
+            <ul>
+                <li style="background:#fff1d5;">
+                    <div class="m-width">
+                        <a href="javascript:void(0);"><img src="../images/banner1.png" /></a>
+                    </div>
+                </li>
+                <li style="background:#bfc0c2">
+                    <div class="m-width">
+                        <a href="javascript:void(0);"><img src="../images/banner2.png" /></a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="banner-btn">
+            <div class="hd">
+                <ul></ul>
+            </div>
+        </div>
+    </div>
+    <!-- 滚图结束 -->
+    <div class="crumbs">
+        <ul class="ie_maiDiv crumbs_list">
+            <li>
+                <i class="icon-home"></i>
+                首页
+            </li>
+            <li>
+                <i class="icon-arrow-left"></i>
+                <i class="icon-camera_fill"></i>
+                案例展示
+            </li>
+            <li>
+                <i class="icon-arrow-left"></i>
+                <i class="icon-pic"></i>
+                上海华侨城纯水岸
+            </li>
+        </ul>
+        <div class="clear"> </div>
+    </div>
+    <!--面包屑-->
+    <div class="mai_content">
+        <div class="ie_maiDiv">
+            <h2 class="coll_detail_title">
+                大厅
+            </h2>
+            <div>
+                <div class="coll_detail_pic">
+                    <a href="javascript:;">
+                        <img src="../images/pro_img.png" width="505" height="404" />
+                        <div class="bg_big">
+                            <i class="icon-big"> </i>
+                        </div>
+                        <div class="pic_big">
+                            <div class="pic_big_img">
+                                <img src="../images/pro_img.png" width="1000" height="660"/>
+                                <i class="icon-close"> </i>
+                            </div>
+                            <div class="bg"></div>
+                        </div>
+                    </a>
+                </div>
+                <div class="coll_detail_pic_txt">
+                    <h2 class="coll_detail_title">
+                        设计说明
+                    </h2>
+                    <p>
+                        华丽的曲线，简单的色彩，构造出灵动的异形空间，然而，让你觉得，简约可以这样子美！
+                        这个房型的独特表现手法仿佛就像一个服装设计师为一个模特量身定制的衣服一样，
+                        不是最好的但是一定是最适合你的。
+                    </p>
+                </div>
+                <div class="clear"></div>
+            </div>
+            <div>
+                <h2 class="coll_detail_title">
+                    装修信息
+                </h2>
+                <table class="coll_table">
+                    <tbody>
+                        <tr>
+                            <td>名称</td>
+                            <td>通盈置业</td>
+                            <td>面积</td>
+                            <td>163平方</td>
+                        </tr>
+                        <tr>
+                            <td>设计风格</td>
+                            <td>现代简约风格</td>
+                            <td>设计师</td>
+                            <td>张萌</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!--content end-->
+    <p class="ie_copy">Copyright © 2015  • All Rights Reserved.  • ie3232• 沪ICP-000100备</p>
+</body>
+</html>

@@ -1,0 +1,75 @@
+@keyframes myfirst{
+    0%   {transform: rotateY(0deg);}
+    50%  {transform: rotateY(-90deg);}
+    100% {transform: rotateY(0deg);}
+}
+@-moz-keyframes myfirst{
+    0%   {transform: rotateY(0deg);}
+    50%  {transform: rotateY(-90deg);}
+    100% {transform: rotateY(0deg);}
+}
+
+@-webkit-keyframes myfirst{
+    0%   {transform: rotateY(0deg);}
+    50%  {transform: rotateY(-90deg);}
+    100% {transform: rotateY(0deg);}
+}
+
+@keyframes myOpacity{
+    0%   {opacity: 0.5;}
+    50%  {opacity: 0.75;}
+    100% {opacity: 1;}
+}
+@-moz-keyframes myOpacity{
+    0%   {opacity: 0.5;}
+    50%  {opacity: 0.75;}
+    100% {opacity: 1;}
+}
+
+@-webkit-keyframes myOpacity{
+    0%   {opacity: 0.5;}
+    50%  {opacity: 0.75;}
+    100% {opacity: 1;}
+}
+.design_intro li{
+    width: 150px; float: left;margin-right: 100px;
+}
+.design_intro li:last-child{
+    margin-right: 0;
+}
+.design_intro li img{ border-radius: 50%; display: block;}
+i.design_intro_pic{
+     width: 150px; height: 150px;  display:block; box-sizing: border-box;
+}
+.design_intro li a:hover .design_intro_pic {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    animation:myfirst 0.4s;
+    animation: myfirst 0.4s;
+    -moz-animation: myfirst 0.4s;
+    -webkit-animation: myfirst 0.4s;
+    box-shadow: 0 0 7px #000;
+
+}
+
+
+
+/* banner */
+
+img{border:none;}
+a{blr:expression(this.onFocus=this.blur());outline:none;}
+
+/* banner-box */
+.banner-box{min-width:1200px;height:350px;position:relative;overflow:hidden; width: 100%;}
+.banner-box .bd{ width:100% !important;}
+.banner-box .bd li .m-width {width:1400px;margin:0 auto;overflow:hidden;}
+.banner-box .bd li{width:100% !important;height:350px;}
+.banner-box .bd li a{display:block;background-size:auto;}
+
+.banner-btn{width:1400px;position:absolute;top:120px;left:50%;margin-left:-700px;text-align: center;}
+.banner-btn a{text-align: center; display:block;width:49px;height:104px;position:absolute;top:0;filter:alpha(opacity=40);-moz-opacity:0.4;-khtml-opacity:0.4;opacity:0.4;}
+
+.banner-box .hd {position:absolute;top:210px;left:45%; text-align: center}
+.banner-box .hd ul li{width:12px;height:12px;border-radius :50%;text-indent:-9999px;margin-right:20px;background:#ccc;float:left;cursor:pointer;}
+.banner-box .hd ul li.on{background:#DA324D;}

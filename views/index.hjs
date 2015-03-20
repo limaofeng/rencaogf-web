@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>绿色喜墅</title>
+    <!--<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0"/>-->
+    <meta name="keywords" content="关键词，tapas"/>
+    <meta name="description" content="摘要，tapas"/>
+    <script src="/js/jquery-1.8.3.min.js"></script>
+    <script type="text/javascript" src="/js/jquery.SuperSlide.2.1.1.js"></script>
+    <link href="/css/css.css" type="text/css" rel="stylesheet">
+    <link href="/css/keyframes.css" type="text/css" rel="stylesheet">
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $(".prev,.next").hover(function(){
+                $(this).stop(true,false).fadeTo("show",0.9);
+            },function(){
+                $(this).stop(true,false).fadeTo("show",0.4);
+            });
+            $(".banner-box").slide({
+                titCell:".hd ul",
+                mainCell:".bd ul",
+                effect:"fold",
+                interTime:3500,
+                delayTime:500,
+                autoPlay:true,
+                autoPage:true,
+                trigger:"click"
+            });
+            $(".btn_top").click(function(){
+                $("html,body").animate({scrollTop:'0'},400);return false;
+            });
+        });
+    </script>
+</head>
+<body>
+{{>header}}
+
+<div class="ie_maiDiv mai_content">
+    <h2 class="in_title">
+        <span class="icon-ye">
+
+        </span>
+        案例展示
+        <span class="icon-ye2">
+
+        </span>
+    </h2>
+    <p class="in_about">公司所有设计师均有3年以上工作经历，资质深厚。 17年风雨历程，不仅造就了一代艰苦创业 、成就辉煌</p>
+    <ul class="in_coll_list">
+        <li>
+            <a href="/cases?type=1">
+                <i class="in_coll_pic1"> </i>
+                <span>家装案例</span>
+            </a>
+        </li>
+        <li>
+            <a href="/cases?type=2">
+                <i class="in_coll_pic2"> </i>
+                <span>工装案例</span>
+            </a>
+        </li>
+        <li>
+            <a href="/cases?type=3">
+                <i class="in_coll_pic3"> </i>
+                <span>商业空间</span>
+            </a>
+        </li>
+    </ul>
+    <div class="clear"> </div>
+</div>
+<!--案例结束-->
+<div class="mai_content design">
+    <div class="ie_maiDiv">
+        <h2 class="in_title">
+            <span class="icon-ye">
+
+            </span>
+            设计师推荐
+            <span class="icon-ye2">
+
+            </span>
+        </h2>
+        <p class="in_about">用现代的眼光看待传统的魅力，营造设计之魂</p>
+        <ul class="design_intro">
+            <li>
+                <a href="/designers/1">
+                    <i class="design_intro_pic"><img src="../images/img.png" width="150" height="150" alt=""/></i>
+                </a>
+                <span class="design_intro_pic_txt">
+                    <p>张萌</p>
+                    <p class="col666">主任设计师</p>
+                    <p class="col666">工作年限：4年</p>
+                </span>
+            </li>
+            <li>
+                <a href="/designers/1">
+                    <i class="design_intro_pic"><img src="../images/img.png" width="150" height="150" alt=""/></i>
+                </a>
+                <span class="design_intro_pic_txt">
+                    <p>张萌</p>
+                    <p class="col666">主任设计师</p>
+                    <p class="col666">工作年限：4年</p>
+                </span>
+            </li>
+            <li>
+                <a href="javascript:;">
+                    <i class="design_intro_pic"><img src="../images/img.png" width="150" height="150" alt=""/></i>
+                </a>
+                <span class="design_intro_pic_txt">
+                    <p>张萌</p>
+                    <p class="col666">主任设计师</p>
+                    <p class="col666">工作年限：4年</p>
+                </span>
+            </li>
+            <li>
+                <a href="javascript:;">
+                    <i class="design_intro_pic"><img src="../images/img.png" width="150" height="150" alt=""/></i>
+                </a>
+                <span class="design_intro_pic_txt">
+                    <p>张萌</p>
+                    <p class="col666">主任设计师</p>
+                    <p class="col666">工作年限：4年</p>
+                </span>
+            </li>
+        </ul>
+        <div class="clear"> </div>
+    </div>
+
+</div>
+<!--设计师推荐结束-->
+<div class="ie_maiDiv in_txt_content">
+    <div class="w50">
+        <i class="icon-setting"> </i>
+        <div class="in_txt_content_block">
+            <h2>装修知识</h2>
+            <ul>
+                <li>
+                    <a href="#">
+                        软装注意要点
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        家庭“软装”知识
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        嘉墅细节施工，真正做到无微不至
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        家居装修中的几个要点，你必须关注
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        选择装修公司和游击队的区别
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        10分钟精通卫生间装修
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="w50">
+        <i class="icon-gate"> </i>
+        <div class="in_txt_content_block">
+            <h2>风水案例</h2>
+            <ul>
+                <li>
+                    <a href="#">
+                        软装注意要点
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        家庭“软装”知识
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        嘉墅细节施工，真正做到无微不至
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        家居装修中的几个要点，你必须关注
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        选择装修公司和游击队的区别
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        10分钟精通卫生间装修
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!--文本区域-->
+<div class="in_contact_content">
+    <div class="ie_maiDiv">
+        <div class="in_con_con_block">
+            <i class="twowm"><img src="/images/twowm.png" width="230" height="230"/></i>
+            <div class="in_con_con_right">
+                <h2>联系我们</h2>
+                <div>
+                    <p>地址：<span>上海市宝山区殷高西路518号7楼</span></p>
+                    <p>电话：<span>18817614810  |   15102171118</span></p>
+                    <p>联系人：<span>赵小姐          　 |   李先生</span></p>
+                    <p>Email：<span>465445890@QQ.com</span></p>
+                    <!--
+                    <p>传真：<span>021-59265555</span></p>
+                    -->
+                </div>
+            </div>
+            <a class="btn_top">返回顶部</a>
+        </div>
+    </div>
+</div>
+<!--content end-->
+
+{{>footer}}
+</body>
+</html>
