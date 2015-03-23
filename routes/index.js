@@ -8,13 +8,27 @@ router.get('/', function (req, res) {
     res.render('index', {menus: {index: true}, partials: {header: 'header', footer: 'footer'}});
 });
 router.get('/cases', function (req, res) {
-    var data = {menus: {collection: true},partials: {header: 'header', page: 'page', footer: 'footer'}};
+    var data = {menus: {collection: true},cases:[
+        {},
+        {},
+        {},
+        {},
+        {},
+        {}
+    ], partials: {header: 'header', page: 'page', footer: 'footer'}};
     data['type_'+(!!req.query.type?req.query.type:1)] = true;
     res.render('cases/index', data);
 });
 router.get('/cases/:id', function (req, res) {
     console.log(req.params.id);
-    res.render('cases/details', {menus: {collection: true}, partials: {header: 'header', footer: 'footer'}});
+    res.render('cases/details', {menus: {collection: true}, detailed: [
+        {},
+        {},
+        {},
+        {},
+        {},
+        {}
+    ], partials: {header: 'header', footer: 'footer'}});
 });
 
 router.get('/designers', function (req, res) {
@@ -31,5 +45,7 @@ router.get('/designers/:id', function (req, res) {
     console.log(req.params.id);
     res.render('designers/details', {menus: {design: true}, partials: {header: 'header', page: 'page', footer: 'footer'}});
 });
-
+router.get('/about', function (req, res) {
+    res.render('about', {menus: {about: true}, partials: {header: 'header', footer: 'footer'}});
+});
 module.exports = router;

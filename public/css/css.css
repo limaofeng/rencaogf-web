@@ -402,3 +402,12 @@ a:active{color: #666; border:none;text-decoration:none; outline:none;}
     right: 10px; top: 10px;
 }
 /**作品展示结束**/
+
+.w730{width: 730px; margin: 0 auto; font-size: 14px; line-height:1.5; color: #666;}
+.about_bg{
+    background: url(../images/about_bg.png) repeat-x left; height: 300px; width: 100%; margin-top:30px;
+    text-align: center;
+}
+.about_bg ul li{
+    display: inline-block; margin:0 10px;
+}

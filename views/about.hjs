@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>绿色喜墅-关于我们</title>
+    <!--<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0"/>-->
+    <meta name="keywords" content="关键词，tapas"/>
+    <meta name="description" content="摘要，tapas"/>
+    <script src="/js/jquery-1.8.3.min.js"></script>
+    <script type="text/javascript" src="/js/jquery.SuperSlide.2.1.1.js"></script>
+    <link href="/css/css.css" type="text/css" rel="stylesheet">
+    <link href="/css/keyframes.css" type="text/css" rel="stylesheet">
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $(".prev,.next").hover(function(){
+                $(this).stop(true,false).fadeTo("show",0.9);
+            },function(){
+                $(this).stop(true,false).fadeTo("show",0.4);
+            });
+            $(".banner-box").slide({
+                titCell:".hd ul",
+                mainCell:".bd ul",
+                effect:"fold",
+                interTime:3500,
+                delayTime:500,
+                autoPlay:true,
+                autoPage:true,
+                trigger:"click"
+            });
+            $(".btn_top").click(function(){
+                $("html,body").animate({scrollTop:'0'},400);return false;
+            });
+        });
+    </script>
+</head>
+<body>
+{{>header}}
+
+    <div class="crumbs">
+        <ul class="ie_maiDiv crumbs_list">
+            <li>
+                <i class="icon-home"></i>
+                首页
+            </li>
+            <li>
+                <i class="icon-arrow-left"></i>
+                <i class="icon-family"></i>
+                关于我们
+            </li>
+        </ul>
+        <div class="clear"> </div>
+    </div>
+    <!--面包屑-->
+    <div class="mai_content">
+        <div class="ie_maiDiv">
+            <h2 class="in_title">
+                <span class="icon-ye">
+
+                </span>
+                关于我们
+                <span class="icon-ye2">
+
+                </span>
+            </h2>
+            <p class="in_about">我们倾听客户需求，以最前沿的设计理念，赋予企业与家崭新的形象</p>
+            <div class="w730">
+                众所周知，居室内的温度是随着四季的不断变更而变化，但我们的住所需要保持一个适宜的温度，
+                才能保证家人的身体健康，所以，天冷关窗是居家生活常识。然而，在密闭的居室环境下，空气不
+                流通同样不利于家人健康，这样的矛盾困扰着许多小区业主。
+                <br/><br/>
+                不过，家天下·三木城艺墅的业主们却没有这个烦恼。三木城艺墅给部分92m2的小户型试点
+                配备了单向流新风系统，在房屋的内部制造了通风与空气对流的“自然环境”，每一个小时，
+                这套新风系统就能将外面的新鲜空气引入室内，自动进行空气置换。既保持室内健康的空气环境，
+                又能隔绝外界噪音，就像一套房子的肺，会呼吸!另一方面，2010年，家天下·三木城C区艺墅除
+                了保留之前产品的一些新技术材料应用外，如高层的中空玻璃等先进材料，全部引进太阳能空气
+                源热泵系统，热效率高达1027%，实现“有太阳时用太阳能，没太阳时用空气能”，从而最大力度
+                节约能源，减少环境污染，并在太阳能与建筑一体化方面取得突破，进一步降低了小区业主的居
+                家成本，为成为福建省“可再生能源节能示范小区”做更多的努力
+            </div>
+        </div>
+    </div>
+
+    <div class="about_bg">
+        <ul>
+            <li>
+                <h1>专注</h1>
+                <p>Focus</p>
+            </li>
+            <li>
+                <h1>专注</h1>
+                <p>Focus</p>
+            </li>
+            <li>
+                <h1>专注</h1>
+                <p>Focus</p>
+            </li>
+        </ul>
+    </div>
+
+
+
+{{>footer}}
+</body>
+</html>

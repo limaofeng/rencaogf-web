@@ -95,6 +95,7 @@
                 </ul>
 
                 <div class="coll_list">
+                    {{#cases}}
                     <div class="coll_field_content">
                         <a class="coll_field_content_pic" href="/cases/1">
                             <img src="../images/pro_img.png" width="303" height="202"/>
@@ -118,121 +119,8 @@
                         </div>
                         <div class="clear"></div>
                     </div>
-                    <div class="coll_field_content">
-                        <a class="coll_field_content_pic" href="/cases/1">
-                            <img src="../images/pro_img.png" width="303" height="202"/>
-                        </a>
-                        <h3 class="coll_field_content_title">
-                            <a href="/cases/1">
-                                上海华侨城纯水岸
-                            </a>
-                            <span class="coll_field_content_title_txt">
-                                现代简约风格
-                            </span>
-                        </h3>
-                        <span class="icon-price">
-                            160㎡
-                        </span>
-                        <div class="pull_right">
-                            <a href="/cases/1">
-                                <i class="icon-eye"></i>
-                                查看设计
-                            </a>
-                        </div>
-                        <div class="clear"></div>
-                    </div>
-                    <div class="coll_field_content">
-                        <a class="coll_field_content_pic" href="/cases/1">
-                            <img src="../images/pro_img.png" width="303" height="202"/>
-                        </a>
-                        <h3 class="coll_field_content_title">
-                            <a href="/cases/1">
-                                上海华侨城纯水岸
-                            </a>
-                            <span class="coll_field_content_title_txt">
-                                现代简约风格
-                            </span>
-                        </h3>
-                        <span class="icon-price">
-                            160㎡
-                        </span>
-                        <div class="pull_right">
-                            <a href="/cases/1">
-                                <i class="icon-eye"></i>
-                                查看设计
-                            </a>
-                        </div>
-                        <div class="clear"></div>
-                    </div>
-                    <div class="coll_field_content">
-                        <a class="coll_field_content_pic" href="/cases/1">
-                            <img src="../images/pro_img.png" width="303" height="202"/>
-                        </a>
-                        <h3 class="coll_field_content_title">
-                            <a href="/cases/1">
-                                上海华侨城纯水岸
-                            </a>
-                            <span class="coll_field_content_title_txt">
-                                现代简约风格
-                            </span>
-                        </h3>
-                        <span class="icon-price">
-                            160㎡
-                        </span>
-                        <div class="pull_right">
-                            <a href="/cases/1">
-                                <i class="icon-eye"></i>
-                                查看设计
-                            </a>
-                        </div>
-                        <div class="clear"></div>
-                    </div>
-                    <div class="coll_field_content">
-                        <a class="coll_field_content_pic" href="/cases/1">
-                            <img src="../images/pro_img.png" width="303" height="202"/>
-                        </a>
-                        <h3 class="coll_field_content_title">
-                            <a href="/cases/1">
-                                上海华侨城纯水岸
-                            </a>
-                            <span class="coll_field_content_title_txt">
-                                现代简约风格
-                            </span>
-                        </h3>
-                        <span class="icon-price">
-                            160㎡
-                        </span>
-                        <div class="pull_right">
-                            <a href="/cases/1">
-                                <i class="icon-eye"></i>
-                                查看设计
-                            </a>
-                        </div>
-                        <div class="clear"></div>
-                    </div>
-                    <div class="coll_field_content">
-                        <a class="coll_field_content_pic" href="/cases/1">
-                            <img src="../images/pro_img.png" width="303" height="202"/>
-                        </a>
-                        <h3 class="coll_field_content_title">
-                            <a href="/cases/1">
-                                上海华侨城纯水岸
-                            </a>
-                            <span class="coll_field_content_title_txt">
-                                现代简约风格
-                            </span>
-                        </h3>
-                        <span class="icon-price">
-                            160㎡
-                        </span>
-                        <div class="pull_right">
-                            <a href="/cases/1">
-                                <i class="icon-eye"></i>
-                                查看设计
-                            </a>
-                        </div>
-                        <div class="clear"></div>
-                    </div>
+                    {{/cases}}
+
 
                     {{>page}}
 
