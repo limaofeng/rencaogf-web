@@ -21,14 +21,7 @@ router.get('/cases', function (req, res) {
 });
 router.get('/cases/:id', function (req, res) {
     console.log(req.params.id);
-    res.render('cases/details', {menus: {collection: true}, detailed: [
-        {},
-        {},
-        {},
-        {},
-        {},
-        {}
-    ], partials: {header: 'header', footer: 'footer'}});
+    res.render('cases/details', {menus: {collection: true},partials: {header: 'header', footer: 'footer'}});
 });
 
 router.get('/designers', function (req, res) {
@@ -43,7 +36,14 @@ router.get('/designers', function (req, res) {
 });
 router.get('/designers/:id', function (req, res) {
     console.log(req.params.id);
-    res.render('designers/details', {menus: {design: true}, partials: {header: 'header', page: 'page', footer: 'footer'}});
+    res.render('designers/details', {menus: {design: true}, detailed: [
+        {},
+        {},
+        {},
+        {},
+        {},
+        {}
+    ],  partials: {header: 'header', page: 'page', footer: 'footer'}});
 });
 router.get('/about', function (req, res) {
     res.render('about', {menus: {about: true}, partials: {header: 'header', footer: 'footer'}});
