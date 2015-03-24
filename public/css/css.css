@@ -434,3 +434,165 @@ a:active{color: #666; border:none;text-decoration:none; outline:none;}
 .twm{
     display: inline-block;vertical-align:top; margin:0 80px;
 }
+
+/**关于我们结束**/
+@font-face {font-family: 'iconfont';
+    src: url('../fonts/iconfont.eot'); /* IE9*/
+    src: url('../fonts/iconfont.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('../fonts/iconfont.woff') format('woff'), /* chrome、firefox */
+    url('../fonts/iconfont.ttf') format('truetype'), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+    url('../fonts/iconfont.svg#iconfont') format('svg'); /* iOS 4.1- */
+}
+.iconfont{
+    font-family:"iconfont" !important;
+    font-size:35px;font-style:normal;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-stroke-width: 0.2px;
+    -moz-osx-font-smoothing: grayscale;
+}
+.furniture .furniture_content.clearBoth:after {
+    content: '';
+    display: block;
+    height: 0;
+    clear: both;
+}
+.furniture .furniture_content.clearBoth {
+    *zoom: 1;
+}
+
+.furniture .furniture_content li{
+    float: left; display: inline-block; text-align: center; margin:35px 72px 35px 0;
+}
+.furniture .furniture_content li:last-child{
+    margin-right: 0;
+}
+.furniture .furniture_content li > a > i{
+    display: block; text-align: center;
+    width: 60px; height: 60px; box-sizing: border-box;
+    -webkit-box-sizing: border-box; -moz-box-sizing: border-box;
+
+    display: -webkit-box;
+    -webkit-box-orient: horizontal;
+    -webkit-box-pack: center;
+    -webkit-box-align: center;
+
+    display: -moz-box;
+    -moz-box-orient: horizontal;
+    -moz-box-pack: center;
+    -moz-box-align: center;
+
+    display: -o-box;
+    -o-box-orient: horizontal;
+    -o-box-pack: center;
+    -o-box-align: center;
+
+    display: -ms-box;
+    -ms-box-orient: horizontal;
+    -ms-box-pack: center;
+    -ms-box-align: center;
+
+    display: box;
+    box-orient: horizontal;
+    box-pack: center;
+    box-align: center;
+    border:1px solid #666; border-radius: 50%;
+    margin: 10px auto;
+}
+.furniture .furniture_content li > a{
+    color: #666;
+}
+.furniture .furniture_content li > a > span{
+    font-size: 14px; text-align: center;display: inline-block;
+}
+.furniture .furniture_content li > a:hover i{
+    background:#fff1d5; border:none; color: #eb5933;
+}
+.furniture .furniture_content li.active i{
+    background:#fff1d5; border:none; color: #935c06;
+}
+.furniture .furniture_content li.active a:hover i{
+    color: #935c06;
+}
+.furniture .contact .sidebar{
+    width: 260px; margin-right:20px; display: inline-block; vertical-align: top;
+}
+.furniture .contact .sidebar dt{
+    font-size: 1.43rem;
+}
+.furniture .contact .sidebar dd{
+    font-size: 16px; line-height:3;
+}
+.furniture .contact .sidebar dd i{
+    background:url(../images/icon-dotted.png) no-repeat ;padding-left:10px; display: inline-block; height: 7px;
+    vertical-align: middle;
+}
+.furniture .contact .sidebar dd a{
+    color:#666; display: inline-block; width: 90%;
+}
+.furniture .contact .sidebar dd.active a{
+    color: #935c06; font-weight: bold;
+}
+.ie.product{
+    display: inline-block; border: 1px solid #ccc; width: 716px; box-sizing: border-box;
+    -moz-box-sizing: border-box; -webkit-box-sizing: border-box;
+    margin-bottom: 30px;
+
+}
+.ie.product li{
+    width: 50%;
+    border-right:1px solid #ccc;
+    border-bottom:1px solid #ccc;
+    vertical-align: inherit;
+    border-color: inherit;
+    float: left;
+    box-sizing: border-box; -moz-box-sizing: border-box; -webkit-box-sizing: border-box;
+}
+.ie.product li:nth-child(2n+2){
+    border-right:none
+}
+.ie.product li:nth-child(5){
+    border-bottom:none;
+}
+.ie.product li:nth-child(6){
+    border: none;
+}
+.ie.product li i{
+    width: 100%;
+    padding:20px 0;
+    height: 250px;
+    display: block;
+    text-align: center;
+    display: -webkit-box;
+    -webkit-box-orient: horizontal;
+    -webkit-box-pack: center;
+    -webkit-box-align: center;
+
+    display: -moz-box;
+    -moz-box-orient: horizontal;
+    -moz-box-pack: center;
+    -moz-box-align: center;
+
+    display: -o-box;
+    -o-box-orient: horizontal;
+    -o-box-pack: center;
+    -o-box-align: center;
+
+    display: -ms-box;
+    -ms-box-orient: horizontal;
+    -ms-box-pack: center;
+    -ms-box-align: center;
+
+    display: box;
+    box-orient: horizontal;
+    box-pack: center;
+    box-align: center;
+
+}
+
+
+.ie.product li span{
+    font-size: 14px; line-height:1.5; padding:15px 10px; text-align: center; display: block;
+}
+.ie.product li a{
+    color: #666;
+}

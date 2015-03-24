@@ -48,4 +48,16 @@ router.get('/designers/:id', function (req, res) {
 router.get('/about', function (req, res) {
     res.render('about', {menus: {about: true}, partials: {header: 'header', footer: 'footer'}});
 });
+router.get('/furniture', function (req, res) {
+   var date =  {menus: {furniture: true},products:[
+        {},{},{},{},{},{}
+    ] ,partials: {header: 'header', footer: 'footer' ,page:'page'}};
+
+    date['type_'+(!!req.query.type?req.query.type:1)] = true;
+    res.render('furniture/index', date);
+});
+router.get('/furniture/:id', function (req, res) {
+    console.log(req.params.id);
+    res.render('furniture/details', {menus: {furniture: true}, partials: {header: 'header',footer: 'footer'}});
+});
 module.exports = router;
