@@ -133,7 +133,7 @@
                         {{#products}}
                         <li>
                             <a href="/furniture/1">
-                                <i><img src="../images/pic1.png" alt=""/></i>
+                                <i><img src="/images/pic1.png" alt=""/></i>
                                 <span>深宇门业阳台门SF-054</span>
                             </a>
                         </li>
