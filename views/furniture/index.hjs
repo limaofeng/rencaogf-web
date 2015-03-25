@@ -132,7 +132,7 @@
                     <ul class="ie product">
                         {{#products}}
                         <li>
-                            <a href="/furniture/details/1">
+                            <a href="/furniture/1">
                                 <i><img src="../images/pic1.png" alt=""/></i>
                                 <span>深宇门业阳台门SF-054</span>
                             </a>
