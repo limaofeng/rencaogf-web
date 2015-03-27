@@ -1,4 +1,4 @@
-body{margin: 0; padding: 0; list-style: none;  font-size: 62.5%; background: white; font-family:"Microsoft YaHei", "微软雅黑", Arial;}
+body{margin: 0; padding: 0; list-style: none;  font-size: 62.5%; background: white; font-family:"Microsoft YaHei", "微软雅黑", Arial; overflow-y: scroll; overflow-x: hidden;}
 ul,ol,dl,li,dt,dd,i,em,span,p{list-style: none;padding: 0; margin: 0; font-style:normal;}
 input,textarea,option,select{margin: 0; padding: 0;}
 img{margin: 0;padding: 0;border: none; overflow: hidden;}
@@ -595,4 +595,50 @@ a:active{color: #666; border:none;text-decoration:none; outline:none;}
 }
 .ie.product li a{
     color: #666;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.clearBoth:after {
+    content: '';
+    display: block;
+    height: 0;
+    clear: both;
+    visibility:hidden
+}
+.clearBoth {
+    *zoom: 1;
+}
+
+
+a:focus{outline:none;}
+::selection {background:#ff7d8e; color:#fff;}
+
+#wrapper{min-width: 250px; max-width: 1008px; margin: 25px auto;}
+.brand-list{ margin-left: -10px;}
+.brand-list .brand-bd{position: relative; margin-left: 10px; margin-top: 5px;}
+.brand-list .item,.brand-list .additem{position: absolute; width: 202px; background-color: #f8f8f8; border: 1px solid #f8f8f8; padding: 18px; top:0; left: 40%; -webkit-transition: all 0.3s;-moz-transition: all 0.3s;-o-transition: all 0.3s;-ms-transition: all 0.3s;transition: all 0.3s;}
+.brand-list .hover{box-shadow: 0px 1px 8px rgba(200,200,200,.6); background-color: #fff; border-color: #c8c8c8;}
+.brand-list .additem{padding: 0; width: 240px; border: none; }
+
+.brand-list .item p{margin-bottom: 15px; display: block; text-align: center; margin-top:15px;}
+.brand-list .item a{
+    text-decoration:none; color:#333; font-size: 14px;
+    -webkit-transition: color .2s;-moz-transition: color .2s;
+    -o-transition: color .2s; -ms-transition: color .2s;
+    transition: color .2s;
+}
+.brand-list .item a:hover{
+color:#b78500
 }

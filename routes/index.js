@@ -60,4 +60,9 @@ router.get('/furniture/:id', function (req, res) {
     console.log(req.params.id);
     res.render('furniture/details', {menus: {furniture: true}, partials: {header: 'header',footer: 'footer'}});
 });
+
+
+router.get('/repair', function (req, res) {
+    res.render('repair', {menus: {repair: true}, partials: {header: 'header', footer: 'footer'}});
+});
 module.exports = router;
