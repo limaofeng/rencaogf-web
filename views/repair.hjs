@@ -60,7 +60,7 @@
             <!-- 循环字母模块 item -->
             <div class="item" id="brand-a">
                 <a href="http://9041188.czvv.com" target="_blank">
-                    <img src="../images/pic1.png" width="200">
+                    <img src="../images/pic1.png">
                 </a>
                 <p>
                     <a href="http://9041188.czvv.com" target="_blank">上海臻逸建筑装饰工程有限公司</a>
@@ -68,7 +68,7 @@
             </div>
             <div class="item" id="brand-b">
                 <a href="http://www.sy-021.com" target="_blank">
-                    <img src="../images/pro_img.png" width="200">
+                    <img src="../images/pro_img.png" >
                 </a>
                 <p>
                     <a href="http://www.sy-021.com" target="_blank">申远空间设计</a>
@@ -76,7 +76,7 @@
             </div>
             <div class="item" id="brand-c">
                 <a href="http://www.tszh.net" target="_blank">
-                    <img src="../images/banner1.png" width="200">
+                    <img src="../images/banner1.png">
                 </a>
                 <p>
                     <a href="http://www.tszh.net" target="_blank">统帅装饰</a>
@@ -84,7 +84,7 @@
             </div>
             <div class="item" id="brand-d">
                 <a href="http://sh.to8to.com/zs/company972569/" target="_blank">
-                    <img src="../images/img.png" width="200">
+                    <img src="../images/img.png">
                 </a>
                 <p>
                     <a href="http://sh.to8to.com/zs/company972569/" target="_blank">上海臻茂建筑装饰工程有限公司</a>
@@ -92,7 +92,7 @@
             </div>
             <div class="item" id="brand-e">
                 <a href="http://sh.xtuan.com/35621/" target="_blank">
-                    <img src="../images/coll_2.png" width="200">
+                    <img src="../images/coll_2.png">
                 </a>
                 <p>
                     <a href="http://sh.xtuan.com/35621/" target="_blank">上海龙发建筑装饰工程有限公司</a>
@@ -100,7 +100,7 @@
             </div>
             <div class="item" id="brand-f">
                 <a href="http://www.sh-ysjdec.com" target="_blank">
-                    <img src="../images/about_bg.png" width="200">
+                    <img src="../images/about_bg.png">
                 </a>
                 <p>
                     <a href="http://www.sh-ysjdec.com/" target="_blank">上海雅仕居装饰集团</a>
@@ -108,7 +108,7 @@
             </div>
             <div class="item" id="brand-g">
                 <a href="http://www.shejiben.com/sjs/1513150/" target="_blank">
-                    <img src="../images/banner2.png" width="200">
+                    <img src="../images/banner2.png">
                 </a>
                 <p>
                     <a href="http://www.shejiben.com/sjs/1513150/" target="_blank">上海石澜装饰设计</a>
@@ -116,7 +116,7 @@
             </div>
             <div class="item" id="brand-h">
                 <a href="http://sh.tobosu.com/member/24891/" target="_blank">
-                    <img src="../images/logo.png" width="200">
+                    <img src="../images/logo.png">
                 </a>
                 <p>
                     <a href="http://sh.tobosu.com/member/24891/" target="_blank">上海显尚装饰工程设计有限公司</a>
@@ -124,7 +124,7 @@
             </div>
             <div class="item" id="brand-i">
                 <a href="http://www.shtjzh.com/" target="_blank">
-                    <img src="../images/pic1.png" width="200">
+                    <img src="../images/pic1.png">
                 </a>
                 <p>
                     <a href="http://www.shtjzh.com/" target="_blank">同济装潢设计</a>
@@ -132,7 +132,7 @@
             </div>
             <div class="item" id="brand-j">
                 <a href="http://shzx.cxzg.com/" target="_blank">
-                    <img src="../images/img.png" width="200">
+                    <img src="../images/img.png">
                 </a>
                 <p>
                     <a href="http://shzx.cxzg.com/" target="_blank">上海嘉墅建筑装饰工程有限公司</a>
@@ -148,7 +148,7 @@
             </div>
             <div class="item" id="brand-l">
                 <a href="http://www.shbotao.net/" target="_blank">
-                    <img src="../images/about_bg.png" width="200">
+                    <img src="../images/about_bg.png">
                 </a>
                 <p>
                     <a href="http://www.shbotao.net/" target="_blank">波涛装饰集团</a>

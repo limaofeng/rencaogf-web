@@ -65,4 +65,27 @@ router.get('/furniture/:id', function (req, res) {
 router.get('/repair', function (req, res) {
     res.render('repair', {menus: {repair: true}, partials: {header: 'header', footer: 'footer'}});
 });
+
+router.get('/new', function (req, res) {
+    /*
+    res.render('new/index', {menus: {new: true} ,new_list:[
+        {},{},{},{},{}
+    ], partials: {header: 'header', footer: 'footer', page:'page'}});
+     */
+    console.log(req.params.id);
+    var dates = {menus: {new: true} ,new_list:[
+        {},{},{},{},{}
+    ] ,partials:{header: 'header', footer: 'footer',page:'page'}};
+    dates['newList_'+(!!req.query.newList_?req.newList:1)] = true;
+    res.render('new/index', dates);
+
+});
+
+router.get('/new/:id', function (req, res) {
+    console.log(req.params.id);
+    res.render('new/details', {menus: {repair: true},new_details:[
+        {},{},{},{},{},{},{},{},{},{}
+    ] ,partials: {header: 'header', footer: 'footer'}});
+});
+
 module.exports = router;

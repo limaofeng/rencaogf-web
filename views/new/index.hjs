@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>绿色喜墅-装修知识</title>
+    <!--<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0"/>-->
+    <meta name="keywords" content="关键词，tapas"/>
+    <meta name="description" content="摘要，tapas"/>
+    <script src="/js/jquery-1.8.3.min.js"></script>
+    <script type="text/javascript" src="/js/jquery.SuperSlide.2.1.1.js"></script>
+    <link href="/css/css.css" type="text/css" rel="stylesheet">
+    <link href="/css/keyframes.css" type="text/css" rel="stylesheet">
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $(".prev,.next").hover(function(){
+                $(this).stop(true,false).fadeTo("show",0.9);
+            },function(){
+                $(this).stop(true,false).fadeTo("show",0.4);
+            });
+            $(".banner-box").slide({
+                titCell:".hd ul",
+                mainCell:".bd ul",
+                effect:"fold",
+                interTime:3500,
+                delayTime:500,
+                autoPlay:true,
+                autoPage:true,
+                trigger:"click"
+            });
+            $(".btn_top").click(function(){
+                $("html,body").animate({scrollTop:'0'},400);return false;
+            });
+        });
+    </script>
+</head>
+<body>
+{{>header}}
+<div class="crumbs">
+    <ul class="ie_maiDiv crumbs_list">
+        <li>
+            <i class="icon-home"></i>
+            首页
+        </li>
+        <li>
+            <i class="icon-arrow-left"></i>
+            <i class="icon-family"></i>
+            装修知识
+        </li>
+    </ul>
+    <div class="clear"> </div>
+</div>
+<!--面包屑-->
+
+<div class="mai_content">
+    <div class="ie_maiDiv furniture new">
+        <ul class="furniture_content clearBoth">
+            <li {{#newList_1}}class="active"{{/newList_1}}>
+            <a href="/new?newLis=1">
+                <i class="icon iconfont">&#x3453;</i>
+                <span>行业动态</span>
+            </a>
+            </li>
+            <li {{#newList_2}}class="active"{{/newList_2}}>
+            <a href="/new?newLis=2">
+                <i class="icon iconfont">&#xf00eb;</i>
+                <span>家居快讯</span>
+            </a>
+            </li>
+            <li {{#newList_3}}class="active"{{/newList_3}}>
+            <a href="/new?newLis=3">
+                <i class="icon iconfont">&#xf0078;</i>
+                <span>风水规划</span>
+            </a>
+            </li>
+            <li {{#newList_4}}class="active"{{/newList_4}}>
+            <a href="/new?newLis=4">
+                <i class="icon iconfont">&#xf00a7;</i>
+                <span>装修知识</span>
+            </a>
+            </li>
+            <!--
+            <li {{#type_1}}class="active"{{/type_1}}>
+                <a href="/new?type=1">
+                    <i class="icon iconfont">&#x3453;</i>
+                    <span>行业动态</span>
+                </a>
+            </li>
+            <li {{#type_2}}class="active"{{/type_2}}>
+            <a href="/new?type=2">
+                <i class="icon iconfont">&#xf00eb;</i>
+                <span>家居快讯</span>
+            </a>
+            </li>
+            <li {{#type_3}}class="active"{{/type_3}}>
+            <a href="/new?type=3">
+                <i class="icon iconfont">&#xf0078;</i>
+                <span>风水规划</span>
+            </a>
+            </li>
+            <li {{#type_4}}class="active"{{/type_4}}>
+            <a href="/new?type=4">
+                <i class="icon iconfont">&#xf00a7;</i>
+                <span>装修知识</span>
+            </a>
+            </li>
+            -->
+        </ul>
+        <!---->
+
+        <ul class="new_list">
+            {{#new_list}}
+            <li>
+                <h2 class="title">
+                    <i class=""></i>
+                    <a href="/new/1">选购知识：如何选购强化复合地板</a>
+                </h2>
+                <p>
+                    强化地板的耐磨度由表面耐磨层决定，并通过耐磨转数来表示。，家用一般6000转左右，公共场合10000转左右。
+                    如今市场上强化木地板的耐磨层主要有四种：每平方米三氧化二铝含量30g左右的地板，其耐磨度约为4000转;
+                    含量38g左右的耐磨度约为5000转;含量44g左右的耐磨度约为9000转;含量62g左右的耐磨度约为18000转。
+                </p>
+                <a class="ie_design_content_btn" href="/new/1">查看详情</a>
+            </li>
+            {{/new_list}}
+        </ul>
+
+        {{>page}}
+    </div>
+
+</div>
+{{>footer}}
+</body>
+</html>
