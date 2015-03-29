@@ -2,7 +2,7 @@
 <html>
 <head lang="en">
     <meta charset="UTF-8">
-    <title>绿色喜墅-装修公司</title>
+    <title>室内装修网-装修公司</title>
     <!--<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0"/>-->
     <meta name="keywords" content="关键词，tapas"/>
     <meta name="description" content="摘要，tapas"/>
@@ -32,6 +32,9 @@
                 $("html,body").animate({scrollTop:'0'},400);return false;
             });
             $('#brand-waterfall').cascade();
+            setTimeout(function(){
+                $(window).resize();
+            },100);
         });
     </script>
 </head>
@@ -58,14 +61,17 @@
     <div class="brand-list">
         <div class="brand-bd clearBoth" id="brand-waterfall">
             <!-- 循环字母模块 item -->
+            {{#repairs}}
             <div class="item" id="brand-a">
-                <a href="http://9041188.czvv.com" target="_blank">
-                    <img src="../images/pic1.png" width="200">
+                <a href="{{url}}" target="_blank">
+                    <img src="{{pic}}" width="200">
                 </a>
                 <p>
-                    <a href="http://9041188.czvv.com" target="_blank">上海臻逸建筑装饰工程有限公司</a>
+                    <a href="{{url}}" target="_blank">{{name}}</a>
                 </p>
             </div>
+            {{/repairs}}
+            <!--
             <div class="item" id="brand-b">
                 <a href="http://www.sy-021.com" target="_blank">
                     <img src="../images/pro_img.png" width="200">
@@ -154,6 +160,7 @@
                     <a href="http://www.shbotao.net/" target="_blank">波涛装饰集团</a>
                 </p>
             </div>
+            -->
         </div>
     </div>
 </div>

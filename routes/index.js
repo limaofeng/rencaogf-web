@@ -1,6 +1,31 @@
 var express = require('express');
 var http = require('http');
 
+var username = 'slzxw';
+var password = '123456';
+var _auth = 'Basic ' + new Buffer(username + ':' + password).toString('base64');
+
+http.request = (function(_request){
+    return function(){
+        var options = arguments[0];
+        //设置请求地址
+        options.host = 'localhost';
+        options.port = 8080;
+        //设置请求头
+        options.headers = {
+            'accept': '*/*',
+            'content-type': "application/atom+xml",
+            'accept-encoding': 'gzip, deflate',
+            'accept-language': 'en-US,en;q=0.9',
+            'authorization': _auth,
+            'user-agent': 'nodejs rest client'
+        };
+        return _request.apply(this,arguments).on('error', function(e) {
+            console.error('problem with request: ' + e.message);
+        });
+    }
+})(http.request);
+
 var router = express.Router();
 
 /* GET home page. */
@@ -25,25 +50,31 @@ router.get('/cases/:id', function (req, res) {
 });
 
 router.get('/designers', function (req, res) {
-    res.render('designers/index', {menus: {design: true}, designers: [
-        {name: '张萌1'},
-        {name: '张萌2'},
-        {name: '张萌3'},
-        {name: '张萌4'},
-        {name: '张萌5'},
-        {name: '张萌6'}
-    ], partials: {header: 'header', page: 'page', footer: 'footer'}});
+    http.request({
+        path: '/cms/articles?EQS_category.code=designer',
+        method: 'GET'
+    }, function (_res) {
+        _res.on('data',function (body) {
+            res.render('designers/index', {menus: {design: true}, pager: JSON.parse(body), partials: {header: 'header', page: 'page', footer: 'footer'}});
+        });
+    }).end();
 });
 router.get('/designers/:id', function (req, res) {
-    console.log(req.params.id);
-    res.render('designers/details', {menus: {design: true}, detailed: [
-        {},
-        {},
-        {},
-        {},
-        {},
-        {}
-    ],  partials: {header: 'header', page: 'page', footer: 'footer'}});
+    http.request({
+        path: '/cms/articles/'+req.params.id,
+        method: 'GET'
+    }, function (_res) {
+        _res.on('data',function (body) {
+            res.render('designers/details', {menus: {design: true},designer:JSON.parse(body), detailed: [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],  partials: {header: 'header', page: 'page', footer: 'footer'}});
+        });
+    }).end();
 });
 router.get('/about', function (req, res) {
     res.render('about', {menus: {about: true}, partials: {header: 'header', footer: 'footer'}});
@@ -63,6 +94,19 @@ router.get('/furniture/:id', function (req, res) {
 
 
 router.get('/repair', function (req, res) {
-    res.render('repair', {menus: {repair: true}, partials: {header: 'header', footer: 'footer'}});
+    res.render('repair', {menus: {repair: true},repairs:[
+        {name:"上海臻逸建筑装饰工程有限公司",url:"http://9041188.czvv.com/",pic:'/images/coll_2.png'},
+        {name:"申远空间设计",url:"http://www.sy-021.com/",pic:'/images/coll_2.png'},
+        {name:"统帅装饰",url:"http://www.tszh.net/",pic:'/images/coll_2.png'},
+        {name:"上海臻茂建筑装饰工程有限公司",url:"http://sh.to8to.com/zs/company972569/",pic:'/images/coll_2.png'},
+        {name:"上海龙发建筑装饰工程有限公司",url:"http://sh.xtuan.com/35621/",pic:'/images/coll_2.png'},
+        {name:"上海雅仕居装饰集团",url:"http://www.sh-ysjdec.com/",pic:'/images/coll_2.png'},
+        {name:"上海石澜装饰设计",url:"http://www.shejiben.com/sjs/1513150/",pic:'/images/coll_2.png'},
+        {name:"上海显尚装饰工程设计有限公司",url:"http://sh.tobosu.com/member/24891/",pic:'/images/coll_2.png'},
+        {name:"同济装潢设计",url:"http://www.shtjzh.com/",pic:'/images/coll_2.png'},
+        {name:"上海嘉墅建筑装饰工程有限公司",url:"http://shzx.cxzg.com/",pic:'/images/coll_2.png'},
+        {name:"圣泓国际",url:"http://www.shshenghong.cn/",pic:'/images/coll_2.png'},
+        {name:"波涛装饰集团",url:"http://www.shbotao.net/",pic:'/images/coll_2.png'}
+    ], partials: {header: 'header', footer: 'footer'}});
 });
 module.exports = router;
