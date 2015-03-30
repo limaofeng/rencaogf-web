@@ -109,4 +109,27 @@ router.get('/repair', function (req, res) {
         {name:"波涛装饰集团",url:"http://www.shbotao.net/",pic:'/images/coll_2.png'}
     ], partials: {header: 'header', footer: 'footer'}});
 });
+
+router.get('/new', function (req, res) {
+    /*
+    res.render('new/index', {menus: {new: true} ,new_list:[
+        {},{},{},{},{}
+    ], partials: {header: 'header', footer: 'footer', page:'page'}});
+     */
+    console.log(req.params.id);
+    var dates = {menus: {new: true} ,new_list:[
+        {},{},{},{},{}
+    ] ,partials:{header: 'header', footer: 'footer',page:'page'}};
+    dates['newList_'+(!!req.query.newList_?req.newList:1)] = true;
+    res.render('new/index', dates);
+
+});
+
+router.get('/new/:id', function (req, res) {
+    console.log(req.params.id);
+    res.render('new/details', {menus: {repair: true},new_details:[
+        {},{},{},{},{},{},{},{},{},{}
+    ] ,partials: {header: 'header', footer: 'footer'}});
+});
+
 module.exports = router;

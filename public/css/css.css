@@ -32,18 +32,29 @@ a:active{color: #666; border:none;text-decoration:none; outline:none;}
 .nav{
     float: right;
 }
-.nav li{
-    float: left; font-size: 1.1rem; line-height:90px;
+.nav > li{
+    float: left; font-size: 1.1rem; line-height:90px; position: relative;
 }
 
-.nav li a{color: #333; text-decoration: none; display: block;padding: 0 22px;
+.nav > li > a{color: #333; text-decoration: none; display: block;padding: 0 22px;
 }
 
-.nav li a:hover{
+.nav > li > a:hover{
     border-bottom: 5px solid #5b2a2c;color: #666;
 }
-.nav li a.active {
+.nav > li > a.active {
     border-bottom: 5px solid #d80000; color: #b78500;
+}
+.nav > li > span{
+    position: absolute; z-index: 9000; line-height: 30px;
+    background: #5b2a2c; top:95px; width: 100%; text-align: center;
+    padding:10px 0; font-size: 14px; display: none;
+}
+.nav > li > span > a{
+    display: block; color: white;
+}
+.nav > li > span > a:hover{
+    text-decoration: underline;
 }
 /****top end**/
 
@@ -521,13 +532,14 @@ a:active{color: #666; border:none;text-decoration:none; outline:none;}
 }
 .furniture .contact .sidebar dd{
     font-size: 16px; line-height:3;
+
 }
 .furniture .contact .sidebar dd i{
     background:url(../images/icon-dotted.png) no-repeat ;padding-left:10px; display: inline-block; height: 7px;
-    vertical-align: middle;
+    vertical-align: super;
 }
 .furniture .contact .sidebar dd a{
-    color:#666; display: inline-block; width: 90%;
+    color:#666; display: inline-block; width: 90%;overflow: hidden; white-space: nowrap; text-overflow: ellipsis; height:33px;
 }
 .furniture .contact .sidebar dd.active a{
     color: #935c06; font-weight: bold;
@@ -641,4 +653,57 @@ a:focus{outline:none;}
 }
 .brand-list .item a:hover{
 color:#b78500
+}
+.brand-list .item > a{
+    display: block; margin:0 auto; width: 100%; text-align: center;
+}
+.brand-list .item > a > img{
+    max-width: 100%;
+}
+
+/**new**/
+.new .furniture_content li{
+    margin-right:200px;
+}
+.new_list li{
+    position: relative;
+    border-bottom: 1px solid #ccc; margin-bottom: 20px; padding-bottom: 20px;
+}
+.new_list li p{
+    width: 70%; display: block; line-height:1.5; font-size: 14px; color: #666; height: 65px;
+    padding-top:5px;
+}
+.new_list li h2.title a{
+    color: #000;
+}
+.new_list li h2.title a:hover{
+    color: #935c06;
+}
+.new_list li h2 i{
+    background: url(../images/icon-dotted.png) no-repeat;
+    padding-left: 10px;
+    display: inline-block;
+    height: 7px;
+    vertical-align: middle;
+}
+.new_list li a.ie_design_content_btn{
+    position: absolute; top:0; right: 0; font-size: 14px;
+    border: 1px solid #875f00; background:#64820a; display: inline-block; border-radius: 5px;
+    width: 145px; height: 40px; text-align: center; line-height:2.5; text-decoration: none;
+    box-sizing: border-box; text-shadow: 0 0 3px black; color: white; margin-top: 20px; cursor:pointer;
+}
+.new.furniture .contact .sidebar{
+    position: absolute;
+    right: 0; margin-right: 0; top: 80px;
+}
+.new.furniture .contact .txt .new_txt{
+    font-size: 14px; color: #666; padding-right:20px;
+    line-height: 1.5; width: 70%; border-right: 1px solid #ccc; min-height: 500px;
+    padding-top:20px; margin-bottom: 20px; overflow: hidden;
+}
+.new.furniture .contact .txt .new_txt img{
+    max-width: 100%;
+}
+.new.furniture .contact .txt h2{
+font-size: 1.43rem; padding:20px 0; color: #333;
 }
