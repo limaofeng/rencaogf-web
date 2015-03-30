@@ -110,7 +110,7 @@ router.get('/repair', function (req, res) {
     ], partials: {header: 'header', footer: 'footer'}});
 });
 
-router.get('/new', function (req, res) {
+router.get('/news', function (req, res) {
     /*
     res.render('new/index', {menus: {new: true} ,new_list:[
         {},{},{},{},{}
@@ -121,13 +121,13 @@ router.get('/new', function (req, res) {
         {},{},{},{},{}
     ] ,partials:{header: 'header', footer: 'footer',page:'page'}};
     dates['newlist_'+(!!req.query.newLis?req.query.newLis:1)] = true;
-    res.render('new/index', dates);
+    res.render('news/index', dates);
 
 });
 
-router.get('/new/:id', function (req, res) {
+router.get('/news/:id', function (req, res) {
     console.log(req.params.id);
-    res.render('new/details', {menus: {repair: true},new_details:[
+    res.render('news/details', {menus: {repair: true},new_details:[
         {},{},{},{},{},{},{},{},{},{}
     ] ,partials: {header: 'header', footer: 'footer'}});
 });
