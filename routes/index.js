@@ -120,7 +120,7 @@ router.get('/new', function (req, res) {
     var dates = {menus: {new: true} ,new_list:[
         {},{},{},{},{}
     ] ,partials:{header: 'header', footer: 'footer',page:'page'}};
-    dates['newList_'+(!!req.query.newList_?req.newList:1)] = true;
+    dates['newlist_'+(!!req.query.newLis?req.query.newLis:1)] = true;
     res.render('new/index', dates);
 
 });

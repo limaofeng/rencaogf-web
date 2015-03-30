@@ -64,7 +64,7 @@
             {{#repairs}}
             <div class="item" id="brand-a">
                 <a href="{{url}}" target="_blank">
-                    <img src="{{pic}}" width="200">
+                    <img src="{{pic}}">
                 </a>
                 <p>
                     <a href="{{url}}" target="_blank">{{name}}</a>

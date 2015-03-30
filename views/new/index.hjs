@@ -54,25 +54,25 @@
 <div class="mai_content">
     <div class="ie_maiDiv furniture new">
         <ul class="furniture_content clearBoth">
-            <li {{#newList_1}}class="active"{{/newList_1}}>
+            <li {{#newlist_1}}class="active"{{/newlist_1}}>
             <a href="/new?newLis=1">
                 <i class="icon iconfont">&#x3453;</i>
                 <span>行业动态</span>
             </a>
             </li>
-            <li {{#newList_2}}class="active"{{/newList_2}}>
+            <li {{#newlist_2}}class="active"{{/newlist_2}}>
             <a href="/new?newLis=2">
                 <i class="icon iconfont">&#xf00eb;</i>
                 <span>家居快讯</span>
             </a>
             </li>
-            <li {{#newList_3}}class="active"{{/newList_3}}>
+            <li {{#newlist_3}}class="active"{{/newlist_3}}>
             <a href="/new?newLis=3">
                 <i class="icon iconfont">&#xf0078;</i>
                 <span>风水规划</span>
             </a>
             </li>
-            <li {{#newList_4}}class="active"{{/newList_4}}>
+            <li {{#newlist_4}}class="active"{{/newlist_4}}>
             <a href="/new?newLis=4">
                 <i class="icon iconfont">&#xf00a7;</i>
                 <span>装修知识</span>
