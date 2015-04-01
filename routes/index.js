@@ -1,30 +1,5 @@
 var express = require('express');
-var http = require('http');
-
-var username = 'slzxw';
-var password = '123456';
-var _auth = 'Basic ' + new Buffer(username + ':' + password).toString('base64');
-
-http.request = (function(_request){
-    return function(){
-        var options = arguments[0];
-        //设置请求地址
-        options.host = 'localhost';
-        options.port = 8080;
-        //设置请求头
-        options.headers = {
-            'accept': '*/*',
-            'content-type': "application/atom+xml",
-            'accept-encoding': 'gzip, deflate',
-            'accept-language': 'en-US,en;q=0.9',
-            'authorization': _auth,
-            'user-agent': 'nodejs rest client'
-        };
-        return _request.apply(this,arguments).on('error', function(e) {
-            console.error('problem with request: ' + e.message);
-        });
-    }
-})(http.request);
+var http = require('./http-utils');
 
 var router = express.Router();
 
@@ -50,14 +25,13 @@ router.get('/cases/:id', function (req, res) {
 });
 
 router.get('/designers', function (req, res) {
-    http.request({
-        path: '/cms/articles?EQS_category.code=designer',
-        method: 'GET'
+    http.get({
+        path: '/cms/articles?EQS_category.code=designer'
     }, function (_res) {
-        _res.on('data',function (body) {
+        _res.on('complete',function (body) {
             res.render('designers/index', {menus: {design: true}, pager: JSON.parse(body), partials: {header: 'header', page: 'page', footer: 'footer'}});
         });
-    }).end();
+    });
 });
 router.get('/designers/:id', function (req, res) {
     http.request({
