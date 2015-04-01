@@ -38,14 +38,14 @@
                     装修公司
                 </a>
                 <span>
-                    <a href="javascript:;">
+                    <a href="/news">
                         行业动态
                     </a>
-                    <a href="javascript:;">
+                    <a href="/news">
                         家居快讯
                     </a>
-                    <a href="javascript:;">风水规划</a>
-                    <a href="javascript:;">装修知识</a>
+                    <a href="/news">风水规划</a>
+                    <a href="/news">装修知识</a>
                 </span>
             </li>
             <li>
