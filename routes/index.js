@@ -29,17 +29,16 @@ router.get('/designers', function (req, res) {
         path: '/cms/articles?EQS_category.code=designer'
     }, function (_res) {
         _res.on('complete',function (body) {
-            res.render('designers/index', {menus: {design: true}, pager: JSON.parse(body), partials: {header: 'header', page: 'page', footer: 'footer'}});
+            res.render('designers/index', {menus: {design: true}, pager: body, partials: {header: 'header', page: 'page', footer: 'footer'}});
         });
     });
 });
 router.get('/designers/:id', function (req, res) {
-    http.request({
-        path: '/cms/articles/'+req.params.id,
-        method: 'GET'
+    http.get({
+        path: '/cms/articles/'+req.params.id
     }, function (_res) {
-        _res.on('data',function (body) {
-            res.render('designers/details', {menus: {design: true},designer:JSON.parse(body), detailed: [
+        _res.on('complete',function (body) {
+            res.render('designers/details', {menus: {design: true},designer:body, detailed: [
                 {},
                 {},
                 {},
@@ -48,7 +47,7 @@ router.get('/designers/:id', function (req, res) {
                 {}
             ],  partials: {header: 'header', page: 'page', footer: 'footer'}});
         });
-    }).end();
+    });
 });
 router.get('/about', function (req, res) {
     res.render('about', {menus: {about: true}, partials: {header: 'header', footer: 'footer'}});
