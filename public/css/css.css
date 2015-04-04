@@ -609,7 +609,10 @@ a:active{color: #666; border:none;text-decoration:none; outline:none;}
     color: #666;
 }
 
-
+.w730 p{
+    padding: 5px;
+    text-indent:30px;
+}
 
 
 

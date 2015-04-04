@@ -34,7 +34,7 @@
                 </a>
             </li>
             <li>
-                <a {{#menus.repair}}class="active"{{/menus.repair}} href="/repair">
+                <a {{#menus.repair}}class="active"{{/menus.repair}} href="/companys">
                     装修公司
                 </a>
                 <span>
