@@ -64,7 +64,7 @@
             {{#companys}}
             <div class="item" id="brand-a">
                 <a href="{{summary}}" target="_blank">
-                    <img src="/images/coll_2.png">
+                    <img src="{{#logo}}http://115.29.185.235:8080{{logo.absolutePath}}{{/logo}}{{^logo}}/images/coll_2.png{{/logo}}">
                 </a>
                 <p>
                     <a href="{{summary}}" target="_blank">{{title}}</a>
