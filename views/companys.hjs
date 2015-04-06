@@ -36,11 +36,11 @@
                 var number = 0;
                 var interval = setInterval(function(){
                     $(window).resize();
-                    if(number++ == 10) {
+                    if(number++ == 100) {
                         clearInterval(interval);
                     }
                 },100);
-            },500);
+            },2000);
         });
     </script>
 </head>
