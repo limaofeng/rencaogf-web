@@ -75,18 +75,18 @@
 <div class="mai_content">
     <div class="ie_maiDiv">
         <h2 class="coll_detail_title">
-            利安实木门KLA-807
+            {{goods.name}}
         </h2>
         <div>
             <div class="coll_detail_pic">
                 <a href="javascript:;">
-                    <img src="/images/pro_img.png" width="505" height="404" />
+                    <img src="{{#goods.defaultGoodsImagePath}}http://115.29.185.235:8080{{goods.defaultGoodsImagePath}}{{/goods.defaultGoodsImagePath}}" width="505" height="404" />
                     <div class="bg_big">
                         <i class="icon-big"> </i>
                     </div>
                     <div class="pic_big">
                         <div class="pic_big_img">
-                            <img src="/images/pro_img.png" width="1000" height="660"/>
+                            <img src="{{#goods.defaultGoodsImagePath}}http://115.29.185.235:8080{{goods.defaultGoodsImagePath}}{{/goods.defaultGoodsImagePath}}" width="1000" height="660"/>
                             <i class="icon-close"> </i>
                         </div>
                         <div class="bg"></div>
@@ -98,7 +98,7 @@
                     施工说明
                 </h2>
                 <p>
-                    建议未铺地板之前即可订购。
+                    {{{goods.introduction}}}
                 </p>
             </div>
             <div class="clear"></div>
@@ -111,27 +111,27 @@
                 <tbody>
                 <tr>
                     <td>品牌</td>
-                    <td>利安</td>
-                    <td>材质</td>
-                    <td>实木</td>
+                    <td>{{goods.brand.name}}</td>
+                    <td></td>
+                    <td></td>
                 </tr>
                 <tr>
-                    <td>饰面工艺</td>
-                    <td>烤漆</td>
-                    <td>开合方式</td>
-                    <td>平开门式</td>
+                    <td>&nbsp;</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
                 </tr>
                 <tr>
-                    <td>内部结构</td>
-                    <td>多重钢骨架/蜂窝纸</td>
-                    <td>钥匙</td>
-                    <td>AB钥匙，2把装修+5把主人钥匙 ,无法配置</td>
+                    <td>&nbsp;</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
                 </tr>
                 <tr>
-                    <td>防盗等级</td>
-                    <td>乙级</td>
-                    <td>标准尺寸</td>
-                    <td>2050*860,2050*900,2050*960</td>
+                    <td>&nbsp;</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
                 </tr>
                 </tbody>
             </table>
