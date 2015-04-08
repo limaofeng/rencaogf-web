@@ -90,21 +90,21 @@
                     <i class="design_intro_pic"><img src="/images/img.png" width="150" height="150" alt=""/></i>
                 </a>
                 <span class="ie_design_content">
-                    <h3 class="ie_design_content_h3"><b>{{designer.title}}</b><em class="col666">（主任设计师）</em></h3>
+                    <h3 class="ie_design_content_h3"><b>{{designer.title}}</b><em class="col666">（{{designer.summary}}）</em></h3>
                     <span class="ie_design_content_txt">
                         <span class="ie_design_content_txt_name">设计师简介：</span>
                         <span class="ie_design_content_txt_txt">
-                            室内设计总监，曾在加拿大公司任职主任设计师，在上海公司任设计总监10年；
-                            主要负责公司商业战略、项目设计与管理，从事星级酒店、百货购物中心、
-                            主题会所、主题乐园、餐饮连锁、科技展馆、高档别墅等规划设计
+                            {{{designer.content}}}
                         </span>
                     </span>
+                    <!--
                     <span class="ie_design_content_txt">
                         <span class="ie_design_content_txt_name">工作年限：</span>
                         <span class="ie_design_content_txt_txt">
                             8年
                         </span>
                     </span>
+                    -->
                 </span>
             </li>
         </ul>
