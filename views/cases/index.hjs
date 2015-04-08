@@ -83,43 +83,43 @@
                 <p class="in_about">公司所有设计师均有20年以上工作经历，资质深厚。 17年风雨历程，不仅造就了一代艰苦创业 、成就辉煌</p>
 
                 <ul class="coll_tab">
-                    <li {{#type_1}}class="active"{{/type_1}}>
-                        <a href="/cases?type=1">家装案例</a>
+                    <li class="{{#checkedMenu}}home{{/checkedMenu}}">
+                        <a href="/cases?code=home">家装案例</a>
                     </li>
-                    <li {{#type_2}}class="active"{{/type_2}}>
-                        <a href="/cases?type=2">工装案例</a>
+                    <li class="{{#checkedMenu}}tool{{/checkedMenu}}">
+                        <a href="/cases?code=tool">工装案例</a>
                     </li>
-                    <li {{#type_3}}class="active"{{/type_3}}>
-                        <a href="/cases?type=3">商业案例</a>
+                    <li class="{{#checkedMenu}}business{{/checkedMenu}}">
+                        <a href="/cases?code=business">商业案例</a>
                     </li>
                 </ul>
 
                 <div class="coll_list">
-                    {{#cases}}
+                    {{#pager.pageItems}}
                     <div class="coll_field_content">
-                        <a class="coll_field_content_pic" href="/cases/1">
-                            <img src="../images/pro_img.png" width="303" height="202"/>
+                        <a class="coll_field_content_pic" href="/cases/{{id}}">
+                            <img src="{{#images[0].absolutePath}}http://115.29.185.235:8080{{images[0].absolutePath}}{{/images[0].absolutePath}}{{^images[0].absolutePath}}/images/pro_img.png{{/images[0].absolutePath}}" width="303" height="202"/>
                         </a>
                         <h3 class="coll_field_content_title">
-                            <a href="/cases/1">
-                                上海华侨城纯水岸
+                            <a href="/cases/{{id}}">
+                                {{title}}
                             </a>
                             <span class="coll_field_content_title_txt">
-                                现代简约风格
+                                {{style}}
                             </span>
                         </h3>
                         <span class="icon-price">
-                            160㎡
+                            {{square}}
                         </span>
                         <div class="pull_right">
-                            <a href="/cases/1">
+                            <a href="/cases/{{id}}">
                                 <i class="icon-eye"></i>
                                 查看设计
                             </a>
                         </div>
                         <div class="clear"></div>
                     </div>
-                    {{/cases}}
+                    {{/pager.pageItems}}
 
 
                     {{>page}}

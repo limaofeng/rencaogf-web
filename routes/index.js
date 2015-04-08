@@ -10,18 +10,21 @@ router.get('/', function (req, res) {
     res.render('index', {menus: {index: true}, partials: {header: 'header', footer: 'footer'}});
 });
 router.get('/cases', function (req, res) {
-    var data = {
-        menus: {collection: true}, cases: [
-            {},
-            {},
-            {},
-            {},
-            {},
-            {}
-        ], partials: {header: 'header', page: 'page', footer: 'footer'}
-    };
-    data['type_' + (!!req.query.type ? req.query.type : 1)] = true;
-    res.render('cases/index', data);
+    var code = req.param('code') || 'home';
+    http.get({
+        path: "/cms/articles?LIKES_category.path=snzxw,case," + code + ","
+    }, function (_res) {
+        _res.on('complete', function (body) {
+            var data = {
+                menus: {collection: true}, pager: body, checkedMenu: function () {
+                    return function (text) {
+                        return code == text ? "active" : "";
+                    };
+                }, partials: {header: 'header', page: 'page', footer: 'footer'}
+            };
+            res.render('cases/index', data);
+        });
+    });
 });
 router.get('/cases/:id', function (req, res) {
     console.log(req.params.id);
@@ -77,7 +80,7 @@ router.get('/about', function (req, res) {
 
 router.get('/furnitures', function (req, res) {
     var path = req.param('path') || "/material";
-    path = path.replace(/^\//,'').replace(/[/]/g,",");
+    path = path.replace(/^\//, '').replace(/[/]/g, ",");
     var paths = path.split(",");
     var sign = paths[0];
     var subsign = paths.length > 1 ? paths[1] : null;
