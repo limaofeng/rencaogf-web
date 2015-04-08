@@ -70,7 +70,7 @@
                 <li class="{{#checkedMenu}}appliances{{/checkedMenu}}">
                     <a href="/furnitures?path=/appliances">
                         <i class="icon iconfont">&#xf0078;</i>
-                        <span>电工电料</span>
+                        <span>家具电器</span>
                     </a>
                 </li>
                 <!--
@@ -111,7 +111,7 @@
             <div class="contact">
                 <dl class="sidebar">
                     <dt>
-                        装饰材料
+                        {{category.name}}
                     </dt>
                     {{#children}}
                     <dd class="{{#checkedSub}}{{sign}}{{/checkedSub}}">
