@@ -7,7 +7,21 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', function (req, res) {
-    res.render('index', {menus: {index: true}, partials: {header: 'header', footer: 'footer'}});
+    flow.parallel({
+        designers: function (callback) {
+            http.get({
+                path: '/cms/articles?EQS_category.code=designer&pager.pageSize=4'
+            }, function (_res) {
+                _res.on('complete', function (body) {
+                    callback(0, body.pageItems);
+                });
+            });
+        }
+    }, function (err, result) {
+        result.menus = {index: true};
+        result.partials = {header: 'header', footer: 'footer'};
+        res.render('index', result);
+    });
 });
 router.get('/cases', function (req, res) {
     var code = req.param('code') || 'home';
