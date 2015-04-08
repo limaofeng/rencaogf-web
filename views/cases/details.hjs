@@ -66,7 +66,7 @@
                 <li>
                     <i class="icon-arrow-left"></i>
                     <i class="icon-pic"></i>
-                    上海华侨城纯水岸
+                    {{case.title}}
                 </li>
             </ul>
             <div class="clear"> </div>
@@ -76,7 +76,7 @@
         <div class="mai_content">
                 <div class="ie_maiDiv">
                     <h2 class="coll_detail_title">
-                        大厅
+                        {{case.title}}
                     </h2>
                     <div>
                         <div class="coll_detail_pic">
@@ -99,30 +99,28 @@
                                 设计说明
                             </h2>
                             <p>
-                                华丽的曲线，简单的色彩，构造出灵动的异形空间，然而，让你觉得，简约可以这样子美！
-                                这个房型的独特表现手法仿佛就像一个服装设计师为一个模特量身定制的衣服一样，
-                                不是最好的但是一定是最适合你的。
+                                {{{case.content}}}
                             </p>
                         </div>
                         <div class="clear"></div>
                     </div>
                     <div>
                         <h2 class="coll_detail_title">
-                            装修信息
+                            案例信息
                         </h2>
                         <table class="coll_table">
                             <tbody>
                                 <tr>
                                     <td>名称</td>
-                                    <td>通盈置业</td>
+                                    <td>{{{case.title}}}</td>
                                     <td>面积</td>
-                                    <td>163平方</td>
+                                    <td>{{{case.square}}}</td>
                                 </tr>
                                 <tr>
                                     <td>设计风格</td>
-                                    <td>现代简约风格</td>
+                                    <td>{{case.style}}</td>
                                     <td>设计师</td>
-                                    <td>张萌</td>
+                                    <td>{{case.designer}}</td>
                                 </tr>
                             </tbody>
                         </table>

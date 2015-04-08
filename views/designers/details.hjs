@@ -127,31 +127,31 @@
         </h2>
         <p class="in_about">遵循经济、适用、美观的原则，贯彻以人为本和创新的结合理念赋予每一个设计灵动和艺术。</p>
         <div class="coll_list">
-            {{#detailed}}
+            {{#pager.pageItems}}
             <div class="coll_field_content">
-                <a class="coll_field_content_pic" href="/cases/1">
-                    <img src="/images/pro_img.png" width="303" height="202"/>
+                <a class="coll_field_content_pic" href="/cases/{{id}}">
+                    <img src="{{#images[0].absolutePath}}http://115.29.185.235:8080{{images[0].absolutePath}}{{/images[0].absolutePath}}{{^images[0].absolutePath}}/images/pro_img.png{{/images[0].absolutePath}}" width="303" height="202"/>
                 </a>
                 <h3 class="coll_field_content_title">
-                    <a href="collection_detail.html">
-                        上海华侨城纯水岸
+                    <a href="/cases/{{id}}">
+                        {{title}}
                     </a>
                     <span class="coll_field_content_title_txt">
-                        现代简约风格
+                        {{style}}
                     </span>
                 </h3>
                     <span class="icon-price">
-                        160㎡
+                        {{square}}
                     </span>
                 <div class="pull_right">
-                    <a href="/designers/1">
+                    <a href="/cases/{{id}}">
                         <i class="icon-eye"></i>
                         查看设计
                     </a>
                 </div>
                 <div class="clear"></div>
             </div>
-            {{/detailed}}
+            {{/pager.pageItems}}
 
 
             {{>page}}

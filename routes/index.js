@@ -27,8 +27,17 @@ router.get('/cases', function (req, res) {
     });
 });
 router.get('/cases/:id', function (req, res) {
-    console.log(req.params.id);
-    res.render('cases/details', {menus: {collection: true}, partials: {header: 'header', footer: 'footer'}});
+    http.get({
+        path: '/cms/articles/' + req.params.id
+    }, function (_res) {
+        _res.on('complete', function (body) {
+            res.render('cases/details', {
+                menus: {collection: true},
+                case: body,
+                partials: {header: 'header', footer: 'footer'}
+            });
+        });
+    });
 });
 
 router.get('/designers', function (req, res) {
@@ -48,16 +57,18 @@ router.get('/designers/:id', function (req, res) {
     http.get({
         path: '/cms/articles/' + req.params.id
     }, function (_res) {
-        _res.on('complete', function (body) {
-            res.render('designers/details', {
-                menus: {design: true}, designer: body, detailed: [
-                    {},
-                    {},
-                    {},
-                    {},
-                    {},
-                    {}
-                ], partials: {header: 'header', page: 'page', footer: 'footer'}
+        _res.on('complete', function (designer) {
+            http.get({
+                path: '/cms/articles?EQS_designer=' + designer.title
+            }, function (_res) {
+                _res.on('complete', function (body) {
+                    res.render('designers/details', {
+                        menus: {design: true},
+                        designer: designer,
+                        pager: body,
+                        partials: {header: 'header', page: 'page', footer: 'footer'}
+                    });
+                });
             });
         });
     });
