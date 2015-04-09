@@ -389,6 +389,19 @@ a:active{color: #666; border:none;text-decoration:none; outline:none;}
 .coll_table td{
     padding:15px; color: #666; list-style-type: none;
 }
+.coll_table li{
+    width: 50%; float: left;
+}
+.coll_table li span{
+    display: inline-block; border-top:5px; border-right:5px; box-sizing: border-box;  border-style: solid; border-color: #f2f2f2;
+    padding:15px; color: #666; list-style-type: none; min-height:20px;
+}
+.coll_table li span.w30{
+    width: 30%; float: left; color:#999;
+}
+.coll_table li span.w69{
+    width:70%;
+}
 .coll_table td{
     border-style: solid;
     border-color: #f2f2f2;

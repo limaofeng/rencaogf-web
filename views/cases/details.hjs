@@ -108,22 +108,34 @@
                         <h2 class="coll_detail_title">
                             案例信息
                         </h2>
-                        <table class="coll_table">
-                            <tbody>
-                                <tr>
-                                    <td>名称</td>
-                                    <td>{{{case.title}}}</td>
-                                    <td>面积</td>
-                                    <td>{{{case.square}}}</td>
-                                </tr>
-                                <tr>
-                                    <td>设计风格</td>
-                                    <td>{{case.style}}</td>
-                                    <td>设计师</td>
-                                    <td>{{case.designer}}</td>
-                                </tr>
-                            </tbody>
-                        </table>
+                        <div>
+                            <ul class="coll_table clearBoth">
+                                <li>
+                                    <span class="w30">名称</span>
+                                    <span class="w69">{{{case.title}}}</span>
+                                </li>
+                                <li>
+                                    <span class="w30">面积</span>
+                                    <span class="w69">{{{case.square}}}</span>
+                                </li>
+                                <li>
+                                    <span class="w30">设计风格</span>
+                                    <span class="w69">{{case.style}}</span>
+                                </li>
+                                <li>
+                                    <span class="w30">设计师</span>
+                                    <span class="w69">{{case.designer}}</span>
+                                </li>
+                                <li>
+                                    <span class="w30">&nbsp;</span>
+                                    <span class="w69">&nbsp;</span>
+                                </li>
+                                <li>
+                                    <span class="w30">&nbsp;</span>
+                                    <span class="w69">&nbsp;</span>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>

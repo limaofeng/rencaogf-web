@@ -107,33 +107,20 @@
             <h2 class="coll_detail_title">
                 产品介绍
             </h2>
-            <table class="coll_table">
-                <tbody>
-                <tr>
-                    <td>品牌</td>
-                    <td>{{goods.brand.name}}</td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>&nbsp;</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>&nbsp;</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>&nbsp;</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                </tbody>
+                <div>
+                    <ul class="coll_table clearBoth">
+                        <li>
+                            <span class="w30">品牌</span>
+                            <span class="w69">{{goods.brand.name}}</span>
+                        </li>
+                        <li>
+                            <span class="w30">&nbsp;</span>
+                            <span class="w69">&nbsp;</span>
+                        </li>
+                    </ul>
+                </div>
+
+
             </table>
         </div>
     </div>
