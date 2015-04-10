@@ -8,13 +8,13 @@ http.request = (function (_request) {
     return function () {
         var options = arguments[0];
         //设置请求地址
-        options.host = 'localhost';
+        options.host = '115.29.185.235';
         options.port = 8080;
 
         //设置请求头
         options.headers = {
             'accept': '*/*',
-            'content-type': "application/atom+xml",
+            'content-type': "application/x-www-form-urlencoded",
             'accept-encoding': 'gzip, deflate',
             'accept-language': 'zh-CN,zh;q=0.8,en;q=0.6',
             'authorization': _auth,
