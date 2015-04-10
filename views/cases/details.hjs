@@ -81,13 +81,13 @@
                     <div>
                         <div class="coll_detail_pic">
                             <a href="javascript:;">
-                                <img src="/images/pro_img.png" width="505" height="404" />
+                                <img src="http://115.29.185.235:8080{{#firstImagePath}}505x404{{/firstImagePath}}" width="505" height="404" />
                                 <div class="bg_big">
                                     <i class="icon-big"> </i>
                                 </div>
                                 <div class="pic_big">
                                     <div class="pic_big_img">
-                                        <img src="/images/pro_img.png" width="1000" height="660"/>
+                                        <img src="http://115.29.185.235:8080{{#firstImagePath}}1000x660{{/firstImagePath}}" width="1000" height="660"/>
                                         <i class="icon-close"> </i>
                                     </div>
                                     <div class="bg"></div>

@@ -36,6 +36,11 @@ router.get('/cases', function (req, res) {
                     };
                 }, partials: {header: 'header', page: 'page', footer: 'footer'}
             };
+            data.firstImagePath = function () {
+                return function (text) {
+                    return this.images[0].absolutePath.replace(/(\.jpg)$/, '_' + text + '$1');
+                }
+            };
             res.render('cases/index', data);
         });
     });
@@ -48,6 +53,11 @@ router.get('/cases/:id', function (req, res) {
             res.render('cases/details', {
                 menus: {collection: true},
                 case: body,
+                firstImagePath: function () {
+                    return function (text) {
+                        return body.images[0].absolutePath.replace(/(\.jpg)$/, '_' + text + '$1');
+                    }
+                },
                 partials: {header: 'header', footer: 'footer'}
             });
         });
@@ -80,6 +90,11 @@ router.get('/designers/:id', function (req, res) {
                         menus: {design: true},
                         designer: designer,
                         pager: body,
+                        firstImagePath: function () {
+                            return function (text) {
+                                return this.images == null ? '/images/pro_img.png' : this.images[0].absolutePath.replace(/(\.jpg)$/, '_' + text + '$1');
+                            }
+                        },
                         partials: {header: 'header', page: 'page', footer: 'footer'}
                     });
                 });
