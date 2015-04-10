@@ -16,7 +16,7 @@ http.request = (function (_request) {
             'accept': '*/*',
             'content-type': "application/atom+xml",
             'accept-encoding': 'gzip, deflate',
-            'accept-language': 'en-US,en;q=0.9',
+            'accept-language': 'zh-CN,zh;q=0.8,en;q=0.6',
             'authorization': _auth,
             'user-agent': 'nodejs rest client'
         };
