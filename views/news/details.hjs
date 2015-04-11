@@ -2,10 +2,10 @@
 <html>
 <head lang="en">
     <meta charset="UTF-8">
-    <title>绿色喜墅-装修知识</title>
+    <title>{{news.title}}-{{news.category.name}}-绿色喜墅</title>
     <!--<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0"/>-->
     <meta name="keywords" content="关键词，tapas"/>
-    <meta name="description" content="摘要，tapas"/>
+    <meta name="description" content="{{news.summary}}"/>
     <script src="/js/jquery-1.8.3.min.js"></script>
     <script type="text/javascript" src="/js/jquery.SuperSlide.2.1.1.js"></script>
     <link href="/css/css.css" type="text/css" rel="stylesheet">
@@ -56,7 +56,7 @@
 
             <div class="txt">
                 <h2>
-                    家居装修中的几个要点，你必须关注
+                    {{news.title}}
                 </h2>
                 <div class="bshare-custom icon-medium-plus">
                     分享到：
@@ -70,48 +70,19 @@
                 <script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/bshareC0.js"></script>
 
                 <div class="new_txt clearBoth">
-                    <p>
-                        2015年装修旺季已经开始，很多家庭在装修的时候都在考虑装什么样的风格是流行又喜欢的。
-                        现在每个家庭都有不一样的生活习惯，对于房子的设计风格，设计师也有不同的推荐,但你了解
-                        这些风格吗？下面，小编就为大家详细介绍下常见的10种设计风格、各自适合的人群。希望能让你的新家装的美美哒！
-                        <br/><br/>
-                        一、欧式古典风格 尊贵典雅气息处处流
-                        <br/><br/>
-                        【欧式古典风格特点】欧式非常需要用家具和软装饰来营造整体效果。这类风格的装修，在面积、空间
-                        较大的房间内会达到更好的效果并建议使用定制家具。
-                        <br/><br/>
-                        【案例设计理念】男主人是一位在影视界很知名的外景指导，经常在外地片场，对于室内设计有自己
-                        的认识，很注重室内与室外风格的统一。在男主人与家人沟通达成一致后我与男主人用了一周时间沟
-                        通，最终确定设计施工方案，确定设计风格为古典欧式。
-                        <br/><br/>
-                        <img src="../images/banner2.png"/>
-                        <br/><br/>
-                        我国的房地产行业带动着家居建材行业的发展，80、90年轻人不仅是房地产行业的主力消费人群，
-                        <br/><br/>
-                        也是家居建材行业的助力消费人群。他们个性化意识强烈，在产品的选择上有自己的独特感受。
-                        他们对地板的要求不再是质量好就OK，而是对于花色、档次、风格甚至整体的视觉效果都有了自
-                        己的标准。而定制地板就能最大程度的满足他们的个性需求，展示自我风格。
-                        <br/><br/>
-                        个性化定制已逐渐成为潮流，中国木业网认为地板行业要想发展，必须顺应潮流，针对不同的消
-                        费人群，不同的个性特点，进行量身定制。
-                        <br/><br/>
-                        <img src="../images/pro_img.png"/>
-                        <br/><br/>
-                        订制颜色、花色。可根据客户的色样，订制地板。客户可以自由组合地板花色。所有材料采用天
-                        然环保颜料，不含VOC等有害挥发物，让顾客用得放心。
-                    </p>
+                    {{news.content}}
                 </div>
             </div>
             <dl class="sidebar">
                 <dt>
                     相关动态
                 </dt>
-                {{#new_details}}
+                {{#list}}
                 <dd>
                     <i> </i>
-                    <a href="javascript:;">万隆汇洋灯具秒杀拍卖最少钱用万隆汇</a>
+                    <a href="/news/{{id}}">{{title}}</a>
                 </dd>
-                {{/new_details}}
+                {{/list}}
             </dl>
         </div>
     </div>

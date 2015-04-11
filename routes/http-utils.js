@@ -27,8 +27,8 @@ http.request = (function (_request) {
 
         if (/.*[\u4e00-\u9fa5]+.*$/.test(options.path) && options.path.indexOf('?') > -1) {
             var index = options.path.indexOf('?');
-            var query = options.path.substr(index+1);
-            options.path = options.path.substr(0,index);
+            var query = options.path.substr(index + 1);
+            options.path = options.path.substr(0, index);
             if (!!query) {
                 if (!!options.content) {
                     options.content = options.content + '&' + querystring.stringify(querystring.parse(query));
@@ -57,7 +57,7 @@ http.request = (function (_request) {
                 }
             }
         } else if (!!options.content) {
-            options.path = options.path + '?' + options.content;
+            options.path = options.path + (options.path.indexOf('?') ? '&' : '?') + options.content;
         }
 
         var req = _request.apply(this, arguments).on('response', function (res) {
@@ -67,7 +67,7 @@ http.request = (function (_request) {
                 bodys.push(body);
             });
             res.on('end', function () {
-                console.log('DEUBG:' + options.path + 'STATUS: ' + res.statusCode + '\r\n'+bodys.join("").toString());
+                console.log('DEUBG:' + options.path + 'STATUS: ' + res.statusCode + '\r\n' + bodys.join("").toString());
                 if (!!contentType && contentType.indexOf('json') != -1) {
                     res.emit('complete', JSON.parse(bodys.join("").toString() || '{}'));
                 } else {

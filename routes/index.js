@@ -2,6 +2,7 @@ var express = require('express');
 var http = require('./http-utils');
 var flow = require('async');
 var hogan = require('hjs');
+var querystring = require('querystring');
 
 var router = express.Router();
 
@@ -11,6 +12,24 @@ router.get('/', function (req, res) {
         designers: function (callback) {
             http.get({
                 path: '/cms/articles?EQS_category.code=designer&pager.pageSize=4'
+            }, function (_res) {
+                _res.on('complete', function (body) {
+                    callback(0, body.pageItems);
+                });
+            });
+        },
+        zxzs:function(callback){
+            http.get({
+                path: '/cms/articles?EQS_category.code=zxzs&pager.pageSize=6'
+            }, function (_res) {
+                _res.on('complete', function (body) {
+                    callback(0, body.pageItems);
+                });
+            });
+        },
+        fsal:function(callback){
+            http.get({
+                path: '/cms/articles?EQS_category.code=fsal&pager.pageSize=6'
             }, function (_res) {
                 _res.on('complete', function (body) {
                     callback(0, body.pageItems);
@@ -35,7 +54,7 @@ router.get('/cases', function (req, res) {
     }, function (_res) {
         _res.on('complete', function (body) {
             var data = {
-                menus: {collection: true}, pager: body, checkedMenu: function () {
+                menus: {collection: true}, pager: pagerProxy(body, req), checkedMenu: function () {
                     return function (text) {
                         return code == text ? "active" : "";
                     };
@@ -58,7 +77,7 @@ router.get('/cases/:id', function (req, res) {
             res.render('cases/details', {
                 menus: {collection: true},
                 case: body,
-                firstImagePath : function () {
+                firstImagePath: function () {
                     return function (text) {
                         return this.case.images == null ? '/images/pro_img.png' : this.case.images[0].absolutePath.replace(/(\.jpg)$/, '_' + text + '$1');
                     }
@@ -76,7 +95,7 @@ router.get('/designers', function (req, res) {
         _res.on('complete', function (body) {
             res.render('designers/index', {
                 menus: {design: true},
-                pager: body,
+                pager: pagerProxy(body, req),
                 imagePath: function () {
                     return function (text) {
                         return this.avatar == null ? '/images/img.png' : this.avatar.absolutePath.replace(/(\.jpg)$/, '_' + text + '$1');
@@ -99,7 +118,7 @@ router.get('/designers/:id', function (req, res) {
                     res.render('designers/details', {
                         menus: {design: true},
                         designer: designer,
-                        pager: body,
+                        pager: pagerProxy(body, req),
                         avatarImagePath: function () {
                             return function (text) {
                                 return this.designer.avatar == null ? '/images/img.png' : this.designer.avatar.absolutePath.replace(/(\.jpg)$/, '_' + text + '$1');
@@ -168,6 +187,7 @@ router.get('/furnitures', function (req, res) {
             });
         }
     }, function (err, result) {
+        result.pager = pagerProxy(result.pager, req);
         result.menus = {furniture: true};
         result.partials = {header: 'header', footer: 'footer', page: 'page'};
         result.checkedMenu = function () {
@@ -219,29 +239,91 @@ router.get('/companys', function (req, res) {
 });
 
 router.get('/news', function (req, res) {
-    /*
-     res.render('new/index', {menus: {new: true} ,new_list:[
-     {},{},{},{},{}
-     ], partials: {header: 'header', footer: 'footer', page:'page'}});
-     */
-    console.log(req.params.id);
-    var dates = {
-        menus: {new: true}, new_list: [
-            {}, {}, {}, {}, {}
-        ], partials: {header: 'header', footer: 'footer', page: 'page'}
-    };
-    dates['newlist_' + (!!req.query.newLis ? req.query.newLis : 1)] = true;
-    res.render('news/index', dates);
+    var path = req.param('path') || "/news";
+    path = path.replace(/^\//, '').replace(/[/]/g, ",");
+    http.get({
+        path: "/cms/articles?LIKES_category.path=snzxw," + path + ",",
+        content: req.query
+    }, function (_res) {
+        _res.on('complete', function (body) {
+            res.render('news/index', {
+                menus: {new: true},
+                pager: pagerProxy(body, req),
+                checkedMenu: function () {
+                    return function (text) {
+                        return code == text ? "active" : "";
+                    };
+                },
+                replacePath: function () {
+                    return function (text) {
+                        return hogan.compile(text).render(this).replace(/^snzxw,/, '/').replace(/,$/, '').replace(/,/g, '/');
+                    };
+                },
+                partials: {header: 'header', footer: 'footer', page: 'page'}
+            });
+        });
+    });
+
 
 });
 
 router.get('/news/:id', function (req, res) {
-    console.log(req.params.id);
-    res.render('news/details', {
-        menus: {repair: true}, new_details: [
-            {}, {}, {}, {}, {}, {}, {}, {}, {}, {}
-        ], partials: {header: 'header', footer: 'footer'}
+    http.get({
+        path: "/cms/articles/" + req.params.id
+    }, function (_res) {
+        _res.on('complete', function (_body) {
+            http.get({
+                path: "/cms/articles?pager.pageSize=15&LIKES_category.path=" + _body.category.path
+            }, function (_res) {
+                _res.on('complete', function (body) {
+                    res.render('news/details', {
+                        menus: {repair: true},
+                        news: _body,
+                        list: body.pageItems,
+                        partials: {header: 'header', footer: 'footer', page: 'page'}
+                    });
+                });
+            });
+        });
     });
 });
+
+
+var pagerProxy = function (pager, req) {
+    var url = req.url.substr(0, req.url.indexOf('?') != -1 ? req.url.indexOf('?') : undefined);
+    delete req.query['pager.currentPage'];
+    var _querystring = querystring.stringify(req.query);
+    _querystring = !!_querystring ? ('&' + _querystring) : '';
+    pager.template = function () {
+        if (pager.totalPage <= 1) {
+            return '';
+        }
+        return function (text) {
+            pager.first = pager.currentPage == 1;
+            if (!pager.first) {
+                pager.pagePrevUrl = url + '?pager.currentPage=' + (pager.currentPage - 1) + _querystring;
+            }
+            pager.last = pager.totalPage == pager.currentPage;
+            if (!pager.last) {
+                pager.pageNextUrl = url + '?pager.currentPage=' + (pager.currentPage + 1) + _querystring;
+            }
+            pager.pages = [];
+            for (var i = 1; i <= pager.totalPage; i++) {
+                pager.pages.push(i);
+            }
+            pager.pageCurrent = function () {
+                return function (text) {
+                    var data = {page: this, pageUrl: url + '?pager.currentPage=' + this + _querystring};
+                    if (this == pager.currentPage) {
+                        data.current = true;
+                    }
+                    return hogan.compile(text).render(data);
+                };
+            };
+            return hogan.compile(text).render(pager);
+        };
+    };
+    return pager;
+}
 
 module.exports = router;
