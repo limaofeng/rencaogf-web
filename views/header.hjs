@@ -11,7 +11,9 @@
 </script>
 <div class="header">
     <div class="ie_maiDiv">
-        <h1 class="logo" title="logo"> </h1>
+        <a href="/">
+            <h1 class="logo" title="logo"> </h1>
+        </a>
         <ul class="nav">
             <li>
                 <a {{#menus.index}}class="active"{{/menus.index}} href="/">
