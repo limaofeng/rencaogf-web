@@ -60,7 +60,7 @@ router.get('/cases/:id', function (req, res) {
                 case: body,
                 firstImagePath : function () {
                     return function (text) {
-                        return this.images == null ? '/images/pro_img.png' : this.images[0].absolutePath.replace(/(\.jpg)$/, '_' + text + '$1');
+                        return this.case.images == null ? '/images/pro_img.png' : this.case.images[0].absolutePath.replace(/(\.jpg)$/, '_' + text + '$1');
                     }
                 },
                 partials: {header: 'header', footer: 'footer'}
