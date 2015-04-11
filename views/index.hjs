@@ -86,7 +86,7 @@
             {{#designers}}
             <li>
                 <a href="/designers/{{id}}">
-                    <i class="design_intro_pic"><img src="../images/img.png" width="150" height="150" alt=""/></i>
+                    <i class="design_intro_pic"><img src="http://115.29.185.235:8080{{#avatarImagePath}}150x150{{/avatarImagePath}}" width="150" height="150" alt=""/></i>
                 </a>
                 <span class="design_intro_pic_txt">
                     <p>{{title}}</p>
