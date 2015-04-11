@@ -19,6 +19,11 @@ router.get('/', function (req, res) {
         }
     }, function (err, result) {
         result.menus = {index: true};
+        result.avatarImagePath = function () {
+            return function (text) {
+                return this.avatar == null ? '/images/img.png' : this.avatar.absolutePath.replace(/(\.jpg)$/, '_' + text + '$1');
+            }
+        };
         result.partials = {header: 'header', footer: 'footer'};
         res.render('index', result);
     });
