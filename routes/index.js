@@ -72,6 +72,11 @@ router.get('/designers', function (req, res) {
             res.render('designers/index', {
                 menus: {design: true},
                 pager: body,
+                imagePath: function () {
+                    return function (text) {
+                        return this.avatar == null ? '/images/img.png' : this.avatar.absolutePath.replace(/(\.jpg)$/, '_' + text + '$1');
+                    }
+                },
                 partials: {header: 'header', page: 'page', footer: 'footer'}
             });
         });
@@ -90,6 +95,11 @@ router.get('/designers/:id', function (req, res) {
                         menus: {design: true},
                         designer: designer,
                         pager: body,
+                        avatarImagePath: function () {
+                            return function (text) {
+                                return this.designer.avatar == null ? '/images/img.png' : this.designer.avatar.absolutePath.replace(/(\.jpg)$/, '_' + text + '$1');
+                            }
+                        },
                         firstImagePath: function () {
                             return function (text) {
                                 return this.images == null ? '/images/pro_img.png' : this.images[0].absolutePath.replace(/(\.jpg)$/, '_' + text + '$1');
