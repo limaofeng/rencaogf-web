@@ -38,7 +38,7 @@ router.get('/cases', function (req, res) {
             };
             data.firstImagePath = function () {
                 return function (text) {
-                    return this.images[0].absolutePath.replace(/(\.jpg)$/, '_' + text + '$1');
+                    return this.images == null ? '/images/pro_img.png' : this.images[0].absolutePath.replace(/(\.jpg)$/, '_' + text + '$1');
                 }
             };
             res.render('cases/index', data);
@@ -53,9 +53,9 @@ router.get('/cases/:id', function (req, res) {
             res.render('cases/details', {
                 menus: {collection: true},
                 case: body,
-                firstImagePath: function () {
+                firstImagePath : function () {
                     return function (text) {
-                        return body.images[0].absolutePath.replace(/(\.jpg)$/, '_' + text + '$1');
+                        return this.images == null ? '/images/pro_img.png' : this.images[0].absolutePath.replace(/(\.jpg)$/, '_' + text + '$1');
                     }
                 },
                 partials: {header: 'header', footer: 'footer'}
