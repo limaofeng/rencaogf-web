@@ -252,30 +252,45 @@ router.get('/companys', function (req, res) {
 router.get('/news', function (req, res) {
     var path = req.param('path') || "/news";
     path = path.replace(/^\//, '').replace(/[/]/g, ",");
-    http.get({
-        path: "/cms/articles?LIKES_category.path=snzxw," + path + ",",
-        content: req.query
-    }, function (_res) {
-        _res.on('complete', function (body) {
-            res.render('news/index', {
-                menus: {new: true},
-                pager: pagerProxy(body, req),
-                checkedMenu: function () {
-                    return function (text) {
-                        return code == text ? "active" : "";
-                    };
-                },
-                replacePath: function () {
-                    return function (text) {
-                        return hogan.compile(text).render(this).replace(/^snzxw,/, '/').replace(/,$/, '').replace(/,/g, '/');
-                    };
-                },
-                partials: {header: 'header', footer: 'footer', page: 'page'}
+    flow.parallel({
+        category: function (callback) {
+            http.get({
+                path: "/cms/categorys/" + path.replace(/^[^,]+,/,'')
+            }, function (_res) {
+                _res.on('complete', function (body) {
+                    callback(0, body);
+                });
             });
-        });
+        },
+        pager: function (callback) {
+            http.get({
+                path: "/cms/articles?LIKES_category.path=snzxw," + path + ",",
+                content: req.query
+            }, function (_res) {
+                _res.on('complete', function (body) {
+                    callback(0, body);
+                })
+            })
+        }
+    }, function (error, data) {
+        var result = {
+            menus: {new: true},
+            checkedMenu: function () {
+                return function (text) {
+                    return req.param('path') == text ? "active" : "";
+                };
+            },
+            replacePath: function () {
+                return function (text) {
+                    return hogan.compile(text).render(this).replace(/^snzxw,/, '/').replace(/,$/, '').replace(/,/g, '/');
+                };
+            },
+            partials: {header: 'header', footer: 'footer', page: 'page'}
+        };
+        result.pager = pagerProxy(data.pager, req);
+        result.category = data.category;
+        res.render('news/index', result);
     });
-
-
 });
 
 router.get('/news/:id', function (req, res) {

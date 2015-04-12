@@ -44,7 +44,7 @@
         <li>
             <i class="icon-arrow-left"></i>
             <i class="icon-family"></i>
-            装修知识
+            {{category.name}}
         </li>
     </ul>
     <div class="clear"> </div>
@@ -54,14 +54,14 @@
 <div class="mai_content">
     <div class="ie_maiDiv furniture new">
         <ul class="furniture_content clearBoth">
-            <li {{#newlist_1}}class="active"{{/newlist_1}}>
-                <a href="/news?newLis=1">
+            <li class="{{#checkedMenu}}/news/zxzs{{/checkedMenu}}">
+                <a href="/news?path=/news/zxzs">
                     <i class="icon iconfont">&#x3453;</i>
                     <span>装修知识</span>
                 </a>
             </li>
-            <li {{#newlist_2}}class="active"{{/newlist_2}}>
-                <a href="/news?newLis=2">
+            <li class="{{#checkedMenu}}/news/fsal{{/checkedMenu}}">
+                <a href="/news?path=/news/fsal">
                     <i class="icon iconfont">&#xf00eb;</i>
                     <span>风水案例</span>
                 </a>
