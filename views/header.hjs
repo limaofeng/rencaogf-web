@@ -216,8 +216,7 @@
 
 <div style="position: absolute; z-index: 9999; overflow: hidden; left: 377.5px; top: 135px; width: 520px; height: auto;"
      class="window_box ">
-    <div style="display:block" class="window_box_title"><span></span><em></em><a
-            onclick="javascript:stop_code_status(this)" class="window_box_close" href="javascript:void(0)"></a></div>
+    <div style="display:block" class="window_box_title"><span></span><em></em><a class="window_box_close" href="javascript:void(0)"></a></div>
     <div class="window_box_container " style="overflow-y:scroll;">
         <div class="mod_fbbox">
             <div class="fbbox_s2"><h3 class="fbbox_s2_t">恭喜您申请成功！</h3>
