@@ -8,7 +8,7 @@ http.request = (function (_request) {
     return function () {
         var options = arguments[0];
         //设置请求地址
-        options.host = 'localhost';
+        options.host = '115.29.185.235';
         options.port = 8080;
 
         //设置请求头
@@ -25,6 +25,7 @@ http.request = (function (_request) {
             options.content = querystring.stringify(options.content);
         }
 
+        /*
         if (/.*[\u4e00-\u9fa5]+.*$/.test(options.path) && options.path.indexOf('?') > -1) {
             var index = options.path.indexOf('?');
             var query = options.path.substr(index + 1);
@@ -36,7 +37,7 @@ http.request = (function (_request) {
                     options.content = querystring.stringify(querystring.parse(query));
                 }
             }
-        }
+        }*/
 
         if (!!options.method && options.method.toUpperCase() != 'GET') {
             if (options.method.toUpperCase() == 'PUT' || options.method.toUpperCase() == 'DELETE') {
