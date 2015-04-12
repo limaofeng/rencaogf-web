@@ -214,4 +214,9 @@ router.get('/news/:id', function (req, res) {
     });
 });
 
+router.get('/feedback', function (req, res) {
+    console.log(req.params.id);
+    res.render('feedback', {menus: {repair: true}, partials: {header: 'header', footer: 'footer'}
+    });
+});
 module.exports = router;

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/html">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>室内装修网-在线留言</title>
+    <!--<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0"/>-->
+    <meta name="keywords" content="关键词，tapas"/>
+    <meta name="description" content="摘要，tapas"/>
+    <script src="/js/jquery-1.8.3.min.js"></script>
+    <script type="text/javascript" src="/js/jquery.SuperSlide.2.1.1.js"></script>
+    <script type="text/javascript" src="/js/select2.min.js"></script>
+    <link href="/css/css.css" type="text/css" rel="stylesheet">
+    <link href="/css/keyframes.css" type="text/css" rel="stylesheet">
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $(".prev,.next").hover(function(){
+                $(this).stop(true,false).fadeTo("show",0.9);
+            },function(){
+                $(this).stop(true,false).fadeTo("show",0.4);
+            });
+            $(".banner-box").slide({
+                titCell:".hd ul",
+                mainCell:".bd ul",
+                effect:"fold",
+                interTime:3500,
+                delayTime:500,
+                autoPlay:true,
+                autoPage:true,
+                trigger:"click"
+            });
+            $(".btn_top").click(function(){
+                $("html,body").animate({scrollTop:'0'},400);return false;
+            });
+            $('select').select2();
+        });
+    </script>
+</head>
+<body>
+{{>header}}
+
+<div class="crumbs">
+    <ul class="ie_maiDiv crumbs_list">
+        <li>
+            <i class="icon-home"></i>
+            首页
+        </li>
+        <li>
+            <i class="icon-arrow-left"></i>
+            <i class="icon-camera_fill"></i>
+            在线留言
+        </li>
+    </ul>
+    <div class="clear"> </div>
+</div>
+<div class="ie_maiDiv" id="feedback">
+    <h2>在线留言</h2>
+    <ul class="feedback">
+        <li>
+            <label>您的需求<em>*</em></label>
+            <span>
+                <select>
+                    <option>请选择</option>
+                    <option>装修业务咨询</option>
+                </select>
+            </span>
+        </li>
+        <li>
+            <label>您的姓名<em>*</em></label>
+            <span>
+                <input placeholder="请输入" />
+            </span>
+        </li>
+        <li>
+            <label>您要说的类容<em>*</em></label>
+            <span>
+                <textarea placeholder="我有话要说"></textarea>
+            </span>
+        </li>
+        <li>
+            <label>验证码<em>*</em></label>
+            <span>7+1</span>
+            <span>
+                <input placeholder="8" />
+                <span>你输入的结果错误</span>
+            </span>
+        </li>
+    </ul>
+    <a href="javascript:;" class="ie_design_content_btn">提交资料</a>
+</div>
+{{>footer}}
+</body>
+</html>
