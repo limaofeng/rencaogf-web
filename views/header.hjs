@@ -1,33 +1,96 @@
-
 <script type="text/javascript">
-    $(function(){
-        $(".nav li").hover(function(){
+    $(function () {
+        $(".nav li").hover(function () {
             $(this).find("span").stop().hide().slideDown();
-        },function(){
+        }, function () {
             $(this).find("span").stop().slideUp();
-        })
+        });
+        var outcontrol = function (e) {
+            console.log(e);
+            var _s = 0;
+            if (!!e.keyCode && e.keyCode != 8) {
+                _s = 1;
+            } else if (e.keyCode == 8) {
+                _s = -1;
+            }
+            if (this.value.length > (0 - _s)) {
+                $('label[for="' + this.name + '"]').hide();
+            } else {
+                $('label[for="' + this.name + '"]').show();
+            }
+        };
+        $('.outcontrol').change(outcontrol).keydown(outcontrol).change();
+        $(window).resize(function () {
+            var left = $('body').width() / 2 - $('.window_box').width() / 2;
+            console.log(left);
+            $('.window_box').css({'left': left});
+        });
+        $('.window_box').hide();
+        $('.translucence_layer').hide();
+        //
+        //$('.window_box').css({'left':'','top':''})
+        $('.applyImmediately').click(function () {
+            if($.trim($('[name=yourname]').val()).length == 0 || $.trim($('[name=yourphone]').val()).length == 0){
+                alert('称呼和电话必填!');
+                return;
+            }
+            $('.translucence_layer').show();
+            $.post('/feedback', {
+                'name': $('[name=yourname]').val(),
+                'phone': $('[name=yourphone]').val()
+            }, function (json) {
+                $('body').css({'overflow-y': 'hidden', 'margin-right': '15px;'});
+                $('.window_box').show();
+                $(window).resize();
+                $('.updateImmediately').unbind('click').click(function () {
+                    $.post('/feedback', {
+                        'id': json.id,
+                        'amountTime': $('#sendmobiletime').val(),
+                        'housingArea': $('#oarea').val(),
+                        'ateTime': $('#zxtime').val(),
+                        'housingType': $('#hometype').val(),
+                        'decorateBudget': $('#zxys').val(),
+                        'decorateType': $('#zxtype').val(),
+                        'address': $('#address').val(),
+                        'description':$('#description').val()
+                    }, function (json) {
+                        alert('恭喜您成功完善资料!');
+                        $('.window_box_close').click();
+                    });
+                });
+            });
+        });
+        $('.window_box_close').click(function () {
+            $('body').css({'overflow-y': '', 'margin-right': '15px;'});
+            $('.translucence_layer').hide();
+            $('.window_box').hide();
+            $('#oarea').val('');
+            $('#address').val('');
+            $('[name=yourname]').val('').change();
+            $('[name=yourphone]').val('').change();
+        });
     })
 
 </script>
 <div class="header">
     <div class="ie_maiDiv">
         <a href="/">
-            <h1 class="logo" title="logo"> </h1>
+            <h1 class="logo" title="logo"></h1>
         </a>
         <ul class="nav">
             <li>
-                <a {{#menus.index}}class="active"{{/menus.index}} href="/">
-                    网站首页
+                <a {{#menus.index}}class="active" {{/menus.index}} href="/">
+                网站首页
                 </a>
             </li>
             <li>
-                <a {{#menus.design}}class="active"{{/menus.design}} href="/designers">
-                    设计团队
+                <a {{#menus.design}}class="active" {{/menus.design}} href="/designers">
+                设计团队
                 </a>
             </li>
             <li>
-                <a {{#menus.collection}}class="active"{{/menus.collection}} href="/cases">
-                    案例展示
+                <a {{#menus.collection}}class="active" {{/menus.collection}} href="/cases">
+                案例展示
                 </a>
             </li>
             <!--
@@ -38,13 +101,13 @@
             </li>
             -->
             <li>
-                <a {{#menus.furniture}}class="active"{{/menus.furniture}} href="/furnitures">
-                    建材与家具
+                <a {{#menus.furniture}}class="active" {{/menus.furniture}} href="/furnitures">
+                建材与家具
                 </a>
             </li>
             <li>
-                <a {{#menus.repair}}class="active"{{/menus.repair}} href="/companys">
-                    装修公司
+                <a {{#menus.repair}}class="active" {{/menus.repair}} href="/companys">
+                装修公司
                 </a>
                 <span>
                     <a href="/news">
@@ -58,13 +121,14 @@
                 </span>
             </li>
             <li>
-                 <a {{#menus.about}}class="active"{{/menus.about}} href="/about">
-                    关于我们
+                <a {{#menus.about}}class="active" {{/menus.about}} href="/about">
+                关于我们
                 </a>
             </li>
         </ul>
-        <div class="clear"> </div>
+        <div class="clear"></div>
     </div>
+
 </div>
 
 <!-- 滚图开始 -->
@@ -73,12 +137,12 @@
         <ul>
             <li style="background:#fff1d5;">
                 <div class="m-width">
-                    <a href="javascript:void(0);"><img src="/images/banner1.png" /></a>
+                    <a href="javascript:void(0);"><img src="/images/banner1.png"/></a>
                 </div>
             </li>
             <li style="background:#bfc0c2">
                 <div class="m-width">
-                    <a href="javascript:void(0);"><img src="/images/banner2.png" /></a>
+                    <a href="javascript:void(0);"><img src="/images/banner2.png"/></a>
                 </div>
             </li>
         </ul>
@@ -90,3 +154,166 @@
     </div>
 </div>
 <!-- 滚图结束 -->
+
+<div class="col_l">
+    <div class="sec_topr_bd">
+        <ul class="sec_topr_tab">
+            <li class="on"><a href="javascript:;" style="margin-top: 10px;">线上咨询</a></li>
+        </ul>
+        <i class="index_ico_arrow" style="left: 31px;"></i>
+
+        <div class="sec_topr_form index_form">
+            <div class="form_hd">
+                <p style="display: block;">10秒登记，免费获取3份专业设计方案</p>
+
+                <p style="display: none;">3套报价对比，获取最靠谱方案，拒绝超预算</p>
+
+                <p style="display: none;">专业监理免费上门，按照行业标准严格验收</p>
+
+                <p style="display: none;">免费检测15大项30小项，全面检测房屋质量</p>
+            </div>
+            <div class="form_line">
+                <label for="yourname" class="label">您的称呼</label>
+                <input type="text" name="yourname" value="" class="text outcontrol"
+                       style="border-color: rgb(221, 221, 221);">
+            </div>
+            <div class="form_line">
+                <label for="yourphone" class="label">您的电话</label>
+                <input type="text" name="yourphone" value="" class="text outcontrol">
+            </div>
+            <!--
+            <div class="form_line">
+                <select id="User_Shen" class="select_l" name="User_Shen"
+                        onchange="changeProvince('User_Shen','User_City','User_Town');"
+                        style="border-color: rgb(221, 221, 221);">
+
+                </select>
+                <select id="User_City" class="select_r" name="User_City"
+                        onchange="changeTown('User_Shen','User_City','User_Town');"
+                        style="border-color: rgb(221, 221, 221);">
+                    <option value="">--</option>
+                    <option value="北京">北京</option>
+                </select>
+
+                <div style="display:none;"><select class="langSelect" id="User_Town" name="User_Town">
+                    <option value="">--</option>
+
+                </select></div>
+            </div>
+            -->
+            <input type="button" class="form_btn applyImmediately" value="立即申请">
+        </div>
+        <!--
+        <div class="sec_topr_list">
+            <ul>
+                <li><span>·</span>互联网装修领导者，C轮获顶级风投2亿美元注资</li>
+                <li><span>·</span>全国第一装修服务平台，740万业主的共同选择</li>
+            </ul>
+        </div>
+        -->
+    </div>
+</div>
+
+<div style="position: absolute; z-index: 9999; overflow: hidden; left: 377.5px; top: 135px; width: 520px; height: auto;"
+     class="window_box ">
+    <div style="display:block" class="window_box_title"><span></span><em></em><a
+            onclick="javascript:stop_code_status(this)" class="window_box_close" href="javascript:void(0)"></a></div>
+    <div class="window_box_container " style="overflow-y:scroll;">
+        <div class="mod_fbbox">
+            <div class="fbbox_s2"><h3 class="fbbox_s2_t">恭喜您申请成功！</h3>
+
+                <p class="fbbox_s2_text">客服将在24小时之内联系您，请保持手机通畅。现在请您完善详细资料，以便我们尽快为您安排服务。</p>
+
+                <div class="xxx">
+                    <div class="s2_line"><label class="label" for=""><span>*</span>&nbsp;量房时间</label>
+
+                        <div class="s2_element">
+                            <div><select style="border-color: rgb(221, 221, 221);" id="sendmobiletime"
+                                         name="sendmobiletime" class="select">
+                                <option value="今天内">今天内</option>
+                                <option value="明天">明天</option>
+                                <option value="三天内">三天内</option>
+                                <option value="近一周内">近一周内</option>
+                                <option value="一周以上">一周以上</option>
+                            </select></div>
+                        </div>
+                    </div>
+                    <div class="s2_line"><label class="label" for=""><span>*</span>&nbsp;装修面积</label>
+
+                        <div class="s2_element">
+                            <div><input type="text" style="border-color: rgb(221, 221, 221);" maxlength="4" id="oarea"
+                                        name="oarea" class="text"><em class="text_uni">㎡</em></div>
+                            <div style="display: none;" class="err_tip"><span class="ico_error"></span>请填写合理的面积</div>
+                            <div style="display: none;" class="err_tip"><span class="ico_error"></span>面积必须小于9999</div>
+                        </div>
+                    </div>
+                    <div class="s2_line"><label class="label" for=""><span>*</span>&nbsp;装修时间</label>
+
+                        <div class="s2_element">
+                            <div><select style="border-color: rgb(221, 221, 221);" id="zxtime" name="zxtime"
+                                         class="select">
+                                <option value="半个月内">半个月内</option>
+                                <option value="1个月">1个月</option>
+                                <option value="2个月">2个月</option>
+                                <option value="2个月以上">2个月以上</option>
+                            </select></div>
+                        </div>
+                    </div>
+                    <div class="s2_line"><label class="label" for=""><span>*</span>&nbsp;房屋类型</label>
+
+                        <div class="s2_element">
+                            <div><select style="border-color: rgb(221, 221, 221);" id="hometype" name="hometype"
+                                         class="select">
+                                <option value="住宅公寓">住宅公寓</option>
+                                <option value="别墅">别墅</option>
+                                <option value="商场">商场</option>
+                                <option value="其他">其他</option>
+                            </select></div>
+                        </div>
+                    </div>
+                    <div class="s2_line"><label class="label" for=""><span>*</span>&nbsp;装修预算</label>
+
+                        <div class="s2_element">
+                            <div><select style="border-color: rgb(221, 221, 221);" id="zxys" name="zxys" class="select">
+                                <option value="3万以下">3万以下</option>
+                                <option value="3-5万">3-5万</option>
+                                <option value="5-8万">5-8万</option>
+                                <option value="8-12万">8-12万</option>
+                                <option value="12-18万">12-18万</option>
+                                <option value="18-25万">18-25万</option>
+                                <option value="25-30万">25-30万</option>
+                                <option value="30万以上">30万以上</option>
+                            </select></div>
+                        </div>
+                    </div>
+                    <div class="s2_line"><label class="label" for=""><span>*</span>&nbsp;装修类型</label>
+
+                        <div class="s2_element">
+                            <div><select style="border-color: rgb(221, 221, 221);" id="zxtype" name="zxtype" class="select">
+                                <option selected="" value="半包">半包</option>
+                                <option value="全包">全包</option>
+                            </select></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="s2_line_b"><label class="label" for="">楼盘名称</label>
+
+                    <div class="s2_element">
+                        <div><input type="text" id="address" name="address" style="border-color: rgb(221, 221, 221);"
+                                    class="text"></div>
+                    </div>
+                </div>
+                <div class="clear"></div>
+                <div class="s2_line_b"><label class="label" for="">设计要求</label>
+
+                    <div class="s2_element">
+                        <div><input type="text" id="description" name="description" style="border-color: rgb(221, 221, 221);"
+                                    class="text"></div>
+                    </div>
+                </div>
+                <div class="clear"></div>
+                <input type="button" class="mod_fbbox_btn updateImmediately" value="提交">
+            </div>
+        </div>
+    </div>
+</div>

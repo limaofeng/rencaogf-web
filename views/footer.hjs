@@ -1,3 +1,7 @@
 
 
 <p class="ie_copy">© 2015 snzxw.com.cn 版权所有 ICP证：沪ICP备15014582号</p>
+
+<div class="translucence_layer">
+    <iframe style="position:absolute;top:0;left:0;width:100%;height:100%;filter:alpha(opacity=0);"></iframe>
+</div>
