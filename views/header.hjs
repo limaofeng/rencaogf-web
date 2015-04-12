@@ -11,7 +11,9 @@
 </script>
 <div class="header">
     <div class="ie_maiDiv">
-        <h1 class="logo" title="logo"> </h1>
+        <a href="/">
+            <h1 class="logo" title="logo"> </h1>
+        </a>
         <ul class="nav">
             <li>
                 <a {{#menus.index}}class="active"{{/menus.index}} href="/">
@@ -28,6 +30,13 @@
                     案例展示
                 </a>
             </li>
+            <!--
+            <li>
+                <a {{#menus.collection}}class="active"{{/menus.collection}} href="/cases">
+                    联系我们
+                </a>
+            </li>
+            -->
             <li>
                 <a {{#menus.furniture}}class="active"{{/menus.furniture}} href="/furnitures">
                     建材与家具

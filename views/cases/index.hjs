@@ -98,7 +98,7 @@
                     {{#pager.pageItems}}
                     <div class="coll_field_content">
                         <a class="coll_field_content_pic" href="/cases/{{id}}">
-                            <img src="{{#images[0].absolutePath}}http://115.29.185.235:8080{{images[0].absolutePath}}{{/images[0].absolutePath}}{{^images[0].absolutePath}}/images/pro_img.png{{/images[0].absolutePath}}" width="303" height="202"/>
+                            <img src="http://115.29.185.235:8080{{#firstImagePath}}303x202{{/firstImagePath}}" width="303" height="202"/>
                         </a>
                         <h3 class="coll_field_content_title">
                             <a href="/cases/{{id}}">

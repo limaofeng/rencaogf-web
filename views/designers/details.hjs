@@ -87,7 +87,7 @@
         <ul class="design_intro ie_design">
             <li class="no">
                 <a class="ie_design_pic">
-                    <i class="design_intro_pic"><img src="/images/img.png" width="150" height="150" alt=""/></i>
+                    <i class="design_intro_pic"><img src="http://115.29.185.235:8080{{#avatarImagePath}}150x150{{/avatarImagePath}}" width="150" height="150" alt=""/></i>
                 </a>
                 <span class="ie_design_content">
                     <h3 class="ie_design_content_h3"><b>{{designer.title}}</b><em class="col666">（{{designer.summary}}）</em></h3>
@@ -130,7 +130,7 @@
             {{#pager.pageItems}}
             <div class="coll_field_content">
                 <a class="coll_field_content_pic" href="/cases/{{id}}">
-                    <img src="{{#images[0].absolutePath}}http://115.29.185.235:8080{{images[0].absolutePath}}{{/images[0].absolutePath}}{{^images[0].absolutePath}}/images/pro_img.png{{/images[0].absolutePath}}" width="303" height="202"/>
+                    <img src="http://115.29.185.235:8080{{#firstImagePath}}303x202{{/firstImagePath}}" width="303" height="202"/>
                 </a>
                 <h3 class="coll_field_content_title">
                     <a href="/cases/{{id}}">
