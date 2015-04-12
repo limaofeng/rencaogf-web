@@ -8,7 +8,7 @@ http.request = (function (_request) {
     return function () {
         var options = arguments[0];
         //设置请求地址
-        options.host = '115.29.185.235';
+        options.host = 'localhost';
         options.port = 8080;
 
         //设置请求头
@@ -57,7 +57,7 @@ http.request = (function (_request) {
                 }
             }
         } else if (!!options.content) {
-            options.path = options.path + (options.path.indexOf('?') ? '&' : '?') + options.content;
+            options.path = options.path + (options.path.indexOf('?') != -1 ? '&' : '?') + options.content;
         }
 
         var req = _request.apply(this, arguments).on('response', function (res) {
