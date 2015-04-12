@@ -10,6 +10,8 @@
     <script type="text/javascript" src="/js/jquery.SuperSlide.2.1.1.js"></script>
     <link href="/css/css.css" type="text/css" rel="stylesheet">
     <link href="/css/keyframes.css" type="text/css" rel="stylesheet">
+    <link href="/css/prettyPhoto.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="/js/jquery.prettyPhoto.js"></script>
     <script type="text/javascript">
         $(document).ready(function(){
             $(".prev,.next").hover(function(){
@@ -36,17 +38,14 @@
             },function(){
                 $(this).find(".bg_big").hide();
             });
-            $(".bg_big").click(function(){
-                $(".pic_big").show();
-                $(".bg").height($(window).height());
+            $("a[rel^='prettyPhoto']").prettyPhoto({
+                animationSpeed:'fast',
+                slideshow:5000,
+                theme:'light_rounded',
+                show_title:false,
+                overlay_gallery: false
             });
-            $(".icon-close").click(function(){
-                $(".pic_big").hide();
-            });
-            $(".bg").click(function(){
-                $(".pic_big").hide();
-            })
-        });
+    });
     </script>
 </head>
     <body>
@@ -80,19 +79,16 @@
                     </h2>
                     <div>
                         <div class="coll_detail_pic">
-                            <a href="javascript:;">
-                                <img src="http://115.29.185.235:8080{{#firstImagePath}}505x404{{/firstImagePath}}" width="505" height="404" />
-                                <div class="bg_big">
-                                    <i class="icon-big"> </i>
-                                </div>
-                                <div class="pic_big">
-                                    <div class="pic_big_img">
-                                        <img src="http://115.29.185.235:8080{{#firstImagePath}}1000x660{{/firstImagePath}}" width="1000" height="660"/>
-                                        <i class="icon-close"> </i>
+                            {{#case.images}}
+                                <a href="http://115.29.185.235:8080{{#imagePath}}1000x660{{/imagePath}}" title="{{fileName}}" rel="prettyPhoto[gallery]">
+                                    {{#isFristImage}}
+                                    <img src="http://115.29.185.235:8080{{#imagePath}}505x404{{/imagePath}}" width="505" height="404" />
+                                    <div class="bg_big">
+                                        <i class="icon-big"> </i>
                                     </div>
-                                    <div class="bg"></div>
-                                </div>
-                            </a>
+                                    {{/isFristImage}}
+                                </a>
+                            {{/case.images}}
                         </div>
                         <div class="coll_detail_pic_txt">
                             <h2 class="coll_detail_title">

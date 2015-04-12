@@ -18,7 +18,7 @@ router.get('/', function (req, res) {
                 });
             });
         },
-        zxzs:function(callback){
+        zxzs: function (callback) {
             http.get({
                 path: '/cms/articles?EQS_category.code=zxzs&pager.pageSize=6'
             }, function (_res) {
@@ -27,7 +27,7 @@ router.get('/', function (req, res) {
                 });
             });
         },
-        fsal:function(callback){
+        fsal: function (callback) {
             http.get({
                 path: '/cms/articles?EQS_category.code=fsal&pager.pageSize=6'
             }, function (_res) {
@@ -77,10 +77,13 @@ router.get('/cases/:id', function (req, res) {
             res.render('cases/details', {
                 menus: {collection: true},
                 case: body,
-                firstImagePath: function () {
+                imagePath: function () {
                     return function (text) {
-                        return this.case.images == null ? '/images/pro_img.png' : this.case.images[0].absolutePath.replace(/(\.jpg)$/, '_' + text + '$1');
+                        return this.absolutePath.replace(/(\.jpg)$/, '_' + text + '$1');
                     }
+                },
+                isFristImage: function () {
+                    return !!body.images && body.images.length > 0 && body.images[0].absolutePath == this.absolutePath;
                 },
                 partials: {header: 'header', footer: 'footer'}
             });
