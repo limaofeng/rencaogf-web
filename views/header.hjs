@@ -31,6 +31,11 @@
                 </a>
             </li>
             <li>
+                <a {{#menus.collection}}class="active"{{/menus.collection}} href="/cases">
+                    联系我们
+                </a>
+            </li>
+            <li>
                 <a {{#menus.furniture}}class="active"{{/menus.furniture}} href="/furnitures">
                     建材与家具
                 </a>

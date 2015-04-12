@@ -10,42 +10,41 @@
     <script type="text/javascript" src="/js/jquery.SuperSlide.2.1.1.js"></script>
     <link href="/css/css.css" type="text/css" rel="stylesheet">
     <link href="/css/keyframes.css" type="text/css" rel="stylesheet">
+    <link href="/css/prettyPhoto.css" rel="stylesheet" type="text/css"/>
+    <script type="text/javascript" src="/js/jquery.prettyPhoto.js"></script>
     <script type="text/javascript">
-        $(document).ready(function(){
-            $(".prev,.next").hover(function(){
-                $(this).stop(true,false).fadeTo("show",0.9);
-            },function(){
-                $(this).stop(true,false).fadeTo("show",0.4);
+        $(document).ready(function () {
+            $(".prev,.next").hover(function () {
+                $(this).stop(true, false).fadeTo("show", 0.9);
+            }, function () {
+                $(this).stop(true, false).fadeTo("show", 0.4);
             });
             $(".banner-box").slide({
-                titCell:".hd ul",
-                mainCell:".bd ul",
-                effect:"fold",
-                interTime:3500,
-                delayTime:500,
-                autoPlay:true,
-                autoPage:true,
-                trigger:"click"
+                titCell: ".hd ul",
+                mainCell: ".bd ul",
+                effect: "fold",
+                interTime: 3500,
+                delayTime: 500,
+                autoPlay: true,
+                autoPage: true,
+                trigger: "click"
             });
-            $(".btn_top").click(function(){
-                $("html,body").animate({scrollTop:'0'},400);
+            $(".btn_top").click(function () {
+                $("html,body").animate({scrollTop: '0'}, 400);
                 return false;
             });
-            $(".coll_detail_pic").hover(function(){
+            $(".coll_detail_pic").hover(function () {
                 $(this).find(".bg_big").show();
-            },function(){
+            }, function () {
                 $(this).find(".bg_big").hide();
             });
-            $(".bg_big").click(function(){
-                $(".pic_big").show();
-                $(".bg").height($(window).height());
+            $("a[rel^='prettyPhoto']").prettyPhoto({
+                animationSpeed: 'fast',
+                slideshow: 5000,
+                theme: 'light_rounded',
+                show_title: false,
+                overlay_gallery: false
             });
-            $(".icon-close").click(function(){
-                $(".pic_big").hide();
-            });
-            $(".bg").click(function(){
-                $(".pic_big").hide();
-            })
         });
     </script>
 </head>
@@ -68,7 +67,7 @@
             详细
         </li>
     </ul>
-    <div class="clear"> </div>
+    <div class="clear"></div>
 </div>
 <!--面包屑-->
 
@@ -77,26 +76,27 @@
         <h2 class="coll_detail_title">
             {{goods.name}}
         </h2>
+
         <div>
             <div class="coll_detail_pic">
-                <a href="javascript:;">
-                    <img src="{{#goods.defaultGoodsImagePath}}http://115.29.185.235:8080{{goods.defaultGoodsImagePath}}{{/goods.defaultGoodsImagePath}}" width="505" height="404" />
+                {{#goods.goodsImages}}
+                <a href="http://115.29.185.235:8080{{#imagePath}}1000x660{{/imagePath}}" title="{{fileName}}"
+                   rel="prettyPhoto[gallery]">
+                    {{#isFristImage}}
+                    <img src="http://115.29.185.235:8080{{#imagePath}}505x404{{/imagePath}}" width="505" height="404"/>
+
                     <div class="bg_big">
                         <i class="icon-big"> </i>
                     </div>
-                    <div class="pic_big">
-                        <div class="pic_big_img">
-                            <img src="{{#goods.defaultGoodsImagePath}}http://115.29.185.235:8080{{goods.defaultGoodsImagePath}}{{/goods.defaultGoodsImagePath}}" width="1000" height="660"/>
-                            <i class="icon-close"> </i>
-                        </div>
-                        <div class="bg"></div>
-                    </div>
+                    {{/isFristImage}}
                 </a>
+                {{/goods.goodsImages}}
             </div>
             <div class="coll_detail_pic_txt">
                 <h2 class="coll_detail_title">
                     施工说明
                 </h2>
+
                 <p>
                     {{{goods.introduction}}}
                 </p>
@@ -107,21 +107,18 @@
             <h2 class="coll_detail_title">
                 产品介绍
             </h2>
-                <div>
-                    <ul class="coll_table clearBoth">
-                        <li>
-                            <span class="w30">品牌</span>
-                            <span class="w69">{{goods.brand.name}}</span>
-                        </li>
-                        <li>
-                            <span class="w30">&nbsp;</span>
-                            <span class="w69">&nbsp;</span>
-                        </li>
-                    </ul>
-                </div>
-
-
-            </table>
+            <div>
+                <ul class="coll_table clearBoth">
+                    <li>
+                        <span class="w30">品牌</span>
+                        <span class="w69">{{goods.brand.name}}</span>
+                    </li>
+                    <li>
+                        <span class="w30">&nbsp;</span>
+                        <span class="w69">&nbsp;</span>
+                    </li>
+                </ul>
+            </div>
         </div>
     </div>
 </div>

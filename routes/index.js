@@ -221,6 +221,14 @@ router.get('/furnitures/:id', function (req, res) {
             res.render('furnitures/details', {
                 menus: {furniture: true},
                 goods: body,
+                imagePath: function () {
+                    return function (text) {
+                        return this.absolutePath.replace(/(\.jpg)$/, '_' + text + '$1');
+                    }
+                },
+                isFristImage: function () {
+                    return !!body.goodsImages && body.goodsImages.length > 0 && body.goodsImages[0].absolutePath == this.absolutePath;
+                },
                 partials: {header: 'header', footer: 'footer'}
             });
         });
