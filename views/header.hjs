@@ -67,6 +67,14 @@
             $('[name=yourname]').val('').change();
             $('[name=yourphone]').val('').change();
         });
+        $('.sec_topr_tab_close').click(function(){
+            $('.col_l').hide();
+            return false;
+        });
+        $('.wyzx').click(function(){
+            $('.col_l').show();
+            return false;
+        });
     })
 
 </script>
@@ -152,12 +160,13 @@
     </div>
 </div>
 <!-- 滚图结束 -->
-
+<a class="wyzx" href="javascript:;"></a>
 <div class="col_l">
     <div class="sec_topr_bd">
         <ul class="sec_topr_tab">
             <li class="on"><a href="javascript:;" style="margin-top: 10px;">线上咨询</a></li>
         </ul>
+        <a class="sec_topr_tab_close" href="javascript:void(0)"></a>
         <i class="index_ico_arrow" style="left: 31px;"></i>
 
         <div class="sec_topr_form index_form">

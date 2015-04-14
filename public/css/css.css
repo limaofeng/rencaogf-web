@@ -754,9 +754,10 @@ font-size: 1.43rem; padding:20px 0; color: #333;
     height: 350px;
     width: 298px;
     background-color: white;
-    position: absolute;
-    top: 95px;
-    left: 10px;
+    position: fixed;
+    top: 445px;
+    right: 0px;
+    z-index:20;
 }
 .sec_topr_tab {
     border-bottom: 2px solid #00b021;
@@ -1005,4 +1006,26 @@ font-size: 1.43rem; padding:20px 0; color: #333;
     right: 30px;
     top: 20px;
     width: 16px;
+}
+
+a.sec_topr_tab_close{
+    background: url("/images/global.png") no-repeat;
+    _background: url("/images/global.png") no-repeat;
+    _overflow: hidden;
+    background-position: 0 -165px;
+    height: 16px;
+    position: absolute;
+    right: 30px;
+    top: 20px;
+    width: 16px;
+}
+a.wyzx{
+    background: url("/images/wyzx.png") no-repeat;
+    overflow: hidden;
+    position: fixed;
+    right: 0px;
+    top: 445px;
+    display: block;
+    width: 46px;
+    height: 120px;
 }
