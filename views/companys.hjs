@@ -32,13 +32,9 @@
                 $("html,body").animate({scrollTop:'0'},400);return false;
             });
             $('#brand-waterfall').cascade();
-            var number = 0;
-            var interval = setInterval(function(){
+            $('img').load(function(){
                 $(window).resize();
-                if(number++ == 5) {
-                    clearInterval(interval);
-                }
-            },1000);
+            });
         });
     </script>
 </head>
