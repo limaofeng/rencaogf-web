@@ -1029,3 +1029,30 @@ a.wyzx{
     width: 46px;
     height: 120px;
 }
+.contact_us_wrap dd {
+    border: 1px solid #c5c5c5;
+    height: 420px;
+    margin: 0;
+    padding: 0;
+    margin-bottom:10px;
+    width: 98%;
+}
+.contact_us_wrap h3 {
+    color: #3e3a39;
+    font: 21px/35px "微软雅黑";
+    margin: 0;
+    padding: 20px;
+}
+.contact_us_wrap p {
+    color: #727171;
+    font: 16px/25px "微软雅黑";
+    padding:10px;
+}
+.contact_us_wrap h2 {
+    color: #3e3a39;
+    font: 24px/35px "微软雅黑";
+}
+.line_dash {
+    border-bottom: 1px dashed #dcdbdb;
+    width: 100%;
+}

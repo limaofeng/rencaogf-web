@@ -54,41 +54,34 @@
     <div class="clear"> </div>
 </div>
 <div class="ie_maiDiv" id="feedback">
-    <h2>联系我们</h2>
-    <ul class="feedback">
-        <li>
-            <label>您的需求<em>*</em></label>
-            <span>
-                <select>
-                    <option>请选择</option>
-                    <option>装修业务咨询</option>
-                </select>
-            </span>
-        </li>
-        <li>
-            <label>您的姓名<em>*</em></label>
-            <span>
-                <input placeholder="请输入" />
-            </span>
-        </li>
-        <li>
-            <label>您要说的类容<em>*</em></label>
-            <span>
-                <textarea placeholder="我有话要说"></textarea>
-            </span>
-        </li>
-        <!--
-        <li>
-            <label>验证码<em>*</em></label>
-            <span>7+1</span>
-            <span>
-                <input placeholder="8" />
-                <span>你输入的结果错误</span>
-            </span>
-        </li>
-        -->
-    </ul>
-    <a href="javascript:;" class="ie_design_content_btn">提交资料</a>
+    <div class="w1200 mc middle clearfix">
+        <div class="contact_us_wrap w"><h3 class="mt20 mb20" align="center">成为中国值得信赖和推崇的装饰品牌！</h3>
+            <dl class="w clearfix">
+                <dd class="fl">
+                    <div style="width:585px;float:left;height:400px;padding:10px;">
+                        <iframe height="400" marginheight="0" src="/snzxwmap.html" frameborder="0" width="585" marginwidth="0" scrolling="no"></iframe>
+                    </div>
+                    <div class="l"><h2>联系我们</h2>
+
+                        <p class="mt30">公司地址：上海市宝山区殷高西路518号7楼</p>
+
+                        <p>装修咨询热线：18817614810</p>
+
+                        <p>售后服务热线：18817614810</p>
+
+                        <p>总经办信箱：465445890@QQ.com</p>
+
+                        <div class="line_dash mt20 mb20"></div>
+                        <h2>交通线路</h2>
+
+                        <p>4号线殷高西路站1号口出,沿殷高西路至高境路口.尚景天地内</p></div>
+                </dd>
+            </dl>
+        </div>
+    </div>
+    <!--middle end-->
+
+
 </div>
 {{>footer}}
 </body>
