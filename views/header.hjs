@@ -6,7 +6,6 @@
             $(this).find("span").stop().slideUp();
         });
         var outcontrol = function (e) {
-            console.log(e);
             var _s = 0;
             if (!!e.keyCode && e.keyCode != 8) {
                 _s = 1;
@@ -22,7 +21,6 @@
         $('.outcontrol').change(outcontrol).keydown(outcontrol).change();
         $(window).resize(function () {
             var left = $('body').width() / 2 - $('.window_box').width() / 2;
-            console.log(left);
             $('.window_box').css({'left': left});
         });
         $('.window_box').hide();
