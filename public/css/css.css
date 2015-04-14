@@ -985,6 +985,7 @@ font-size: 1.43rem; padding:20px 0; color: #333;
     height: 100%;
     left: 0;
     opacity: 0.75;
+    filter: alpha(opacity=75);
     position: fixed;
     top: 0;
     width: 100%;
@@ -993,6 +994,8 @@ font-size: 1.43rem; padding:20px 0; color: #333;
 
 .window_box .window_box_title a, .header_top_left ul li em, .header_center_container span.hcc_logo, .header_search .header_select a.header_select_sort span b, .hcc_zxb, .header_bottom .header_menu ul li.has_secondMenu a em, .window_box_error em, .ftc_center dl dd a em, .ftc_right dl dd, .ftc_left .join_link span, .ftc_center dl dd a div.wechat_bg, .ico_qq i, .ico_top i, .ico_server i, .ico_server:hover i, .ico_feedback i, .qq_list li em, .ico_code_s, .header_bottom .header_menu ul li.has_hotIcon em.sjbj_hot, .header_bottom .header_menu ul li.has_homeIcon em.jjjcc_icon, .header_bottom .header_menu .q_code, .header_top_right ul li div.htr_username i, .header_bottom .header_menu .q_code div.q_code_layer span.qcode_img, .header_bottom .header_menu .q_code div.q_code_layer span.wech, .zgsh_top_center_right ul li div.htr_username i, span.nav_arrow_right, .global_pie .global_pie_container ul li span, .global_pie .global_pie_container ul li.gp_menu i, .footer_bottom_container .fbc_icpico span, .ico_tip_ok, .ico_tip_warn, .ico_error, .ico_protect, .ico_tip_ok_s, .ico_tip_warn_s, .ico_star_yel, .ico_star_grey, .ico_star_half, .ico_scan, .ico_crown, .ico_info_s, .mod_yeltip .yeltip_close, .ico_tip_warn_green, .triangle_down, .triangle_up, .arrow_gray, .arrow_green, .arrow_gray_up, .arrow_gray_down, .arrow_gray_upact, .arrow_gray_downact, .ico_sort_downon, .ico_sort_upon, .ico_sort_downoff, .ico_sort_upoff, .ico_comment, .ico_praise, .ico_praise_no, .ico_pic, .ico_msg, .zgsh_top_center_left li .logo {
     background: url("http://img.to8to.com/to8to_img/global.png?v=201503191840") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+    _background: url("http://img.to8to.com/to8to_img/global.png?v=201503191840") no-repeat;
+    _overflow: hidden;
 }
 
 .window_box .window_box_title a {
