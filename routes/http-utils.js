@@ -1,5 +1,6 @@
 var http = require('http');
 var querystring = require('querystring');
+var BufferHelper = require('bufferhelper');
 var username = 'snzxw';
 var password = '123456';
 var _auth = 'Basic ' + new Buffer(username + ':' + password).toString('base64');
@@ -62,16 +63,17 @@ http.request = (function (_request) {
 
         var req = _request.apply(this, arguments).on('response', function (res) {
             var contentType = res.headers['content-type'];
-            var bodys = [];
-            res.on('data', function (body) {
-                bodys.push(body);
+            var buffer = new BufferHelper();
+            res.on('data', function (data) {
+                buffer.concat(data);
             });
             res.on('end', function () {
-                console.log('DEUBG:' + options.path + 'STATUS: ' + res.statusCode + '\r\n' + bodys.join("").toString());
+                var body = buffer.toBuffer();
+                console.log('DEUBG:' + options.path + 'STATUS: ' + res.statusCode + '\r\n' + body.toString());
                 if (!!contentType && contentType.indexOf('json') != -1) {
-                    res.emit('complete', JSON.parse(bodys.join("").toString() || '{}'));
+                    res.emit('complete', JSON.parse(body.toString() || '{}'));
                 } else {
-                    res.emit('complete', bodys.join("").toString());
+                    res.emit('complete', body.toString());
                 }
             })
         }).on('error', function (e) {

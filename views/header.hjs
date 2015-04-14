@@ -1,3 +1,4 @@
+<script type="text/javascript" src="/js/jquery.cookie.js"></script>
 <script type="text/javascript">
     $(function () {
         $(".nav li").hover(function () {
@@ -69,12 +70,17 @@
         });
         $('.sec_topr_tab_close').click(function(){
             $('.col_l').hide();
+            $.cookie('zhixun','hide');
             return false;
         });
         $('.wyzx').click(function(){
             $('.col_l').show();
+            $.cookie('zhixun','show');
             return false;
         });
+        if($.cookie('zhixun') == 'hide'){
+            $('.sec_topr_tab_close').click();
+        }
     })
 
 </script>
