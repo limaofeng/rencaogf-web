@@ -41,7 +41,7 @@
             $("a[rel^='prettyPhoto']").prettyPhoto({
                 animationSpeed:'fast',
                 slideshow:5000,
-                theme:'light_rounded',
+                theme:'facebook',
                 show_title:false,
                 overlay_gallery: false
             });
