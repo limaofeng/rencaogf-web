@@ -48,13 +48,13 @@
         <li>
             <i class="icon-arrow-left"></i>
             <i class="icon-camera_fill"></i>
-            在线留言
+            联系我们
         </li>
     </ul>
     <div class="clear"> </div>
 </div>
 <div class="ie_maiDiv" id="feedback">
-    <h2>在线留言</h2>
+    <h2>联系我们</h2>
     <ul class="feedback">
         <li>
             <label>您的需求<em>*</em></label>

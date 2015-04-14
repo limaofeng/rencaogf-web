@@ -255,7 +255,7 @@ router.get('/news', function (req, res) {
     flow.parallel({
         category: function (callback) {
             http.get({
-                path: "/cms/categorys/" + path.replace(/^[^,]+,/,'')
+                path: "/cms/categorys/" + path.replace(/^[^,]+,/, '')
             }, function (_res) {
                 _res.on('complete', function (body) {
                     callback(0, body);
@@ -314,7 +314,14 @@ router.get('/news/:id', function (req, res) {
     });
 });
 
-router.post('/feedback', function (req, res) {
+router.get('/feedback', function (req, res) {
+    res.render('feedback', {
+        menus: {feedback: true},
+        partials: {header: 'header', footer: 'footer', page: 'page'}
+    });
+});
+
+router.post('/consultations', function (req, res) {
     http.post({
         path: "/website/contactuses",
         content: req.body

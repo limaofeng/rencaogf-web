@@ -33,7 +33,7 @@
                 return;
             }
             $('.translucence_layer').show();
-            $.post('/feedback', {
+            $.post('/consultations', {
                 'name': $('[name=yourname]').val(),
                 'phone': $('[name=yourphone]').val()
             }, function (json) {
@@ -99,13 +99,6 @@
                 案例展示
                 </a>
             </li>
-            <!--
-            <li>
-                <a {{#menus.collection}}class="active"{{/menus.collection}} href="/cases">
-                    联系我们
-                </a>
-            </li>
-            -->
             <li>
                 <a {{#menus.furniture}}class="active" {{/menus.furniture}} href="/furnitures">
                 建材与家具
@@ -129,6 +122,11 @@
             <li>
                 <a {{#menus.about}}class="active" {{/menus.about}} href="/about">
                 关于我们
+                </a>
+            </li>
+            <li>
+                <a {{#menus.feedback}}class="active"{{/menus.feedback}} href="/feedback">
+                联系我们
                 </a>
             </li>
         </ul>

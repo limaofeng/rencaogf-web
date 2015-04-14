@@ -36,7 +36,7 @@ a:active{color: #666; border:none;text-decoration:none; outline:none;}
     float: left; font-size: 1.1rem; line-height:90px; position: relative;
 }
 
-.nav > li > a{color: #333; text-decoration: none; display: block;padding: 0 22px;
+.nav > li > a{color: #333; text-decoration: none; display: block;padding: 0 15px;
 }
 
 .nav > li > a:hover{
@@ -755,7 +755,7 @@ font-size: 1.43rem; padding:20px 0; color: #333;
     width: 298px;
     background-color: white;
     position: fixed;
-    top: 445px;
+    bottom: 0px;
     right: 0px;
     z-index:20;
 }
@@ -1024,7 +1024,7 @@ a.wyzx{
     overflow: hidden;
     position: fixed;
     right: 0px;
-    top: 445px;
+    bottom: 230px;
     display: block;
     width: 46px;
     height: 120px;
