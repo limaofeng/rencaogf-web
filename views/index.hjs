@@ -70,7 +70,7 @@
     <div class="clear"> </div>
 </div>
 <!--案例结束-->
-<div class="mai_content design">
+<div class="mai_content chang_design">
     <div class="ie_maiDiv">
         <h2 class="in_title">
             <span class="icon-ye">
@@ -82,7 +82,7 @@
             </span>
         </h2>
         <p class="in_about">用现代的眼光看待传统的魅力，营造设计之魂</p>
-        <ul class="design_intro">
+        <ul class="chang_design_intro">
             {{#designers}}
             <li>
                 <a href="/designers/{{id}}">
@@ -95,19 +95,26 @@
                     <p class="col666">工作年限：4年</p>
                     -->
                 </span>
+                <i class="linear"></i>
             </li>
             {{/designers}}
         </ul>
+        <div class="title_more">
+            <a class="ie_design_content_btn" href="/designers">更多设计师</a>
+            <p>这些都不是我要找的设计师?</p>
+            <p>&emsp;   &emsp;  &emsp;我们还有更多优秀设计师</p>
+
+        </div>
         <div class="clear"> </div>
     </div>
 
 </div>
 <!--设计师推荐结束-->
 <div class="ie_maiDiv in_txt_content">
-    <div class="w50">
-        <i class="icon-setting"> </i>
+    <div class="chang_in_zx">
         <div class="in_txt_content_block">
-            <h2>装修知识</h2>
+            <h2><i class="icon-setting"> </i>装修知识</h2>
+            <i><img src="http://p1.qhimg.com/t01627f6866d3427b80.jpg" width="270" height="180"/> </i>
             <ul>
                 {{#zxzs}}
                 <li>
@@ -119,10 +126,12 @@
             </ul>
         </div>
     </div>
-    <div class="w50">
-        <i class="icon-gate"> </i>
+    <!---->
+
+    <div class="chang_in_fx">
         <div class="in_txt_content_block">
-            <h2>风水案例</h2>
+            <h2><i class="icon-gate"> </i>
+                风水案例</h2>
             <ul>
                 {{#fsal}}
                 <li>
@@ -134,6 +143,66 @@
             </ul>
         </div>
     </div>
+
+    <!---->
+
+
+    <div class="chang_in_fur">
+
+        <ul class="furniture_content clearBoth">
+            <li class="active">
+                <a href="/furnitures?path=/material">
+                    <i class="icon iconfont">㑓</i>
+                    <span>装饰材料</span>
+                </a>
+            </li>
+            <li class="">
+                <a href="/furnitures?path=/kitchen">
+                    <i class="icon iconfont">󰃫</i>
+                    <span>厨房卫浴</span>
+                </a>
+            </li>
+            <li class="">
+                <a href="/furnitures?path=/appliances">
+                    <i class="icon iconfont">󰁸</i>
+                    <span>家具电器</span>
+                </a>
+            </li>
+            <!--
+            <li >
+                <a href="/furnitures?type=4">
+                    <i class="icon iconfont">&#xf00a7;</i>
+                    <span>墙地面材料</span>
+                </a>
+            </li>
+            <li >
+                <a href="/furnitures?type=5">
+                    <i class="icon iconfont">&#xf0083;</i>
+                    <span>灯饰照明</span>
+                </a>
+            </li>
+            <li >
+                <a href="/furnitures?type=6">
+                    <i class="icon iconfont">&#x347f;</i>
+                    <span>五金工具</span>
+                </a>
+            </li>
+            <li >
+                <a href="/furnitures?type=7">
+                    <i class="icon iconfont">&#x345e;</i>
+                    <span>定制家居</span>
+                </a>
+            </li>
+            <li >
+                <a href="/furnitures?type=8">
+                    <i class="icon iconfont">&#xf008b;</i>
+                    <span>客户提供</span>
+                </a>
+            </li>
+            -->
+        </ul>
+    </div>
+
 </div>
 <!--文本区域-->
 <div class="in_contact_content">
