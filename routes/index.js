@@ -11,7 +11,7 @@ router.get('/', function (req, res) {
     flow.parallel({
         designers: function (callback) {
             http.get({
-                path: '/cms/articles?EQS_category.code=designer&pager.pageSize=4'
+                path: '/cms/articles?EQS_category.code=designer&pager.pageSize=8'
             }, function (_res) {
                 _res.on('complete', function (body) {
                     callback(0, body.pageItems);
@@ -40,7 +40,7 @@ router.get('/', function (req, res) {
         result.menus = {index: true};
         result.avatarImagePath = function () {
             return function (text) {
-                return this.avatar == null ? '/images/img.png' : this.avatar.absolutePath.replace(/(\.jpg)$/, '_' + text + '$1');
+                return this.avatar == null ? '/static/images/img.png' : this.avatar.absolutePath.replace(/(\.jpg)$/, '_' + text + '$1');
             }
         };
         result.partials = {header: 'header', footer: 'footer'};
@@ -101,7 +101,7 @@ router.get('/designers', function (req, res) {
                 pager: pagerProxy(body, req),
                 imagePath: function () {
                     return function (text) {
-                        return this.avatar == null ? '/images/img.png' : this.avatar.absolutePath.replace(/(\.jpg)$/, '_' + text + '$1');
+                        return this.avatar == null ? '/static/images/img.png' : this.avatar.absolutePath.replace(/(\.jpg)$/, '_' + text + '$1');
                     }
                 },
                 partials: {header: 'header', page: 'page', footer: 'footer'}
