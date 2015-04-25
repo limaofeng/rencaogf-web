@@ -1135,6 +1135,7 @@ a.wyzx{
 .in_txt_content{
     padding: 50px 0; overflow: auto;}
 
+/*
 
 div.chang_design .ie_design_content_txt{
     position: absolute; background: #f4f4f4;
@@ -1150,3 +1151,25 @@ div.chang_design .ie_design_content_txt{
     font-size: 0.8rem; text-align: left;
 }
 div.chang_design .ie_design_content{font-size: 0.9rem;}
+*/
+
+div.ie_design_content_txt{
+    position: relative; visibility: visible; font-size: 0.8rem;
+}
+.nr{
+    position: relative; margin-top:-75px;
+}
+.js1{
+    background: #f4f4f4; border-bottom: 2px solid #ee7a33; height: 318px; width:180px; padding:10px 20px; text-align: left;
+    margin:0 auto;
+}
+.chang_design .chang_design_intro li:after{
+    height: auto;
+    content: '';
+    *zoom: 1;
+
+}
+.js2{
+    background: #f4f4f4; border-bottom: 2px solid #ee7a33; height: 250px; width:180px; padding:10px 20px; text-align: left;
+    margin:0 auto; line-height:250px; text-align: center; font-size: 2rem;
+}

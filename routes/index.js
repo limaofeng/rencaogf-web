@@ -369,4 +369,12 @@ var pagerProxy = function (pager, req) {
     return pager;
 };
 
+
+
+router.get('/furnitures', function (req, res) {
+    res.render('furnitures/lis', {
+        partials: {header: 'header', footer: 'footer'}
+    });
+});
+
 module.exports = router;
