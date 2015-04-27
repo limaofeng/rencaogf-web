@@ -96,7 +96,7 @@
                     -->
                 </span>
                 <i class="linear"></i>
-                jhkgjhkj
+                <a class="ie_design_content_btn" href="/designers/1801">查看作品</a>
             </li>
             {{/designers}}
         </ul>
