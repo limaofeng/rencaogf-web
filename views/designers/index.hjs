@@ -79,34 +79,28 @@
                     </span>
                     </h2>
                     <p class="in_about">用现代的眼光看待传统的魅力，营造设计之魂</p>
-                    <ul class="chang_design_intro" style="margin-top: 270px;"><!--design_intro ie_design-->
+                    <ul class="chang_design_intro"><!--design_intro ie_design-->
                         {{#pager.pageItems}}
                         <li>
-                            <i class="linear"></i>
-                            <a class="ie_design_pic" href="/designers/{{id}}">
-                                <i class="design_intro_pic"><img src="http://115.29.185.235:8080{{#imagePath}}150x150{{/imagePath}}" width="150" height="150" alt=""/></i>
-                            </a>
-                            <span class="ie_design_content">
-                                <h3 class="ie_design_content_h3"><b>{{title}}</b></h3>
-                                    <p class="col666">{{summary}}</p>
-                                <span class="ie_design_content_txt">
+                            <i class="linear"> </i>
+                            <div class="ie_design_content_txt">
+                                <div class="js1">
                                     <span class="ie_design_content_txt_name">设计师简介：</span>
                                     <span class="ie_design_content_txt_txt">
                                        {{{content}}}
                                     </span>
-                                </span>
-                                <!--
-                                <span class="ie_design_content_txt">
-                                    <span class="ie_design_content_txt_name">工作年限：</span>
-                                    <span class="ie_design_content_txt_txt">
-                                        8年
-                                    </span>
-                                </span>
-                                -->
-                                <a class="ie_design_content_btn" href="/designers/{{id}}">查看作品</a>
-                            </span>
-                        </li>
+                                </div>
 
+                                <div class="nr">
+                                    <a class="ie_design_pic" href="/designers/{{id}}">
+                                        <i class="design_intro_pic"><img src="http://115.29.185.235:8080{{#imagePath}}150x150{{/imagePath}}" width="150" height="150" alt=""/></i>
+                                    </a>
+                                    <h3 class="ie_design_content_h3"><b>{{title}}</b></h3>
+                                    <p class="col666">{{summary}}</p>
+                                </div>
+                            </div>
+
+                        </li>
 
                         {{/pager.pageItems}}
                     </ul>
