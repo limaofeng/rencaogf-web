@@ -99,7 +99,7 @@
                                     <p class="col666">{{summary}}</p>
                                 </div>
                             </div>
-
+                            <a class="ie_design_content_btn" href="/designers/1801">查看作品</a>
                         </li>
 
                         {{/pager.pageItems}}

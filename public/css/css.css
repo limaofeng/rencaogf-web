@@ -1173,3 +1173,6 @@ div.ie_design_content_txt{
     background: #f4f4f4; border-bottom: 2px solid #ee7a33; height: 250px; width:180px; padding:10px 20px; text-align: left;
     margin:0 auto; line-height:250px; text-align: center; font-size: 2rem;
 }
+.ie_design_content_h3{
+    margin-top:20px;
+}
