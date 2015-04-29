@@ -1176,3 +1176,34 @@ div.ie_design_content_txt{
 .ie_design_content_h3{
     margin-top:20px;
 }
+
+.brand li{
+    width: 159px;
+    float: left;
+    margin:10px;
+    height: 80px;
+    overflow: hidden;
+
+    display: box;
+    display: -webkit-box;
+    display: -moz-box;
+    -webkit-box-pack:center;
+    -moz-box-pack:center;
+    -webkit-box-align:center;
+    -moz-box-align:center;
+}
+.brand li img{
+    max-width: 100%;
+    background-size: contain;
+    margin: 0 auto;
+}
+.brand li span{
+    text-align: center;
+    line-height: 1.5;
+}
+.brand:after{
+    clear: both;
+    height: 0;
+    content: '';
+    *zoom: 1;
+}

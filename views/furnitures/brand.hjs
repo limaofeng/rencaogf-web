@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>室内装修网-材料和家具-品牌</title>
+    <!--<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0"/>-->
+    <meta name="keywords" content="关键词，tapas"/>
+    <meta name="description" content="摘要，tapas"/>
+    <script src="/js/jquery-1.8.3.min.js"></script>
+    <script type="text/javascript" src="/js/jquery.SuperSlide.2.1.1.js"></script>
+    <link href="/css/css.css" type="text/css" rel="stylesheet">
+    <link href="/css/keyframes.css" type="text/css" rel="stylesheet">
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $(".prev,.next").hover(function(){
+                $(this).stop(true,false).fadeTo("show",0.9);
+            },function(){
+                $(this).stop(true,false).fadeTo("show",0.4);
+            });
+            $(".banner-box").slide({
+                titCell:".hd ul",
+                mainCell:".bd ul",
+                effect:"fold",
+                interTime:3500,
+                delayTime:500,
+                autoPlay:true,
+                autoPage:true,
+                trigger:"click"
+            });
+            $(".btn_top").click(function(){
+                $("html,body").animate({scrollTop:'0'},400);return false;
+            });
+        });
+    </script>
+</head>
+<body>
+{{>header}}
+
+<div class="crumbs">
+    <ul class="ie_maiDiv crumbs_list">
+        <li>
+            <i class="icon-home"></i>
+            首页
+        </li>
+        <li>
+            <i class="icon-arrow-left"></i>
+            <i class="icon-family"></i>
+            材料和家具
+        </li>
+    </ul>
+    <div class="clear"> </div>
+</div>
+<!--面包屑-->
+
+<div class="mai_content">
+    <div class="ie_maiDiv furniture">
+        <ul class="furniture_content clearBoth">
+            <li class="{{#checkedMenu}}material{{/checkedMenu}}">
+                <a href="/furnitures?path=/material">
+                    <i class="icon iconfont">&#x3453;</i>
+                    <span>装饰材料</span>
+                </a>
+            </li>
+            <li class="{{#checkedMenu}}kitchen{{/checkedMenu}}">
+                <a href="/furnitures?path=/kitchen">
+                    <i class="icon iconfont">&#xf00eb;</i>
+                    <span>厨房卫浴</span>
+                </a>
+            </li>
+            <li class="{{#checkedMenu}}appliances{{/checkedMenu}}">
+                <a href="/furnitures?path=/appliances">
+                    <i class="icon iconfont">&#xf0078;</i>
+                    <span>家具电器</span>
+                </a>
+            </li>
+            <!--
+            <li {{#type_4}}class="active"{{/type_4}}>
+                <a href="/furnitures?type=4">
+                    <i class="icon iconfont">&#xf00a7;</i>
+                    <span>墙地面材料</span>
+                </a>
+            </li>
+            <li {{#type_5}}class="active"{{/type_5}}>
+                <a href="/furnitures?type=5">
+                    <i class="icon iconfont">&#xf0083;</i>
+                    <span>灯饰照明</span>
+                </a>
+            </li>
+            <li {{#type_6}}class="active"{{/type_6}}>
+                <a href="/furnitures?type=6">
+                    <i class="icon iconfont">&#x347f;</i>
+                    <span>五金工具</span>
+                </a>
+            </li>
+            <li {{#type_7}}class="active"{{/type_7}}>
+                <a href="/furnitures?type=7">
+                    <i class="icon iconfont">&#x345e;</i>
+                    <span>定制家居</span>
+                </a>
+            </li>
+            <li {{#type_8}}class="active"{{/type_8}}>
+                <a href="/furnitures?type=8">
+                    <i class="icon iconfont">&#xf008b;</i>
+                    <span>客户提供</span>
+                </a>
+            </li>
+            -->
+        </ul>
+        <!---->
+
+        <div class="contact">
+            <dl class="sidebar">
+                <dt>
+                    {{category.name}}
+                </dt>
+                {{#children}}
+                <dd class="{{#checkedSub}}{{sign}}{{/checkedSub}}">
+                    <i> </i>
+                    <a href="/furnitures?path={{#replacePath}}{{path}}{{/replacePath}}">{{name}}</a>
+                </dd>
+                {{/children}}
+            </dl>
+            <div style="width: 716px; display: inline-block">
+                <ul class="ie brand">
+
+                    <li>
+                        <a href="/furnitures/{{id}}">
+                            <i><img src="{{#defaultGoodsImagePath}}http://115.29.185.235:8080{{defaultGoodsImagePath}}{{/defaultGoodsImagePath}}" alt="" style="width: 350px;max-height: 280px;"/></i>
+                            <span>{{name}}</span>
+                        </a>
+                    </li>
+
+                </ul>
+                {{>page}}
+            </div>
+        </div>
+
+    </div>
+</div>
+
+{{>footer}}
+</body>
+</html>
