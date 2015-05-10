@@ -123,7 +123,7 @@ router.get('/cases/:id', function (req, res) {
                 }
             },
             isFristImage: function () {
-                return !!body.images && body.images.length > 0 && body.images[0].absolutePath == this.absolutePath;
+                return !!result.case.images && result.case.images.length > 0 && result.case.images[0].absolutePath == this.absolutePath;
             },
             partials: {header: 'header', footer: 'footer'}
         }));
@@ -334,7 +334,7 @@ router.get('/furnitures/:id', function (req, res) {
                 }
             },
             isFristImage: function () {
-                return !!body.goodsImages && body.goodsImages.length > 0 && body.goodsImages[0].absolutePath == this.absolutePath;
+                return !!result.goods.goodsImages && result.goods.goodsImages.length > 0 && result.goods.goodsImages[0].absolutePath == this.absolutePath;
             },
             partials: {header: 'header', footer: 'footer'}
         }));
@@ -471,6 +471,24 @@ router.get('/feedback', function (req, res) {
         }
     },function(err, result){
         res.render('feedback', mergeObject(result,{
+            menus: {feedback: true},
+            partials: {header: 'header', footer: 'footer', page: 'page'}
+        }));
+    });
+});
+router.get('/brand', function (req, res) {
+    flow.parallel({
+        banner: function (callback) {
+            http.get({
+                path: '/cms/banners/1053'
+            }, function (_res) {
+                _res.on('complete', function (body) {
+                    callback(0, body);
+                });
+            });
+        }
+    },function(err, result){
+        res.render('furnitures/brand', mergeObject(result,{
             menus: {feedback: true},
             partials: {header: 'header', footer: 'footer', page: 'page'}
         }));
