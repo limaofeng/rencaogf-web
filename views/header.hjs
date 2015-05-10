@@ -145,16 +145,13 @@
 <div class="banner-box">
     <div class="bd">
         <ul>
-            <li style="background:#fff1d5;">
-                <div class="m-width">
-                    <a href="javascript:void(0);"><img src="/images/banner1.png"/></a>
-                </div>
-            </li>
-            <li style="background:#bfc0c2">
-                <div class="m-width">
-                    <a href="javascript:void(0);"><img src="/images/banner2.png"/></a>
-                </div>
-            </li>
+            {{#banner.bannerItems}}
+                <li style="background:#fff1d5;">
+                    <div class="m-width">
+                        <a href="{{url}}"><img src="http://115.29.185.235:8080{{bannerImage.absolutePath}}"/></a>
+                    </div>
+                </li>
+            {{/banner.bannerItems}}
         </ul>
     </div>
     <div class="banner-btn">

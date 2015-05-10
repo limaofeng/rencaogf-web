@@ -9,6 +9,15 @@ var router = express.Router();
 /* GET home page. */
 router.get('/', function (req, res) {
     flow.parallel({
+        banner: function (callback) {
+            http.get({
+                path: '/cms/banners/1053'
+            }, function (_res) {
+                _res.on('complete', function (body) {
+                    callback(0, body);
+                });
+            });
+        },
         designers: function (callback) {
             http.get({
                 path: '/cms/articles?EQS_category.code=designer&pager.pageSize=8'
@@ -49,112 +58,187 @@ router.get('/', function (req, res) {
 });
 router.get('/cases', function (req, res) {
     var code = req.param('code') || 'home';
-    http.get({
-        path: "/cms/articles?LIKES_category.path=snzxw,case," + code + ","
-    }, function (_res) {
-        _res.on('complete', function (body) {
-            var data = {
-                menus: {collection: true}, pager: pagerProxy(body, req), checkedMenu: function () {
-                    return function (text) {
-                        return code == text ? "active" : "";
-                    };
-                }, partials: {header: 'header', page: 'page', footer: 'footer'}
-            };
-            data.firstImagePath = function () {
+    flow.parallel({
+        banner: function (callback) {
+            http.get({
+                path: '/cms/banners/1053'
+            }, function (_res) {
+                _res.on('complete', function (body) {
+                    callback(0, body);
+                });
+            });
+        },
+        pager: function (callback) {
+            http.get({
+                path: "/cms/articles?LIKES_category.path=snzxw,case," + code + ","
+            }, function (_res) {
+                _res.on('complete', function (body) {
+                    callback(0, body);
+                });
+            })
+        }
+    }, function (err, result) {
+        var data = {
+            menus: {collection: true}, pager: pagerProxy(result.pager, req), checkedMenu: function () {
                 return function (text) {
-                    return this.images == null ? '/images/pro_img.png' : this.images[0].absolutePath.replace(/(\.jpg)$/, '_' + text + '$1');
-                }
-            };
-            res.render('cases/index', data);
-        });
+                    return code == text ? "active" : "";
+                };
+            }, partials: {header: 'header', page: 'page', footer: 'footer'}
+        };
+        data.firstImagePath = function () {
+            return function (text) {
+                return this.images == null ? '/images/pro_img.png' : this.images[0].absolutePath.replace(/(\.jpg)$/, '_' + text + '$1');
+            }
+        };
+
+        res.render('cases/index', mergeObject(result, data));
     });
 });
 router.get('/cases/:id', function (req, res) {
-    http.get({
-        path: '/cms/articles/' + req.params.id
-    }, function (_res) {
-        _res.on('complete', function (body) {
-            res.render('cases/details', {
-                menus: {collection: true},
-                case: body,
-                imagePath: function () {
-                    return function (text) {
-                        return this.absolutePath.replace(/(\.jpg)$/, '_' + text + '$1');
-                    }
-                },
-                isFristImage: function () {
-                    return !!body.images && body.images.length > 0 && body.images[0].absolutePath == this.absolutePath;
-                },
-                partials: {header: 'header', footer: 'footer'}
+    flow.parallel({
+        banner: function (callback) {
+            http.get({
+                path: '/cms/banners/1053'
+            }, function (_res) {
+                _res.on('complete', function (body) {
+                    callback(0, body);
+                });
             });
-        });
+        },
+        case: function (callback) {
+            http.get({
+                path: '/cms/articles/' + req.params.id
+            }, function (_res) {
+                _res.on('complete', function (body) {
+                    callback(0, body);
+                });
+            });
+        }
+    }, function (err, result) {
+        res.render('cases/details', mergeObject(result, {
+            menus: {collection: true},
+            imagePath: function () {
+                return function (text) {
+                    return this.absolutePath.replace(/(\.jpg)$/, '_' + text + '$1');
+                }
+            },
+            isFristImage: function () {
+                return !!body.images && body.images.length > 0 && body.images[0].absolutePath == this.absolutePath;
+            },
+            partials: {header: 'header', footer: 'footer'}
+        }));
     });
-});
 
+});
 router.get('/designers', function (req, res) {
-    http.get({
-        path: '/cms/articles?EQS_category.code=designer'
-    }, function (_res) {
-        _res.on('complete', function (body) {
-            res.render('designers/index', {
-                menus: {design: true},
-                pager: pagerProxy(body, req),
-                imagePath: function () {
-                    return function (text) {
-                        return this.avatar == null ? '/static/images/img.png' : this.avatar.absolutePath.replace(/(\.jpg)$/, '_' + text + '$1');
-                    }
-                },
-                partials: {header: 'header', page: 'page', footer: 'footer'}
+    flow.parallel({
+        banner: function (callback) {
+            http.get({
+                path: '/cms/banners/1053'
+            }, function (_res) {
+                _res.on('complete', function (body) {
+                    callback(0, body);
+                });
             });
-        });
+        },
+        pager: function (callback) {
+            http.get({
+                path: '/cms/articles?EQS_category.code=designer'
+            }, function (_res) {
+                _res.on('complete', function (body) {
+                    callback(0, body);
+                });
+            })
+        }
+    }, function (err, result) {
+        res.render('designers/index', mergeObject(result, {
+            menus: {design: true},
+            pager: pagerProxy(result.pager, req),
+            imagePath: function () {
+                return function (text) {
+                    return this.avatar == null ? '/static/images/img.png' : this.avatar.absolutePath.replace(/(\.jpg)$/, '_' + text + '$1');
+                }
+            },
+            partials: {header: 'header', page: 'page', footer: 'footer'}
+        }));
     });
 });
 router.get('/designers/:id', function (req, res) {
-    http.get({
-        path: '/cms/articles/' + req.params.id
-    }, function (_res) {
-        _res.on('complete', function (designer) {
+    flow.parallel({
+        banner: function (callback) {
             http.get({
-                path: '/cms/articles?EQS_designer=' + designer.title
+                path: '/cms/banners/1053'
             }, function (_res) {
                 _res.on('complete', function (body) {
-                    res.render('designers/details', {
-                        menus: {design: true},
-                        designer: designer,
-                        pager: pagerProxy(body, req),
-                        avatarImagePath: function () {
-                            return function (text) {
-                                return this.designer.avatar == null ? '/images/img.png' : this.designer.avatar.absolutePath.replace(/(\.jpg)$/, '_' + text + '$1');
-                            }
-                        },
-                        firstImagePath: function () {
-                            return function (text) {
-                                return this.images == null ? '/images/pro_img.png' : this.images[0].absolutePath.replace(/(\.jpg)$/, '_' + text + '$1');
-                            }
-                        },
-                        partials: {header: 'header', page: 'page', footer: 'footer'}
+                    callback(0, body);
+                });
+            });
+        },
+        root: function (callback) {
+            http.get({
+                path: '/cms/articles/' + req.params.id
+            }, function (_res) {
+                _res.on('complete', function (designer) {
+                    http.get({
+                        path: '/cms/articles?EQS_designer=' + designer.title
+                    }, function (_res) {
+                        _res.on('complete', function (body) {
+                            callback(0, {designer: designer, pager: pagerProxy(body, req)});
+                        });
                     });
                 });
             });
-        });
+        }
+    }, function (err, result) {
+        result.designer = result.root.designer;
+        result.pager = result.root.pager;
+        delete result.root;
+        res.render('designers/details', mergeObject(result, {
+            menus: {design: true},
+            avatarImagePath: function () {
+                return function (text) {
+                    return this.designer.avatar == null ? '/images/img.png' : this.designer.avatar.absolutePath.replace(/(\.jpg)$/, '_' + text + '$1');
+                }
+            },
+            firstImagePath: function () {
+                return function (text) {
+                    return this.images == null ? '/images/pro_img.png' : this.images[0].absolutePath.replace(/(\.jpg)$/, '_' + text + '$1');
+                }
+            },
+            partials: {header: 'header', page: 'page', footer: 'footer'}
+        }));
     });
+
 });
 router.get('/about', function (req, res) {
-    http.get({
-        path: '/cms/articles?EQS_category.code=about'
-    }, function (_res) {
-        _res.on('complete', function (body) {
-            res.render('about', {
-                menus: {about: true},
-                content: body.pageItems[0].content,
-                partials: {header: 'header', footer: 'footer'}
+    flow.parallel({
+        banner: function (callback) {
+            http.get({
+                path: '/cms/banners/1053'
+            }, function (_res) {
+                _res.on('complete', function (body) {
+                    callback(0, body);
+                });
             });
-        });
+        },
+        content: function (callback) {
+            http.get({
+                path: '/cms/articles?EQS_category.code=about'
+            }, function (_res) {
+                _res.on('complete', function (body) {
+                    callback(0, body.pageItems[0].content);
+                });
+            });
+        }
+    }, function (err, result) {
+        res.render('about', mergeObject(result, {
+            menus: {about: true},
+            partials: {header: 'header', footer: 'footer'}
+        }));
     });
 
+
 });
-
-
 router.get('/furnitures', function (req, res) {
     var path = req.param('path') || "/material";
     path = path.replace(/^\//, '').replace(/[/]/g, ",");
@@ -162,6 +246,15 @@ router.get('/furnitures', function (req, res) {
     var sign = paths[0];
     var subsign = paths.length > 1 ? paths[1] : null;
     flow.parallel({
+        banner: function (callback) {
+            http.get({
+                path: '/cms/banners/1053'
+            }, function (_res) {
+                _res.on('complete', function (body) {
+                    callback(0, body);
+                });
+            });
+        },
         category: function (callback) {
             http.get({
                 path: "/mall/goods/categorys?EQS_sign=" + sign
@@ -212,47 +305,83 @@ router.get('/furnitures', function (req, res) {
         res.render('furnitures/index', result);
     });
 });
-
 router.get('/furnitures/:id', function (req, res) {
-    http.get({
-        path: "/mall/goods/goodses/" + req.params.id
-    }, function (_res) {
-        _res.on('complete', function (body) {
-            res.render('furnitures/details', {
-                menus: {furniture: true},
-                goods: body,
-                imagePath: function () {
-                    return function (text) {
-                        return this.absolutePath.replace(/(\.jpg)$/, '_' + text + '$1');
-                    }
-                },
-                isFristImage: function () {
-                    return !!body.goodsImages && body.goodsImages.length > 0 && body.goodsImages[0].absolutePath == this.absolutePath;
-                },
-                partials: {header: 'header', footer: 'footer'}
+    flow.parallel({
+        banner: function (callback) {
+            http.get({
+                path: '/cms/banners/1053'
+            }, function (_res) {
+                _res.on('complete', function (body) {
+                    callback(0, body);
+                });
             });
-        });
+        },
+        goods: function (callback) {
+            http.get({
+                path: "/mall/goods/goodses/" + req.params.id
+            }, function (_res) {
+                _res.on('complete', function (body) {
+                    callback(0, body);
+                });
+            });
+        }
+    }, function (err, result) {
+        res.render('furnitures/details', mergeObject(result, {
+            menus: {furniture: true},
+            imagePath: function () {
+                return function (text) {
+                    return this.absolutePath.replace(/(\.jpg)$/, '_' + text + '$1');
+                }
+            },
+            isFristImage: function () {
+                return !!body.goodsImages && body.goodsImages.length > 0 && body.goodsImages[0].absolutePath == this.absolutePath;
+            },
+            partials: {header: 'header', footer: 'footer'}
+        }));
     });
-});
 
+});
 router.get('/companys', function (req, res) {
-    http.get({
-        path: '/cms/articles?EQS_category.code=company'
-    }, function (_res) {
-        _res.on('complete', function (body) {
-            res.render('companys', {
-                menus: {repair: true},
-                companys: body.pageItems,
-                partials: {header: 'header', footer: 'footer'}
+    flow.parallel({
+        banner: function (callback) {
+            http.get({
+                path: '/cms/banners/1053'
+            }, function (_res) {
+                _res.on('complete', function (body) {
+                    callback(0, body);
+                });
             });
-        });
+        },
+        companys: function (callback) {
+            http.get({
+                path: '/cms/articles?EQS_category.code=company'
+            }, function (_res) {
+                _res.on('complete', function (body) {
+                    callback(0, body.pageItems);
+                });
+            });
+        }
+    }, function (err, result) {
+        res.render('companys', mergeObject(result, {
+            menus: {repair: true},
+            partials: {header: 'header', footer: 'footer'}
+        }));
     });
-});
 
+});
 router.get('/news', function (req, res) {
     var path = req.param('path') || "/news";
     path = path.replace(/^\//, '').replace(/[/]/g, ",");
     flow.parallel({
+        banner: function (callback) {
+            http.get({
+                path: '/cms/banners/1053'
+            }, function (_res) {
+                _res.on('complete', function (body) {
+                    callback(0, body);
+                });
+            });
+        },
         category: function (callback) {
             http.get({
                 path: "/cms/categorys/" + path.replace(/^[^,]+,/, '')
@@ -292,35 +421,61 @@ router.get('/news', function (req, res) {
         res.render('news/index', result);
     });
 });
-
 router.get('/news/:id', function (req, res) {
-    http.get({
-        path: "/cms/articles/" + req.params.id
-    }, function (_res) {
-        _res.on('complete', function (_body) {
+    flow.parallel({
+        banner: function (callback) {
             http.get({
-                path: "/cms/articles?pager.pageSize=15&LIKES_category.path=" + _body.category.path
+                path: '/cms/banners/1053'
             }, function (_res) {
                 _res.on('complete', function (body) {
-                    res.render('news/details', {
-                        menus: {repair: true},
-                        news: _body,
-                        list: body.pageItems,
-                        partials: {header: 'header', footer: 'footer', page: 'page'}
+                    callback(0, body);
+                });
+            });
+        },
+        root: function (callback) {
+            http.get({
+                path: "/cms/articles/" + req.params.id
+            }, function (_res) {
+                _res.on('complete', function (_body) {
+                    http.get({
+                        path: "/cms/articles?pager.pageSize=15&LIKES_category.path=" + _body.category.path
+                    }, function (_res) {
+                        _res.on('complete', function (body) {
+                            callback(0, {news: _body, list: body.pageItems})
+                        });
                     });
                 });
             });
-        });
+        }
+    }, function (err, result) {
+        result.news = result.root.news;
+        result.list = result.root.list;
+        delete result.root;
+        res.render('news/details', mergeObject(result, {
+            menus: {repair: true},
+            partials: {header: 'header', footer: 'footer', page: 'page'}
+        }));
     });
-});
 
+});
 router.get('/feedback', function (req, res) {
-    res.render('feedback', {
-        menus: {feedback: true},
-        partials: {header: 'header', footer: 'footer', page: 'page'}
+    flow.parallel({
+        banner: function (callback) {
+            http.get({
+                path: '/cms/banners/1053'
+            }, function (_res) {
+                _res.on('complete', function (body) {
+                    callback(0, body);
+                });
+            });
+        }
+    },function(err, result){
+        res.render('feedback', mergeObject(result,{
+            menus: {feedback: true},
+            partials: {header: 'header', footer: 'footer', page: 'page'}
+        }));
     });
 });
-
 router.post('/consultations', function (req, res) {
     http.post({
         path: "/website/contactuses",
@@ -331,6 +486,24 @@ router.post('/consultations', function (req, res) {
         });
     });
 });
+
+var mergeObject = function () {
+    if (arguments.length == 0) {
+        throw new Error("Fantasy.merge 参数不正确!");
+    }
+    var plainObject = arguments[0];
+    for (var i = 1; i < arguments.length; i++) {
+        if (arguments[i] == null)
+            continue;
+        for (var f in arguments[i]) {
+            if (!arguments[i].hasOwnProperty(f)) {
+                continue;
+            }
+            plainObject[f] = arguments[i][f];
+        }
+    }
+    return plainObject;
+};
 
 var pagerProxy = function (pager, req) {
     var url = req.url.substr(0, req.url.indexOf('?') != -1 ? req.url.indexOf('?') : undefined);
@@ -369,12 +542,10 @@ var pagerProxy = function (pager, req) {
     return pager;
 };
 
-
-
-router.get('/furnitures', function (req, res) {
-    res.render('furnitures/lis', {
-        partials: {header: 'header', footer: 'footer'}
-    });
-});
+/*router.get('/furnitures_', function (req, res) {
+ res.render('furnitures/lis', {
+ partials: {header: 'header', footer: 'footer'}
+ });
+ });*/
 
 module.exports = router;
