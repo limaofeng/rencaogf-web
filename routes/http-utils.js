@@ -22,6 +22,8 @@ http.request = (function (_request) {
             'user-agent': 'nodejs rest client'
         };
 
+        options.path = ('/rencaogf'+options.path);
+
         if (!!options.content && typeof options.content != 'string') {
             options.content = querystring.stringify(options.content);
         }
