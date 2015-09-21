@@ -20,7 +20,7 @@ router.get('/', function (req, res) {
         },
         designers: function (callback) {
             http.get({
-                path: '/cms/articles?EQS_category.code=designer&pager.pageSize=8'
+                path: '/cms/articles?EQS_category.code=designer&pager.pageSize=3'
             }, function (_res) {
                 _res.on('complete', function (body) {
                     callback(0, body.pageItems);
@@ -29,7 +29,7 @@ router.get('/', function (req, res) {
         },
         zxzs: function (callback) {
             http.get({
-                path: '/cms/articles?EQS_category.code=zxzs&pager.pageSize=6'
+                path: '/cms/articles?EQS_category.code=zxzs&pager.pageSize=3'
             }, function (_res) {
                 _res.on('complete', function (body) {
                     callback(0, body.pageItems);
@@ -146,6 +146,7 @@ router.get('/designers', function (req, res) {
                 path: '/cms/articles?EQS_category.code=designer'
             }, function (_res) {
                 _res.on('complete', function (body) {
+                    console.log(body);
                     callback(0, body);
                 });
             })
@@ -211,62 +212,68 @@ router.get('/designers/:id', function (req, res) {
 
 });
 router.get('/about', function (req, res) {
-    flow.parallel({
-        banner: function (callback) {
-            http.get({
-                path: '/cms/banners/1053'
-            }, function (_res) {
-                _res.on('complete', function (body) {
-                    callback(0, body);
-                });
-            });
-        },
-        content: function (callback) {
-            http.get({
-                path: '/cms/articles?EQS_category.code=about'
-            }, function (_res) {
-                _res.on('complete', function (body) {
-                    callback(0, body.pageItems[0].content);
-                });
-            });
-        }
-    }, function (err, result) {
-        res.render('about', mergeObject(result, {
-            menus: {about: true},
-            partials: {header: 'header', footer: 'footer'}
-        }));
-    });
-
-
+    /*
+     flow.parallel({
+     banner: function (callback) {
+     http.get({
+     path: '/cms/banners/1053'
+     }, function (_res) {
+     _res.on('complete', function (body) {
+     callback(0, body);
+     });
+     });
+     },
+     content: function (callback) {
+     http.get({
+     path: '/cms/articles?EQS_category.code=about'
+     }, function (_res) {
+     _res.on('complete', function (body) {
+     callback(0, body.pageItems[0].content);
+     });
+     });
+     }
+     }, function (err, result) {
+     res.render('about', mergeObject(result, {
+     menus: {about: true},
+     partials: {header: 'header', footer: 'footer'}
+     }));
+     });
+     */
+    res.render('about', mergeObject({}, {
+        menus: {about: true},
+        partials: {header: 'header', footer: 'footer'}
+    }));
 });
-router.get('/furnitures', function (req, res) {
-    var path = req.param('path') || "/material";
-    path = path.replace(/^\//, '').replace(/[/]/g, ",");
-    var paths = path.split(",");
-    var sign = paths[0];
-    var subsign = paths.length > 1 ? paths[1] : null;
+
+router.get('/products', function (req, res) {
+    http.get({
+        path: "/mall/goods/categorys?LIKES_path=snzxw,&EQI_layer=1"
+    }, function (_res) {
+        _res.on('complete', function (body) {
+            res.render('products/categorys', mergeObject({"categorys": body.pageItems}, {
+                menus: {products: true},
+                partials: {header: 'header', footer: 'footer'}
+            }));
+        });
+    });
+});
+
+router.get('/products/:code/list', function (req, res) {
+    var psign = req.params.code;
+    var sign = req.param('sign') || "";
     flow.parallel({
-        banner: function (callback) {
+        categorys: function (callback) {
             http.get({
-                path: '/cms/banners/1053'
+                path: "/mall/goods/categorys?LIKES_path=snzxw,&EQI_layer=1"
             }, function (_res) {
                 _res.on('complete', function (body) {
-                    callback(0, body);
-                });
-            });
-        },
-        category: function (callback) {
-            http.get({
-                path: "/mall/goods/categorys?EQS_sign=" + sign
-            }, function (_res) {
-                _res.on('complete', function (body) {
-                    callback(0, body.pageItems[0]);
+                    callback(0, body.pageItems);
                 });
             });
         },
         children: function (callback) {
             http.get({
-                path: "/mall/goods/categorys?LIKES_path=snzxw," + sign + ",&NES_sign=" + sign
+                path: "/mall/goods/categorys?LIKES_path=snzxw," + psign + ",&NES_sign=" + psign
             }, function (_res) {
                 _res.on('complete', function (body) {
                     callback(0, body.pageItems);
@@ -275,7 +282,7 @@ router.get('/furnitures', function (req, res) {
         },
         pager: function (callback) {
             http.get({
-                path: "/mall/goods/goodses?LIKES_category.path=snzxw," + path + ","
+                path: "/mall/goods/goodses?LIKES_category.path=snzxw," + (!!psign ? (psign + ",") : psign) + (!!sign ? (sign + ",") : sign)
             }, function (_res) {
                 _res.on('complete', function (body) {
                     callback(0, body);
@@ -284,27 +291,36 @@ router.get('/furnitures', function (req, res) {
         }
     }, function (err, result) {
         result.pager = pagerProxy(result.pager, req);
-        result.menus = {furniture: true};
+        result.menus = {products: true};
         result.partials = {header: 'header', footer: 'footer', page: 'page'};
         result.checkedMenu = function () {
             return function (text) {
-                return sign == text ? "active" : "";
+                return psign == hogan.compile(text).render(this) ? "curr" : "";
             };
         };
         result.checkedSub = function () {
             return function (text) {
-                return subsign == hogan.compile(text).render(this) ? "active" : "";
+                return sign == hogan.compile(text).render(this) ? "curr" : "";
             };
         };
+        result.psign = psign;
         result.replacePath = function () {
             return function (text) {
                 return hogan.compile(text).render(this).replace(/^snzxw,/, '/').replace(/,$/, '').replace(/,/g, '/');
             };
         };
         result['type_' + (!!req.query.type ? req.query.type : 1)] = true;
-        res.render('furnitures/index', result);
+        res.render('products/index', result);
     });
 });
+
+router.get('/shop', function (req, res) {
+    res.render('shop', mergeObject({}, {
+        menus: {shop: true},
+        partials: {header: 'header', footer: 'footer'}
+    }));
+});
+
 router.get('/furnitures/:id', function (req, res) {
     flow.parallel({
         banner: function (callback) {
@@ -373,15 +389,16 @@ router.get('/news', function (req, res) {
     var path = req.param('path') || "/news";
     path = path.replace(/^\//, '').replace(/[/]/g, ",");
     flow.parallel({
-        banner: function (callback) {
-            http.get({
-                path: '/cms/banners/1053'
-            }, function (_res) {
-                _res.on('complete', function (body) {
-                    callback(0, body);
-                });
-            });
-        },
+        /*
+         banner: function (callback) {
+         http.get({
+         path: '/cms/banners/1053'
+         }, function (_res) {
+         _res.on('complete', function (body) {
+         callback(0, body);
+         });
+         });
+         },*/
         category: function (callback) {
             http.get({
                 path: "/cms/categorys/" + path.replace(/^[^,]+,/, '')
@@ -393,7 +410,7 @@ router.get('/news', function (req, res) {
         },
         pager: function (callback) {
             http.get({
-                path: "/cms/articles?LIKES_category.path=snzxw," + path + ",",
+                path: "/cms/articles?LIKES_category.path=snzxw," + path + ",&pager.pageSize=8",
                 content: req.query
             }, function (_res) {
                 _res.on('complete', function (body) {
@@ -403,7 +420,7 @@ router.get('/news', function (req, res) {
         }
     }, function (error, data) {
         var result = {
-            menus: {new: true},
+            menus: {news: true},
             checkedMenu: function () {
                 return function (text) {
                     return req.param('path') == text ? "active" : "";
@@ -423,15 +440,16 @@ router.get('/news', function (req, res) {
 });
 router.get('/news/:id', function (req, res) {
     flow.parallel({
-        banner: function (callback) {
-            http.get({
-                path: '/cms/banners/1053'
-            }, function (_res) {
-                _res.on('complete', function (body) {
-                    callback(0, body);
-                });
-            });
-        },
+        /*
+         banner: function (callback) {
+         http.get({
+         path: '/cms/banners/1053'
+         }, function (_res) {
+         _res.on('complete', function (body) {
+         callback(0, body);
+         });
+         });
+         },*/
         root: function (callback) {
             http.get({
                 path: "/cms/articles/" + req.params.id
@@ -452,7 +470,7 @@ router.get('/news/:id', function (req, res) {
         result.list = result.root.list;
         delete result.root;
         res.render('news/details', mergeObject(result, {
-            menus: {repair: true},
+            menus: {news: true},
             partials: {header: 'header', footer: 'footer', page: 'page'}
         }));
     });
@@ -469,8 +487,8 @@ router.get('/feedback', function (req, res) {
                 });
             });
         }
-    },function(err, result){
-        res.render('feedback', mergeObject(result,{
+    }, function (err, result) {
+        res.render('feedback', mergeObject(result, {
             menus: {feedback: true},
             partials: {header: 'header', footer: 'footer', page: 'page'}
         }));
@@ -487,8 +505,8 @@ router.get('/brand', function (req, res) {
                 });
             });
         }
-    },function(err, result){
-        res.render('furnitures/brand', mergeObject(result,{
+    }, function (err, result) {
+        res.render('furnitures/brand', mergeObject(result, {
             menus: {feedback: true},
             partials: {header: 'header', footer: 'footer', page: 'page'}
         }));
@@ -537,23 +555,17 @@ var pagerProxy = function (pager, req) {
             if (!pager.first) {
                 pager.pagePrevUrl = url + '?pager.currentPage=' + (pager.currentPage - 1) + _querystring;
             }
+            pager.pageFirstUrl = url + '?pager.currentPage=1' + _querystring;
+
             pager.last = pager.totalPage == pager.currentPage;
             if (!pager.last) {
                 pager.pageNextUrl = url + '?pager.currentPage=' + (pager.currentPage + 1) + _querystring;
             }
+            pager.pageLastUrl = url + '?pager.currentPage=' + pager.totalPage + _querystring;
             pager.pages = [];
             for (var i = 1; i <= pager.totalPage; i++) {
                 pager.pages.push(i);
             }
-            pager.pageCurrent = function () {
-                return function (text) {
-                    var data = {page: this, pageUrl: url + '?pager.currentPage=' + this + _querystring};
-                    if (this == pager.currentPage) {
-                        data.current = true;
-                    }
-                    return hogan.compile(text).render(data);
-                };
-            };
             return hogan.compile(text).render(pager);
         };
     };

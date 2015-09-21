@@ -20,29 +20,23 @@
 
 <div class="maiDiv white_block">
     <div class="sub_title">
-        <span>NEWS Dynamic</span>
-        <h2><span>新闻动态</span></h2>
+        <span>PRODUCTS</span>
+        <h2><span>产品类别</span></h2>
     </div>
-    <ul class="i_new news_list">
-        {{#pager.pageItems}}
-        <li>
-            <h3 title="{{title}}"><a target="_blank" href="/news/{{id}}">【{{category.name}}】{{title}}</a></h3>
-            <p>
-                <a target="_blank" href="/news/{{id}}">
-                    {{summary}}
-                </a>
-            </p>
-            <span class="icon-time">
-                <i> </i>
-                {{releaseDate}}
-            </span>
-        </li>
-        {{/pager.pageItems}}
-    </ul>
-    <div class="clearBoth"> </div>
-    {{>page}}
-</div>
 
+    <div>
+        <ul class="four_table clearBoth">
+            {{#categorys}}
+            <li>
+                <a href="/products/{{sign}}/list">
+                    <img src="../images/pro.png" width="240" height="160" alt="产品分类"/>
+                </a>
+                <b>{{name}}</b>
+            </li>
+            {{/categorys}}
+        </ul>
+        <div class="clear"> </div>
+    </div>
+</div>
 {{>footer}}
 </body>
-</html>

@@ -2,232 +2,77 @@
 <html>
 <head lang="en">
     <meta charset="UTF-8">
-    <title>室内装修网</title>
-    <!--<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0"/>-->
-    <meta name="keywords" content="关键词，tapas"/>
-    <meta name="description" content="摘要，tapas"/>
-    <script src="/js/jquery-1.8.3.min.js"></script>
-    <script type="text/javascript" src="/js/jquery.SuperSlide.2.1.1.js"></script>
-    <link href="/css/css.css" type="text/css" rel="stylesheet">
-    <link href="/css/keyframes.css" type="text/css" rel="stylesheet">
-    <script type="text/javascript">
-        $(document).ready(function(){
-            $(".prev,.next").hover(function(){
-                $(this).stop(true,false).fadeTo("show",0.9);
-            },function(){
-                $(this).stop(true,false).fadeTo("show",0.4);
-            });
-            $(".banner-box").slide({
-                titCell:".hd ul",
-                mainCell:".bd ul",
-                effect:"fold",
-                interTime:3500,
-                delayTime:500,
-                autoPlay:true,
-                autoPage:true,
-                trigger:"click"
-            });
-            $(".btn_top").click(function(){
-                $("html,body").animate({scrollTop:'0'},400);return false;
-            });
-        });
-    </script>
+    <title>韧草工坊</title>
+    <meta name="viewport" content="width=device-width; initial-scale=1.0">
+    <meta name="keywords" content="关键词，韧草工坊,rencaogf"/>
+    <meta name="description" content="摘要，韧草工坊"/>
+    <link rel="stylesheet" type="text/css" media="only screen and (max-width:480px),only screen and(max-device-width:480px)" href=""/>
+    <link rel="stylesheet" type="text/css" href="../css/css.css" />
+    <link rel="stylesheet" type="text/css" href="../css/layout.css" />
 </head>
 <body>
 {{>header}}
-
-<div class="ie_maiDiv mai_content">
-    <h2 class="in_title">
-        <span class="icon-ye">
-
-        </span>
-        案例展示
-        <span class="icon-ye2">
-
-        </span>
-    </h2>
-    <p class="in_about">公司所有设计师均有3年以上工作经历，资质深厚。 17年风雨历程，不仅造就了一代艰苦创业 、成就辉煌</p>
-    <ul class="in_coll_list">
-        <li>
-            <a href="/cases?code=home">
-                <i class="in_coll_pic1"> </i>
-                <span>家装案例</span>
-            </a>
-        </li>
-        <li>
-            <a href="/cases?code=tool">
-                <i class="in_coll_pic2"> </i>
-                <span>工装案例</span>
-            </a>
-        </li>
-        <li>
-            <a href="/cases?code=business">
-                <i class="in_coll_pic3"> </i>
-                <span>商业空间</span>
-            </a>
-        </li>
-    </ul>
-    <div class="clear"> </div>
+<!--menu-->
+<div class="maiDiv banner">
+    <h2>手工是对时间的尊重与敬畏</h2>
+    <h3>The manual is the time of respect and reverence</h3>
 </div>
-<!--案例结束-->
-<div class="mai_content chang_design">
-    <div class="ie_maiDiv">
-        <h2 class="in_title">
-            <span class="icon-ye">
 
-            </span>
-            设计师推荐
-            <span class="icon-ye2">
-
-            </span>
-        </h2>
-        <p class="in_about">用现代的眼光看待传统的魅力，营造设计之魂</p>
-        <ul class="chang_design_intro">
-            {{#designers}}
-            <li>
-                <a href="/designers/{{id}}">
-                    <i class="design_intro_pic"><img src="http://115.29.185.235:8080{{#avatarImagePath}}150x150{{/avatarImagePath}}" width="150" height="150" alt=""/></i>
+<div class="maiDiv white_block">
+    <ul class="in-w i_new">
+        {{#zxzs}}
+        <li>
+            <h3 title="{{title}}"><a target="_blank" href="/news/{{id}}">【{{category.name}}】{{title}}</a></h3>
+            <p>
+                <a href="/news/{{id}}"  target="_blank">
+                    {{summary}}
                 </a>
-                <span class="design_intro_pic_txt">
-                    <p>{{title}}</p>
-                    <p class="col666">{{summary}}</p>
-                    <!--
-                    <p class="col666">工作年限：4年</p>
-                    -->
-                </span>
-                <i class="linear"></i>
-                <a class="ie_design_content_btn" href="/designers/{{id}}">查看作品</a>
+            </p>
+            <span class="icon-time">
+                <i> </i>
+                {{releaseDate}}
+            </span>
+        </li>
+        {{/zxzs}}
+        <li><a href="/news" class="more">&nbsp</a></li>
+    </ul>
+
+
+    <div class="in-w i_pro">
+        <a href="products_detail.html">
+            <img src="../images/pro.png" width="240" height="160" alt="韧草工坊"/>
+        </a>
+        <a href="products_detail.html">
+            <img src="../images/pro.png" width="240" height="160" alt="韧草工坊"/>
+        </a>
+        <a href="products_detail.html">
+            <img src="../images/pro.png" width="240" height="160" alt="韧草工坊"/>
+        </a>
+        <a href="products_detail.html">
+            <img src="../images/pro.png" width="240" height="160" alt="韧草工坊"/>
+        </a>
+        <a href="products.html" class="more">&nbsp</a>
+    </div>
+
+    <div class="clear"> </div>
+    <div class="in_design">
+        <h2>设计团队</h2>
+        <ul class="in_design_border">
+            {{#designers}}
+            <li title="{{title}}">
+                <i></i>
+                <a href="/designers/{{id}}">{{title}}，{{summary}}</a>
             </li>
             {{/designers}}
         </ul>
-        <div class="title_more">
-            <a class="ie_design_content_btn" href="/designers">更多设计师</a>
-            <p>这些都不是我要找的设计师?</p>
-            <p>&emsp;   &emsp;  &emsp;我们还有更多优秀设计师</p>
-
-        </div>
-        <div class="clear"> </div>
-    </div>
-
-</div>
-<!--设计师推荐结束-->
-<div class="ie_maiDiv in_txt_content">
-    <div class="chang_in_zx">
-        <div class="in_txt_content_block">
-            <h2><i class="icon-setting"> </i>装修知识</h2>
-            <i><img src="http://p1.qhimg.com/t01627f6866d3427b80.jpg" width="270" height="180"/> </i>
-            <ul>
-                {{#zxzs}}
-                <li>
-                    <a href="/news/{{id}}">
-                        {{title}}
-                    </a>
-                </li>
-                {{/zxzs}}
-            </ul>
-        </div>
-    </div>
-    <!---->
-
-    <div class="chang_in_fx">
-        <div class="in_txt_content_block">
-            <h2><i class="icon-gate"> </i>
-                风水案例</h2>
-            <ul>
-                {{#fsal}}
-                <li>
-                    <a href="/news/{{id}}">
-                        {{title}}
-                    </a>
-                </li>
-                {{/fsal}}
-            </ul>
-        </div>
-    </div>
-
-    <!---->
-
-
-    <div class="chang_in_fur">
-
-        <ul class="furniture_content clearBoth">
-            <li class="active">
-                <a href="/furnitures?path=/material">
-                    <i class="icon iconfont">㑓</i>
-                    <span>装饰材料</span>
-                </a>
-            </li>
-            <li class="">
-                <a href="/furnitures?path=/kitchen">
-                    <i class="icon iconfont">󰃫</i>
-                    <span>厨房卫浴</span>
-                </a>
-            </li>
-            <li class="">
-                <a href="/furnitures?path=/appliances">
-                    <i class="icon iconfont">󰁸</i>
-                    <span>家具电器</span>
-                </a>
-            </li>
-            <!--
-            <li >
-                <a href="/furnitures?type=4">
-                    <i class="icon iconfont">&#xf00a7;</i>
-                    <span>墙地面材料</span>
-                </a>
-            </li>
-            <li >
-                <a href="/furnitures?type=5">
-                    <i class="icon iconfont">&#xf0083;</i>
-                    <span>灯饰照明</span>
-                </a>
-            </li>
-            <li >
-                <a href="/furnitures?type=6">
-                    <i class="icon iconfont">&#x347f;</i>
-                    <span>五金工具</span>
-                </a>
-            </li>
-            <li >
-                <a href="/furnitures?type=7">
-                    <i class="icon iconfont">&#x345e;</i>
-                    <span>定制家居</span>
-                </a>
-            </li>
-            <li >
-                <a href="/furnitures?type=8">
-                    <i class="icon iconfont">&#xf008b;</i>
-                    <span>客户提供</span>
-                </a>
-            </li>
-            -->
-        </ul>
-    </div>
-
-</div>
-<!--文本区域-->
-<div class="in_contact_content">
-    <div class="ie_maiDiv">
-        <div class="in_con_con_block">
-            <i class="twowm"><img src="/images/twowm.png" width="230" height="230"/></i>
-            <div class="in_con_con_right">
-                <h2>联系我们</h2>
-                <div>
-                    <p>地址：<span>上海市宝山区殷高西路518号7楼</span></p>
-                    <p>电话：<span>18817614810  |   15102171118</span></p>
-                    <p>联系人：<span>赵小姐          　 |   李先生</span></p>
-                    <p>Email：<span>465445890@qq.com</span></p>
-                    <!--
-                    <p>传真：<span>021-59265555</span></p>
-                    -->
-                </div>
-            </div>
-            <a class="btn_top">返回顶部</a>
+        <div class="footer">
+            <a href="design.html" class="in_design_more">
+                更多设计师
+            </a>
         </div>
     </div>
 </div>
-<!--content end-->
-
 {{>footer}}
+
 </body>
 </html>

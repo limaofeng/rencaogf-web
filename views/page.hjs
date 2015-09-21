@@ -1,27 +1,10 @@
-<div class="clear"></div>
 <div class="page">
     {{#pager.template}}
-        {{#first}}
-            <span class="no-click"><i class="arrow_css_left"></i></span>
-        {{/first}}
-        {{^first}}
-            <a href="{{pagePrevUrl}}"><i class="arrow_css_left"></i></a>
-        {{/first}}
-        {{#pages}}
-            {{#pageCurrent}}
-                {{#current}}
-                    <span class="current">{{page}}</span>
-                {{/current}}
-                {{^current}}
-                    <a href="{{pageUrl}}">{{page}}</a>
-                {{/current}}
-            {{/pageCurrent}}
-        {{/pages}}
-        {{#last}}
-            <span class="no-click"><i class="arrow_css_left arrow_css_right"></i></span>
-        {{/last}}
-        {{^last}}
-            <a href="{{pageNextUrl}}"><i class="arrow_css_left arrow_css_right"></i></a>
-        {{/last}}
+        <a class="arrow_1" href="{{pageFirstUrl}}">&nbsp</a>
+        <a class="arrow_2" href="{{pagePrevUrl}}">&nbsp</a>
+        <span><i style="color: red">{{currentPage}}</i>/{{totalPage}}</span>
+        <a class="arrow_2 arrow_3" href="{{pageNextUrl}}">&nbsp</a>
+        <a class="arrow_1 arrow_3" href="{{pageLastUrl}}">&nbsp</a>
     {{/pager.template}}
 </div>
+<div class="clearBoth"> </div>

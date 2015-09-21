@@ -69,7 +69,7 @@ http.request = (function (_request) {
             });
             res.on('end', function () {
                 var body = buffer.toBuffer();
-                console.log('DEUBG:' + options.path + 'STATUS: ' + res.statusCode + '\r\n' + body.toString());
+                console.log('DEUBG:' + options.path + 'STATUS: ' + res.statusCode + '\r\n');
                 if (!!contentType && contentType.indexOf('json') != -1) {
                     res.emit('complete', JSON.parse(body.toString() || '{}'));
                 } else {

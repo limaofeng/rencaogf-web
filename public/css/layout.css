@@ -1,0 +1,83 @@
+@charset "utf-8";
+/* CSS iejfpuv */
+/*heiti:SimHei ,songti:SimSun, ,yahei:Microsoft YaHei*/
+/*table-layout:fixed; overflow:hidden; word-break:break-all; white-space:normal;*/
+
+
+body{margin:0px; padding:0px; color:white; overflow-y:scroll; -webkit-text-size-adjust:none;background:black; font:14px/1.5 Microsoft YaHei,Tahoma,Helvetica,Arial,simsun}
+*:focus{ outline: none;resize:none; }
+div,form,img,ul,ol,li,dl,dt,dd,b,em,big,small,i,tt,q,header,footer,section
+{margin:0px; padding:0px; border:0px; list-style:none; font-style:normal;}
+img,img a{ border:0px; padding:0px; display:block;outline:none;}
+a:focus {outline: none;}
+li,dl,ol{list-style:none;}
+b,i,big,small{font-style:normal; font-weight:normal;}
+h1,h2,h3,h4,h5,h6 {margin:0px; padding:0px;font-weight:normal;}
+.blank3{ height:3px; clear:both; font-size:1px;overflow:hidden;}
+.blank6{height:6px; font-size:1px; clear:both;overflow:hidden;}
+.blank9{ height:9px; font-size:1px; clear:both;overflow:hidden;}
+.blank12{ height:12px; font-size:1px;clear:both;overflow:hidden;}
+.blank15{ height:15px; font-size:1px;clear:both;overflow:hidden;}
+.blank18{ height:18px; font-size:1px;clear:both;overflow:hidden;}
+.blank20{ height:20px; font-size:1px;clear:both;overflow:hidden;}
+.floatL{ float:left;}
+.floatR{ float:right;}
+.clearBoth{clear:both;}
+.clear ,span.clear{ clear:both; font-size:1px; width:0px; height:0px; visibility: hidden; overflow:hidden; display:block !important; }
+.clearFF:after{content:"."; display:block; height: 0; clear: both; visibility: hidden;} /* only FF */
+/********[link]************/
+a{color:#333; text-decoration:none;}
+a:hover {color:#333; text-decoration:none;}
+.cRed,a.cRed:link,a.cRed:visited{color:#f00;}
+.cBlue,.cBlue a:link,.cBlue a:visited,.cBlue a:active,.greyBtnBg a.cBlue{color:#1a66b3;}
+.cDRed,a.cDRed:link,a.cDRed:visited{ color:#bc2931;}
+.cGray,a.cGray:link,a.cGray:visited{ color: #4F544D;}
+.cDGray,a.cDGray:link,a.cDGray:visited{ color: #666;}
+.cWhite,a.cWhite:link,a.cWhite:visited{ color:#fff;}
+.cBlack,a.cBlack:link,a.cBlack:visited{color:#000;}
+a.cBlack:hover{color:#bc2931;}
+.cYellow,a.cYellow:link,a.cYellow:visited{color:#ff0;}
+.cGreen,a.cGreen:link,a.cGreen:visited{color:#008000;}
+.cwhite,a.cwhite:link,a.cwhite:visited{color:white;}
+.unLine,.unLine a{text-decoration: none;}
+.onLine,.onLine a{text-decoration:underline;}
+/*{*************************}*/
+.padU_5{padding-top:5px;}.padU_10{padding-top:10px;}.padU_15{padding-top:15px;}.padU_20{padding-top:20px;}
+.padR_5{padding-right:5px;}.padR_10{padding-right:10px;}.padR_15{padding-right:15px;}.padR_20{padding-right:20px;} 
+.padD5{padding-bottom:5px;}.padD10{padding-bottom:10px;}.padD15{padding-bottom:15px;}.padD20{padding-bottom:20px;}
+.padL_5{padding-left:5px;}.padL_10{padding-left:10px;}.padL_15{padding-left:15px;}.padL_20{padding-left:20px;}
+.pad5{padding:5px;}.pad10{padding:10px;}.pad15{padding:15px;}.padd20{padding:20px;}
+.padUB5{padding:5px 0px;}.padUB10{padding:10px 0px;}.padUB15{padding:15px 0px;}.padUB20{padding:20px 0px;}
+.padLR5{padding:0px 5px;}.padLR10{padding:0px 10px;}.padLR15{padding:0px 15px;}.padLR20{padding:0px 20px;}
+.marU_5{margin-top:5px;}.marU_10{margin-top:10px;}.marU_15{margin-top:15px;}.marU_20{margin-top:20px;}
+.marR_5{margin-right:5px;}.marR_10{margin-right:10px;}.marR_15{margin-right:15px;}.marR_20{margin-right:20px;}
+.marD_5{margin-bottom:5px;}.marD_10{margin-bottom:10px;}.marD_15{margin-bottom:15px;}.marD_20{margin-bottom:20px;}
+.marL_5{margin-left:5px;}.marL_10{margin-left:10px;}.marL_15{margin-left:15px;}.marL_20{margin-left:20px;}
+.mar5{margin:5px;}.mar10{margin:10px;}.mar15{margin:15px;}.mar20{margin:20px;}
+.marUB5{margin:5px 0px;}.marUB10{margin:10px 0px;}.marUB15{margin:15px 0px;}.marUB20{margin:20px 0px;}
+.marLR5{margin:0px 5px;}.marLR10{margin:0px 10px;}.marLR15{margin:0px 15px;}.marLR20{margin:0px 20px;}
+/*{*************************}*/
+/********[link]************/
+.fB {font-weight: bold;}
+.f12px{ font-size:12px;}
+.f13px{ font-size:13px;}
+.f14px{ font-size:14px;}
+.f16px{ font-size:16px;}
+.f26px{ font-size:26px;}
+.lh14{line-height:14px;}
+.lh16{line-height:16px;}
+.lh18{line-height:18px;}
+.lh20{line-height:20px;}
+.lh22{line-height:22px;}
+.lh24{line-height:24px;}
+.lh26{line-height:26px;}
+.lh28{line-height:28px;}
+.lh35{line-height:35px;}
+.col999{color:#999;}
+.col666{color:#666;}
+.col333{color:#333;}
+.colBlue{color:#01b2fe;}
+/* font line-height */
+
+
+

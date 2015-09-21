@@ -7,12 +7,12 @@
     <meta name="keywords" content="关键词，韧草工坊,rencaogf"/>
     <meta name="description" content="摘要，韧草工坊"/>
     <link rel="stylesheet" type="text/css" media="only screen and (max-width:480px),only screen and(max-device-width:480px)" href=""/>
-    <link rel="stylesheet" type="text/css" href="../css/css.css" />
-    <link rel="stylesheet" type="text/css" href="../css/layout.css" />
+    <link rel="stylesheet" type="text/css" href="/css/css.css" />
+    <link rel="stylesheet" type="text/css" href="/css/layout.css" />
 </head>
 <body>
 {{>header}}
-<!--menu-->
+
 <div class="maiDiv banner">
     <h2>手工是对时间的尊重与敬畏</h2>
     <h3>The manual is the time of respect and reverence</h3>
@@ -20,29 +20,35 @@
 
 <div class="maiDiv white_block">
     <div class="sub_title">
-        <span>Design team</span>
-        <h2><span>设计团队</span></h2>
+        <span>PRODUCTS</span>
+        <h2><span>产品类别</span></h2>
+        <div class="sub_pro_nav marU_10">
+
+            {{#children}}
+                <a class="{{#checkedSub}}{{sign}}{{/checkedSub}}" href="/products/{{psign}}/list?sign={{sign}}">{{name}}</a>
+            {{/children}}
+        </div>
     </div>
 
     <div class="padD10 clearFF">
         {{#pager.pageItems}}
         <dl class="four_table_dl">
             <dd class="pic">
-                <a href="/designers/{{id}}" target="_blank">
-                    <img src="http://115.29.185.235:8080{{#imagePath}}150x150{{/imagePath}}" width="240" height="160" alt="产品名称"/>
+                <a href="/products/{{id}}" target="_blank">
+                    <img src="{{#defaultGoodsImagePath}}http://115.29.185.235:8080{{defaultGoodsImagePath}}{{/defaultGoodsImagePath}}" width="240" height="160" alt="产品名称"/>
                 </a>
             </dd>
             <dt>
-                {{title}}
+                {{name}}
             </dt>
             <dd>
-                擅长：<span>{{summary}}</span>
+                规格：<span>23mm*230mm*23mm</span>
             </dd>
             <dd>
-                工艺时长：<span>5年</span>
+                材质：<span>头层牛皮</span>
             </dd>
             <dd>
-                <a href="/designers/{{id}}" target="_blank">
+                <a href="/products/{{id}}" target="_blank">
                     <img src="/images/btn.png" width="85" height="25" alt="查看详情"/>
                 </a>
             </dd>
@@ -53,10 +59,14 @@
 
         {{>page}}
 
-        <div class="clearBoth"> </div>
-
+        <div class="o_nav">
+        {{#categorys}}
+            <a class="{{#checkedMenu}}{{sign}}{{/checkedMenu}}" href="/products/{{sign}}/list">{{name}}</a>
+        {{/categorys}}
+        </div>
     </div>
 </div>
 
 {{>footer}}
 </body>
+</html>
