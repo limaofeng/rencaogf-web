@@ -20,7 +20,7 @@
 
 <div class="maiDiv white_block">
     <ul class="in-w i_new">
-        {{#zxzs}}
+        {{#news}}
         <li>
             <h3 title="{{title}}"><a target="_blank" href="/news/{{id}}">【{{category.name}}】{{title}}</a></h3>
             <p>
@@ -33,7 +33,7 @@
                 {{releaseDate}}
             </span>
         </li>
-        {{/zxzs}}
+        {{/news}}
         <li><a href="/news" class="more">&nbsp</a></li>
     </ul>
 

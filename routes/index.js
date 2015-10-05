@@ -9,15 +9,6 @@ var router = express.Router();
 /* GET home page. */
 router.get('/', function (req, res) {
     flow.parallel({
-        banner: function (callback) {
-            http.get({
-                path: '/cms/banners/1053'
-            }, function (_res) {
-                _res.on('complete', function (body) {
-                    callback(0, body);
-                });
-            });
-        },
         designers: function (callback) {
             http.get({
                 path: '/cms/articles?EQS_category.code=designer&pager.pageSize=3'
@@ -27,18 +18,9 @@ router.get('/', function (req, res) {
                 });
             });
         },
-        zxzs: function (callback) {
+        news: function (callback) {
             http.get({
-                path: '/cms/articles?EQS_category.code=zxzs&pager.pageSize=3'
-            }, function (_res) {
-                _res.on('complete', function (body) {
-                    callback(0, body.pageItems);
-                });
-            });
-        },
-        fsal: function (callback) {
-            http.get({
-                path: '/cms/articles?EQS_category.code=fsal&pager.pageSize=6'
+                path: '/cms/articles?EQS_category.code=news&pager.pageSize=6'
             }, function (_res) {
                 _res.on('complete', function (body) {
                     callback(0, body.pageItems);
