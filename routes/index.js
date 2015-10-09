@@ -113,38 +113,41 @@ router.get('/cases/:id', function (req, res) {
 
 });
 router.get('/designers', function (req, res) {
-    flow.parallel({
-        banner: function (callback) {
-            http.get({
-                path: '/cms/banners/1053'
-            }, function (_res) {
-                _res.on('complete', function (body) {
-                    callback(0, body);
-                });
-            });
-        },
-        pager: function (callback) {
-            http.get({
-                path: '/cms/articles?EQS_category.code=designer'
-            }, function (_res) {
-                _res.on('complete', function (body) {
-                    console.log(body);
-                    callback(0, body);
-                });
-            })
-        }
-    }, function (err, result) {
-        res.render('designers/index', mergeObject(result, {
-            menus: {design: true},
-            pager: pagerProxy(result.pager, req),
-            imagePath: function () {
-                return function (text) {
-                    return this.avatar == null ? '/static/images/img.png' : this.avatar.absolutePath.replace(/(\.jpg)$/, '_' + text + '$1');
-                }
-            },
-            partials: {header: 'header', page: 'page', footer: 'footer'}
-        }));
-    });
+    http.get({
+        path: '/cms/categorys?LIKES_path=snzxw,designer,&EQI_layer=2&pager.orderBy=sort&pager.order=desc'
+    }, function (_res) {
+        _res.on('complete', function (data) {
+            console.log(data);
+            res.render('designers/index', mergeObject({}, {
+                menus: {design: true},
+                categorys: data.pageItems,
+                imagePath: function () {
+                    return function (text) {
+                        return this.avatar == null ? '/static/images/img.png' : this.avatar.absolutePath.replace(/(\.jpg)$/, '_' + text + '$1');
+                    }
+                },
+                partials: {header: 'header', page: 'page', footer: 'footer'}
+            }));
+        });
+    })
+});
+router.get('/designers/:code/list', function (req, res) {
+    http.get({
+        path: '/cms/articles?EQS_category.code='+req.params.code
+    }, function (_res) {
+        _res.on('complete', function (data) {
+            res.render('designers/list', mergeObject({}, {
+                menus: {design: true},
+                pager: pagerProxy(data, req),
+                imagePath: function () {
+                    return function (text) {
+                        return this.avatar == null ? '/static/images/img.png' : this.avatar.absolutePath.replace(/(\.jpg)$/, '_' + text + '$1');
+                    }
+                },
+                partials: {header: 'header', page: 'page', footer: 'footer'}
+            }));
+        });
+    })
 });
 router.get('/designers/:id', function (req, res) {
     flow.parallel({

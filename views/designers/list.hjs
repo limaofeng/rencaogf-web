@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>韧草工坊</title>
+    <meta name="viewport" content="width=device-width; initial-scale=1.0">
+    <meta name="keywords" content="关键词，韧草工坊,rencaogf"/>
+    <meta name="description" content="摘要，韧草工坊"/>
+    <link rel="stylesheet" type="text/css" media="only screen and (max-width:480px),only screen and(max-device-width:480px)" href=""/>
+    <link rel="stylesheet" type="text/css" href="/css/css.css" />
+    <link rel="stylesheet" type="text/css" href="/css/layout.css" />
+</head>
+<body>
+{{>header}}
+<!--menu-->
+<div class="maiDiv banner">
+    <h2>手工是对时间的尊重与敬畏</h2>
+    <h3>The manual is the time of respect and reverence</h3>
+</div>
+
+<div class="maiDiv white_block">
+    <div class="sub_title">
+        <span>Design team</span>
+        <h2><span>设计团队</span></h2>
+    </div>
+
+    <div class="padD10 clearFF">
+        {{#pager.pageItems}}
+            <dl class="four_table_dl">
+                <dd class="pic">
+                    <a href="/designers/{{id}}" target="_blank">
+                        <img src="http://115.29.185.235:8080{{#imagePath}}150x150{{/imagePath}}" width="240" height="160" alt="产品名称"/>
+                    </a>
+                </dd>
+                <dt>
+                    {{title}}
+                </dt>
+                <dd>
+                    擅长：<span>{{summary}}</span>
+                </dd>
+                <dd>
+                    工艺时长：<span>{{time}}</span>
+                </dd>
+                <dd>
+                    <a href="/designers/{{id}}" target="_blank">
+                        <img src="/images/btn.png" width="85" height="25" alt="查看详情"/>
+                    </a>
+                </dd>
+            </dl>
+        {{/pager.pageItems}}
+
+        <div class="clearBoth"> </div>
+
+        {{>page}}
+
+        <div class="clearBoth"> </div>
+
+    </div>
+</div>
+
+{{>footer}}
+</body>

@@ -40,7 +40,7 @@
             <div class="pro_time">
                 <div>工艺时长</div>
                 <span>
-                    5/年
+                    {{designer.time}}
                 </span>
             </div>
             <p class="txt">

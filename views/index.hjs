@@ -51,7 +51,7 @@
         <a href="products_detail.html">
             <img src="../images/pro.png" width="240" height="160" alt="韧草工坊"/>
         </a>
-        <a href="products.html" class="more">&nbsp</a>
+        <a href="/products" class="more">&nbsp</a>
     </div>
 
     <div class="clear"> </div>
@@ -66,7 +66,7 @@
             {{/designers}}
         </ul>
         <div class="footer">
-            <a href="design.html" class="in_design_more">
+            <a href="/designers" class="in_design_more">
                 更多设计师
             </a>
         </div>
