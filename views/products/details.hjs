@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>韧草工坊</title>
+    <meta name="viewport" content="width=device-width; initial-scale=1.0">
+    <meta name="keywords" content="关键词，韧草工坊,rencaogf"/>
+    <meta name="description" content="摘要，韧草工坊"/>
+    <link rel="stylesheet" type="text/css" media="only screen and (max-width:480px),only screen and(max-device-width:480px)" href=""/>
+    <link rel="stylesheet" type="text/css" href="../css/css.css" />
+    <link rel="stylesheet" type="text/css" href="../css/layout.css" />
+</head>
+<body>
+{{>header}}
+<!--menu-->
+<div class="maiDiv banner">
+    <h2>手工是对时间的尊重与敬畏</h2>
+    <h3>The manual is the time of respect and reverence</h3>
+</div>
+
+<div class="maiDiv white_block">
+    <div class="pro_details_table">
+        <h6 class="title_h6">产品详细</h6>
+        <div class="pro_pic_focus">
+            <dl>
+                <dt>
+                    <img src="http://115.29.185.235:8080/rencaogf{{product.defaultGoodsImagePath}}" height="346" width="520" alt="产品名称"/>
+                </dt>
+                {{#product.goodsImages}}
+                    <dd>
+                        <img src="http://115.29.185.235:8080/rencaogf{{absolutePath}}" width="100" hidden="67" alt=""/>
+                    </dd>
+                {{/product.goodsImages}}
+            </dl>
+        </div>
+        <div class="pro_pic_content">
+            <h2>{{product.name}}</h2>
+            <ul class="lis">
+                {{#product.goodsParameterValues}}
+                <li>{{name}}：<span>{{value}}</span></li>
+                {{/product.goodsParameterValues}}
+            </ul>
+            <div class="pro_time">
+                <div>订制时长</div>
+                <span>
+                    {{product.price}}/h
+                </span>
+            </div>
+            <p class="txt">
+                {{!--product.introduction--}}
+            </p>
+        </div>
+        <div class="clear"> </div>
+
+    </div>
+    <div class="clear"> </div>
+
+    <div class="sub_title">
+        <span>details</span>
+        <h2><span>细节描述</span></h2>
+    </div>
+
+    <div class="pro_Detail">
+        {{{product.introduction}}}
+    </div>
+</div>
+
+{{>footer}}
+</body>

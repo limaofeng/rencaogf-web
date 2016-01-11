@@ -35,7 +35,7 @@
         <dl class="four_table_dl">
             <dd class="pic">
                 <a href="/products/{{id}}" target="_blank">
-                    <img src="{{#defaultGoodsImagePath}}http://115.29.185.235:8080{{defaultGoodsImagePath}}{{/defaultGoodsImagePath}}" width="240" height="160" alt="产品名称"/>
+                    <img src="{{#defaultGoodsImagePath}}http://115.29.185.235:8080/rencaogf{{defaultGoodsImagePath}}{{/defaultGoodsImagePath}}" width="240" height="160" alt="产品名称"/>
                 </a>
             </dd>
             <dt>

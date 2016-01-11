@@ -306,18 +306,9 @@ router.get('/shop', function (req, res) {
     }));
 });
 
-router.get('/furnitures/:id', function (req, res) {
+router.get('/products/:id', function (req, res) {
     flow.parallel({
-        banner: function (callback) {
-            http.get({
-                path: '/cms/banners/1053'
-            }, function (_res) {
-                _res.on('complete', function (body) {
-                    callback(0, body);
-                });
-            });
-        },
-        goods: function (callback) {
+        product: function (callback) {
             http.get({
                 path: "/mall/goods/goodses/" + req.params.id
             }, function (_res) {
@@ -327,8 +318,8 @@ router.get('/furnitures/:id', function (req, res) {
             });
         }
     }, function (err, result) {
-        res.render('furnitures/details', mergeObject(result, {
-            menus: {furniture: true},
+        res.render('products/details', mergeObject(result, {
+            menus: {products: true},
             imagePath: function () {
                 return function (text) {
                     return this.absolutePath.replace(/(\.jpg)$/, '_' + text + '$1');
@@ -340,7 +331,6 @@ router.get('/furnitures/:id', function (req, res) {
             partials: {header: 'header', footer: 'footer'}
         }));
     });
-
 });
 router.get('/companys', function (req, res) {
     flow.parallel({
