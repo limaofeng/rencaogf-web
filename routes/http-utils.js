@@ -10,7 +10,7 @@ http.request = (function (_request) {
         var options = arguments[0];
         //设置请求地址
         options.host = process.env.REST_HOST;
-        options.port = 8080;
+        options.port = 80;
 
         //设置请求头
         options.headers = {
